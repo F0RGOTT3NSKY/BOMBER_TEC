@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 1b6ed7165931ce84893904212e278973
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - floorPrefab: {fileID: 318443125302531825, guid: 10a716970f86bab40b21c066d2719f78,
+      type: 3}
+  - fixBlockPrefab: {fileID: 4170284197143459535, guid: e513c4d8286a5f54eac5a7bd8896350c,
+      type: 3}
+  - destructibleBlockPrefab: {fileID: 137343104563407224, guid: da662fce6aad53b48b9f351747adb7df,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
