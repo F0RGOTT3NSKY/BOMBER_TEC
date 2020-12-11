@@ -53,6 +53,13 @@ public class Bomb : MonoBehaviour
             }
             else
             { //7
+                if (hit.collider.CompareTag("Brick"))
+                {
+                    Instantiate(explosionPrefab, transform.position + (i * direction),
+                    //5 
+                    explosionPrefab.transform.rotation);
+
+                }
                 break;
             }
 

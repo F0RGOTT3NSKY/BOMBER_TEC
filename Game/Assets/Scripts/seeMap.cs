@@ -18,13 +18,17 @@ public class seeMap : MonoBehaviour
     public GameObject fixBlockPrefab;
     public GameObject destructibleBlockPrefab;
 
+    // Tamaño del mapa y cantidad de personajes
+    public int Rows;
+    public int Colums;
+    public int Players;
 
 
     // Start is called before the first frame update
     void Start()
     {
         
-        randomMap(14, 14, 5);
+        randomMap(Rows, Colums, Players);
         createMap(map);
 
     }
@@ -63,8 +67,8 @@ public class seeMap : MonoBehaviour
                 else if (_map[i,j] == 3f)
                 {
                     screenPosition = new Vector3(i, 2f, j);
-                    GameObject a = Instantiate(destructibleBlockPrefab) as GameObject;
-                    a.transform.position = screenPosition;
+                    //GameObject a = Instantiate(destructibleBlockPrefab) as GameObject;
+                    //a.transform.position = screenPosition;
 
                     screenPosition = new Vector3(i, 1f, j);
                     GameObject b = Instantiate(floorPrefab) as GameObject;

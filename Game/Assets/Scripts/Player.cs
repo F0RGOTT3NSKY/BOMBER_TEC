@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     //Can the player move?
     public bool dead = false;
 
-    private int bombs = 5;
+    //private int bombs = 5;
     //Amount of bombs the player has left to drop, gets decreased as the player
     //drops a bomb, increases as an owned bomb explodes
 

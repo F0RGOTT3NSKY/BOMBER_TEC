@@ -574,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174940}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: -0.00000010430813}
-  m_LocalPosition: {x: 1, y: 0.5, z: 7}
+  m_LocalPosition: {x: 1, y: 2, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488536}
@@ -609,10 +609,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd8ffa16d817be4bad533723d48a0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalManager: {fileID: 0}
   playerNumber: 1
   moveSpeed: 4
   canDropBombs: 1
   canMove: 1
+  dead: 0
   bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!136 &13644608
 CapsuleCollider:
