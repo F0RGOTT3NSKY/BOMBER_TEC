@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Updates Player 1's movement and facing rotation using the WASD keys and drops bombs using Space
     /// </summary>
+    
     private void UpdatePlayer1Movement ()
     {
         if (Input.GetKey (KeyCode.W))
