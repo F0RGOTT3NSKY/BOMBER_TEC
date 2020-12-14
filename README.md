@@ -10,42 +10,35 @@
 ***
 BomberTEC es una adaptación del famoso juego de Bomberman. Esta escrita en el lenguaje CS con el motor gráfico Unity
 ### Screenshot
-![Image text](https://www.united-internet.de/fileadmin/user_upload/Brands/Downloads/Logo_IONOS_by.jpg)
+![Image text](https://github.com/F0RGOTT3NSKY/Proyecto_II_BomberTEC/blob/main/Documents/screenshotMenu.png)
 ## Technologies
 ***
-A list of technologies used within the project:
-* [Technologie name](https://example.com): Version 12.3 
-* [Technologie name](https://example.com): Version 2.34
-* [Library name](https://example.com): Version 1234
+Una lista de las tecnologías usadas en el proyecto
+* [Unity](https://unity.com/es): Version 2019.4.15f1 
+* [Visual Studio Community 2019](https://visualstudio.microsoft.com/es/vs/): Version 16.8.1
+
 ## Installation
 ***
-A little intro about the installation. 
+Actualmente el juego debe ejecutado dentro de la intefaz de Unity
 ```
 $ git clone https://example.com
 $ cd ../path/to/the/file
 $ npm install
 $ npm start
 ```
-Side information: To use the application in a special environment use ```lorem ipsum``` to start
+
 ## Collaboration
 ***
-Give instructions on how to collaborate with your project.
-> Maybe you want to write a quote in this part. 
-> It should go over several rows?
-> This is how you do it.
+Este proyecto fue realizado por:
+> Kevin Masis
+> Adrian Gomez
 ## FAQs
 ***
-A list of frequently asked questions
-1. **This is a question in bold**
-Answer of the first question with _italic words_. 
-2. __Second question in bold__ 
-To answer this question we use an unordered list:
-* First point
-* Second Point
-* Third point
-3. **Third question in bold**
-Answer of the third question with *italic words*.
-4. **Fourth question in bold**
-| Headline 1 in the tablehead | Headline 2 in the tablehead | Headline 3 in the tablehead |
-|:--------------|:-------------:|--------------:|
-| text-align left | text-align center | text-align right |
+Una lista de preguntas frecuentes
+1. **Instalación de Visual Studio Community**
+Dirijase a https://visualstudio.microsoft.com/es/vs/ y siga los pasos que presenta el sitio
+
+2. __Instalación de Unity__ 
+Dirijase a https://unity.com/ y siga los pasas que muestra el sitio
+
+| Tecnológico de Costa Rica | 2020 | Ingeniería en Computadores |
