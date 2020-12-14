@@ -1,64 +1,57 @@
-﻿/*
- * Copyright (c) 2017 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
- * distribute, sublicense, create a derivative work, and/or sell copies of the 
- * Software in any work that is designed, intended, or marketed for pedagogical or 
- * instructional purposes related to programming, coding, application development, 
- * or information technology.  Permission for such use, copying, modification,
- * merger, publication, distribution, sublicensing, creation of derivative works, 
- * or sale is expressly withheld.
- *    
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+﻿
+/*!
+* @file ListGenoma.cs 
+* @authors Adrian Gomez Garro
+* @authors Kevin Masis Leandro
+* @date 10/12/2020
+* @brief  Codigo de los jugadores que son manipulados por el usuario
+*/
+
 
 using UnityEngine;
 using System.Collections;
 using System;
 
+/*!
+* @struct Player
+* @brief Player Codigo que controla a los personajes
+* @details Realiza el movimiento de los personajes, además, de realizar el lanzamiento de las bombas
+* @public
+*/
+
 public class Player : MonoBehaviour
-{
+{ 
+    /// GlobalStateManager 
     public GlobalStateManager globalManager;
-    //Player parameters
-    [Range (1, 2)] //Enables a nifty slider in the editor
+    ///Player parameters
+    [Range (1, 2)] 
+
+    /// Indiga el numero de jugador qe se está manipulado
     public int playerNumber = 1;
-    //Indicates what player this is: P1 or P2
+
+    /// Velocidad del movimiento
     public float moveSpeed = 5f;
+
+    /// Indiga si puede lanzar bombas
     public bool canDropBombs = true;
-    //Can the player drop bombs?
+
+    /// Indica que si puede moverse 
     public bool canMove = true;
-    //Can the player move?
+
+    /// Indica que si el jugador ha sido destruido
     public bool dead = false;
 
-    //private int bombs = 5;
-    //Amount of bombs the player has left to drop, gets decreased as the player
-    //drops a bomb, increases as an owned bomb explodes
 
-    //Prefabs
+
+    ///Prefabs
     public GameObject bombPrefab;
 
-    //Cached components
+    ///Cached components
     private Rigidbody rigidBody;
     private Transform myTransform;
     private Animator animator;
 
-    // Use this for initialization
+    /// Use this for initialization
     void Start ()
     {
         //Cache the attached components for better performance and less typing
@@ -67,12 +60,16 @@ public class Player : MonoBehaviour
         animator = myTransform.Find ("PlayerModel").GetComponent<Animator> ();
     }
 
-    // Update is called once per frame
+    /// Update is called once per frame
     void Update ()
     {
         UpdateMovement ();
     }
 
+
+    /*!
+   * @brief UpdateMovement() Actualiza el movimiento de los jugadores
+   */
     private void UpdateMovement ()
     {
         animator.SetBool ("Walking", false);
@@ -92,9 +89,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Updates Player 1's movement and facing rotation using the WASD keys and drops bombs using Space
-    /// </summary>
+    /*!
+   * @brief UpdatePlayer1Movement() Actualiza el movimiento del jugador 1
+   */
     private void UpdatePlayer1Movement ()
     {
         if (Input.GetKey (KeyCode.W))
@@ -131,9 +128,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Updates Player 2's movement and facing rotation using the arrow keys and drops bombs using Enter or Return
-    /// </summary>
+    /*!
+   * @brief UpdatePlayer2Movement() Actualiza el movimiento del jugador 2
+   */
     private void UpdatePlayer2Movement ()
     {
         if (Input.GetKey (KeyCode.UpArrow))
@@ -171,9 +168,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Drops a bomb beneath the player
-    /// </summary>
+    /*!
+   * @brief DropBomb() Metodo para lanzar bombas
+   */
     private void DropBomb ()
     {
         if (bombPrefab)
@@ -185,6 +182,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*!
+   * @brief OnTriggerEnter() Ejecuta cuando el objeto ha sido colisionado 
+   * @param other Objeto que colisiona
+   */
     public void OnTriggerEnter (Collider other)
     {
         if (other.CompareTag ("Explosion"))

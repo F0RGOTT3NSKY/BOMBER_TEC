@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /*!
 * @struct nodeGenoma
 * @brief nodeGenoma determina como se estructura cada individuo.
