@@ -23,13 +23,13 @@ public class Bomb : MonoBehaviour
     /// Layermask donde hace efecto el RaycastHit.
     public LayerMask levelMask;
     /// Indica si alguna bomba cercana ha explotado o no.
-    private bool exploded = false;
+    public bool exploded = false;
 
     /*!
     * @brief Start() is called before the first frame update.
     * @details Se invoca la funcion de Explode para instanciar las explosiones de la bomba.
     */
-    void Start()
+    public void Start()
     {
         Invoke("Explode", 3f);
     }
@@ -38,7 +38,7 @@ public class Bomb : MonoBehaviour
     * @details Para instanciar las explosiones se usan coroutines apuntado a todas las direcciones para crear la explosion.
     * Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente.
     */
-    void Explode()
+    public void Explode()
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity); 
         StartCoroutine(CreateExplosions(Vector3.forward));
@@ -56,7 +56,7 @@ public class Bomb : MonoBehaviour
     * Sino existe ningun bloque en la LayerMask entonces se instancia una la explosion en la hacia la direccion elegida.
     * @param direction Indica la direccion a la que se va a crear la explosion.
     */
-    private IEnumerator CreateExplosions(Vector3 direction)
+    public IEnumerator CreateExplosions(Vector3 direction)
     {
         for (int i = 1; i < 3; i++)
         {

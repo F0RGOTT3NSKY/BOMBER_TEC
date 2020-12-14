@@ -1,15 +1,13 @@
 ﻿/*!
-* @file ListGenoma.cs 
+* @file seeMap.cs 
 * @authors Adrian Gomez Garro
 * @authors Kevin Masis Leandro
 * @date 10/12/2020
 * @brief  Codigo que crea y renderiza el mapa.
 */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 /*!
 * @class seeMap
 * @brief Crea un mapa aleatoria para luego renderizardo
@@ -19,26 +17,16 @@ using UnityEngine;
 
 public class seeMap : MonoBehaviour
 {
-
     /// Vector3 para posicionar los bloques en la zona de trabajo
     private Vector3 screenPosition ;
-
     /// Matriz que almacena el mapa del suelo
     private float[,] map;
-
-
     /// Numero de filas del mapa
     public static int NFilas_Map = 25;
     /// Numero de columnas del mapa
     public static int NColumnas_Map = 25;
-
     /// Cantidad de jugadores
     private int NPlayers_Map = 8;
-
-
-
-
-
     /// Bloques de piso del juego
     public GameObject floorPrefab;
     /// Bloques fijios del juego
@@ -46,48 +34,26 @@ public class seeMap : MonoBehaviour
     /// Bloques destruibles del juego
     public GameObject destructibleBlockPrefab;
 
-
-
-    /// Start is called before the first frame update
-    void Start()
+    /*!
+     * @brief Start() is called before the first frame update
+     * @details Se usa para iniciar la creacion del mapa aleatoria.
+     */
+    public void Start()
     {
-        
         map = randomMap(NFilas_Map, NColumnas_Map);
-
         map = checkPlayersWay(map, NPlayers_Map) ;
 
-
-
         createMap(map);
-
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
-    /*
-     
-     --------------------------- MAPAS ALEATORIOS
-     
-     
-     */
-
-
     /*!
     * @brief createMap() Este método renderiza la matriz a los cubos en unity
     * @param _map Es la matriz a renderizar
     */
-    private void createMap(float[,] _map)
+    public void createMap(float[,] _map)
     {
 
         int NFilas = _map.GetLength(0);
         int NColumnas = _map.GetLength(1);
-
 
         for (int i = 0; i < NFilas; i++)
         {
@@ -124,7 +90,7 @@ public class seeMap : MonoBehaviour
     * @param filas Numero de filas que desea contener la matriz
     * @param columnas Numero de columnas que desea contener la matriz
     */
-    private float[,] randomMap(int filas, int columnas)
+    public float[,] randomMap(int filas, int columnas)
     {
         float[,] _map = new float[filas, columnas];
 
@@ -157,37 +123,21 @@ public class seeMap : MonoBehaviour
                 }
             }
         }
-
-
-        
-        
-        return _map;
-        
+        return _map; 
     }
-
-
-
-
     /*!
     * @brief Bt() Inicio de método backtracking, retorna falso o verdadero dependiendo de que si encuentra o no el camino
     * @param _map Matriz a analizar
     * @param ptinicio Punto en donde se desea iniciar la búsqueda
     * @param ptfin Punto en donde se desea finalizar la búsqueda
     */
-    private bool Bt(float[,] _map, int[] ptinicio, int[] ptfin)
+    public bool Bt(float[,] _map, int[] ptinicio, int[] ptfin)
     {
-
-
         int NFilas = _map.GetLength(0);
         int NColumnas = _map.GetLength(1);
 
-
         return rutasBT(_map, NFilas, NColumnas, ptinicio, ptfin, 5);
-
-
     }
-
-
     /*!
     * @brief rutasBt() Metodo recursivo del backtracking
     * @param _map Matriz a analizar
@@ -197,13 +147,10 @@ public class seeMap : MonoBehaviour
     * @param NColumnas Numero de columnas de la matriz
     * @param dir Direccion de donde proviene la busqueda de la matriz
     */
-    private bool rutasBT(float[,] _map, int NFilas, int NColumnas, int[] ptinicio, int[] ptfin, int dir)
+    public bool rutasBT(float[,] _map, int NFilas, int NColumnas, int[] ptinicio, int[] ptfin, int dir)
     {
-
         _map[ptinicio[0], ptinicio[1]] = 4f;
-
         // Condición de si haber encontrado un camino
-
         if (ptinicio[0] == ptfin[0] && ptinicio[1] == ptfin[1])
         {
             return true;
@@ -261,12 +208,7 @@ public class seeMap : MonoBehaviour
                     return true;
                 }
             }
-
         }
-
-
-
-
         switch (dir)
         {
             case 8:
@@ -282,25 +224,17 @@ public class seeMap : MonoBehaviour
                 ptinicio[1]++;
                 break;
         }
-
-
         _map[ptinicio[0], ptinicio[1]] = 1f;
-
         return false;
-
-
     }
-
-
     /*!
     * @brief changeMapBT() Metodo para realizar los ajustes al mapa para conseguir el mapa
     * @param _map Matriz a analizar
     * @param ptinicio Punto en donde se desea iniciar la búsqueda
     * @param ptfin Punto en donde se desea finalizar la búsqueda
     */
-    private float[,] changeMapBT(float[,] _map, int[] ptinicio, int[] ptfin)
+    public float[,] changeMapBT(float[,] _map, int[] ptinicio, int[] ptfin)
     {
-
         int F_Inicial = ptinicio[0];
         int C_Inicial = ptinicio[1];
 
@@ -315,7 +249,6 @@ public class seeMap : MonoBehaviour
                 _map[f, C_Inicial] = 3f;
             }
         }
-
         for (int c = C_Inicial; c < C_Final; c++)
         {
 
@@ -324,22 +257,14 @@ public class seeMap : MonoBehaviour
                 _map[F_Final, c] = 3f;
             }
         }
-
-      
-
-
-
         return _map;
     }
-
-
-
     /*!
     * @brief checkPlayersWay() Analiza que haya camino entre los jugadores, retorna la matriz analizada
     * @param _map Matriz a analizar
     * @param NPlayers Numero de jugadores
     */
-    private float[,] checkPlayersWay(float[,] _map, int NPlayers)
+    public float[,] checkPlayersWay(float[,] _map, int NPlayers)
     {
 
         int NFilas = _map.GetLength(0);
@@ -411,10 +336,6 @@ public class seeMap : MonoBehaviour
                 }
             }
         }
-
-
-
-
         int personajes = NPlayers;
         int Filas = _map.GetLength(0) - 1;
         int Columnas = _map.GetLength(1) -1 ;
@@ -482,9 +403,6 @@ public class seeMap : MonoBehaviour
                 }
             }
         }
-
-
-
         // Corregir desperfectos del mapa
         for (int i = 0; i < _map.GetLength(0); i++)
         {
@@ -495,14 +413,7 @@ public class seeMap : MonoBehaviour
                     _map[i, j] = 3f;
                 }
             }
-
         }
-
         return _map;
     }
-
-
-
-
-
 }
