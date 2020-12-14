@@ -141,10 +141,7 @@ public class Enemy : MonoBehaviour
         moveSpeed = (float)enemyGenoma.gen_velocidad;
         //enemyGenoma.gen_vidas;
 
-
-        playerNumber = enemyGenoma.ID;
-
-
+        //playerNumber = enemyGenoma.ID;
     }
 
 
