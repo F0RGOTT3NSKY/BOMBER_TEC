@@ -30,14 +30,22 @@ public class Brick : MonoBehaviour
     {
 
     }
-    
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // Code to execute after the delay
+    }
     /*!
      * @brief onTriggerEnter Detecta el objeto
      * @param other El objeto que desea colisionar
      */
-
     public void OnTriggerEnter(Collider other)
     {
-      Destroy(gameObject);
+        Invoke("DestroyObject", 3f);
+    }
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
