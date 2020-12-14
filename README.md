@@ -31,6 +31,7 @@ $ npm start
 ***
 Este proyecto fue realizado por:
 > Kevin Masis
+
 > Adrian Gomez
 ## FAQs
 ***
