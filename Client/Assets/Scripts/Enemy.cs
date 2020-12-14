@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
 
 
+
     //___________________________________________
 
     //Player parameters
@@ -59,27 +60,7 @@ public class Enemy : MonoBehaviour
         AsignarGenoma();
     }
 
-    // Use this for initialization________________________________________________________________________________________
-    void Start()
-    {
-        //Cache the attached components for better performance and less typing
-        rigidBody = GetComponent<Rigidbody>();
-        myTransform = transform;
-        animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        animator.SetBool("Walking", false);
-
-        if (!canMove)
-        { //Return if player can't move
-            return;
-        }
-
-        UpdateEnemyMovement(6);
-    }
+  
 
 
     // Updates Enemy movement and facing rotation using the WASD keys and drops bombs using Space
@@ -114,12 +95,13 @@ public class Enemy : MonoBehaviour
         }
 
         if (canDropBombs && mov == 5)
-        { //Drop bomb
+        { 
             DropBomb();
         }
     }
 
     // Drops a bomb
+    
     private void DropBomb()
     {
         if (bombPrefab)
@@ -143,7 +125,7 @@ public class Enemy : MonoBehaviour
 
         }
     }
-
+    
     // Asignar valores del genoma al enemigo 
     private void AsignarGenoma()
     {

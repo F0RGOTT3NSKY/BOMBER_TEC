@@ -296,9 +296,6 @@ public class seeMap : MonoBehaviour
         return _map;
     }
 
-
-
-
     // Metodo para checkear personajes
     private float[,] checkPlayersWay(float[,] _map, int NPlayers)
     {
