@@ -1,56 +1,89 @@
-﻿using System.Collections;
+﻿/*!
+* @file ListGenoma.cs 
+* @authors Adrian Gomez Garro
+* @authors Kevin Masis Leandro
+* @date 10/12/2020
+* @brief  Codigo que determina y gestiona los cromosomas.
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*!
+* @struct nodeGenoma
+* @brief nodeGenoma determina como se estructura cada individuo.
+* @details En donde cada cromosoma se divide en genes y tiene un puntaje total que se usa para determinar el mejor individuo.
+* @public
+*/
 public struct nodeGenoma
 {
-    public int  gen_velocidad,
+                /// Gen de velocidad del individuo, su rango va de [0,100].
+    public int gen_velocidad,
+                /// Gen de vidas del individuo, su rango va de [0,5].
                 gen_vidas,
+                /// Gen de esconderse del individuo, su rango va de [0,100].
                 gen_esconderse,
+                /// Gen de bomba cruz del individuo, su rango va de [0,100].
                 gen_bomba_cruz,
+                /// Gen de curarse del individuo, su rango va de [0,100].
                 gen_curarse,
+                /// Gen de protection del individuo, su rango va de [0,100].
                 gen_protection,
+                /// Gen de lanzamiento del individuo, su rango va de [0,100].
                 gen_lanzamiento,
+                /// Gen del numero de bombas del individuo, su rango va de [0,20].
                 gen_bombas_numero,
+                /// Gen de suerte del individuo, su rango va de [0,4].
                 gen_suerte,
+                /// Gen de enfermedad del individuo, su rango va de [0,10].
                 gen_enfermedad,
+                /// Gen de potencia de bomba del individuo, su rango va de [0,4].
                 gen_bomba_potencia
                 ;
-
-    public int ID;
+    /// Variable que indica el puntaje total del individuo.
     public float Puntaje;
+    /*!
+    * @brief setPuntaje() se usa para setear el valor del puntaje a cada individuo.
+    * @param pPuntaje El puntaje que se va a asignar al puntaje del individuo.
+    */
     public void setPuntaje(float pPuntaje)
     {
         this.Puntaje = pPuntaje;
     }
-
 }
-
-
+/*!
+ * @class ListGenoma
+ * @brief La clase ListGenoma se encarga de gestionar los cromosomas de cada individuo.
+ * @details Con esta clase se puede gestionar todo lo referente a los genes de los cromosomas de cada individio. 
+ * @public
+ */
 public class ListGenoma : MonoBehaviour
 {
-  
-    // Atributos _________________________________________________________
-
-    // Lista de Genomas
-    private int listLength;
+    /// Lista que guarda a todos los individuos con su estructura de genes.
     private List<nodeGenoma> genomaList;
+    /// Variable para contar los frames
     private int frames = 0;
     
-
-
-    // Contructor
+    /*!
+     * @brief ListGenoma() es el constructor de la clase para instanciar la lista de individuos
+     */
     public ListGenoma()
     {
-        listLength = 0;
         genomaList = new List<nodeGenoma>();
 
     }
-
+    /*!
+     * @brief Start() is called before the first frame update.
+     * @details Se usa para iniciar la creacion de los individuos por primera vez y asi empezar con el algoritmo genetico.
+     */
     void Start()
     {
         AddNodeGenoma(20);
     }
+    /*!
+     * @brief Update() is called once per frame.
+     * @details Se usa para actualizar la poblacion de individuos cada n numero de frames 
+     * y asi aplicar el algoritmo genetico al combinar y mutar a los individuos.
+     */
     void Update()
     {
         frames++;
@@ -68,6 +101,7 @@ public class ListGenoma : MonoBehaviour
             {
                 genomaList.RemoveAt(genomaList.Count - 1);
             }
+
             // Asignar a los jugadores
             Debug.Log("Every 200th frame");
             for (int i = 0; i < genomaList.Count; i++)
@@ -77,24 +111,23 @@ public class ListGenoma : MonoBehaviour
             }
         }
     }
-
-    // Métodos ______________________________________________________
-
-    // Añadir Genoma
+    /*!
+     * @brief AddNodeGenoma se usa para anadir nuevos individuos a la lista de  la poblacion.
+     * @details Se anaden nuevos individuos, se organizan de mayor puntaje a menor, y luego se descarta la mitad de peor puntaje.
+     * @param town Indica la cantidad de nuevos individuos a la poblacion.
+     */
     private void AddNodeGenoma(int town)
     {
-
         for(int t = 0; t < town; t++)
         {
-            // Se creal el nuevo Genoma y se añade los valores de los genes
+            // Se crea el nuevo Genoma y se añade los valores de los genes
             nodeGenoma aux = new nodeGenoma();
             aux = AddGenomaValues(aux);
-
             // Se añade el genoma la lista de genomas
             genomaList.Add(aux);
-
         }
         Organizar();
+        // Se remueve la mitad de peor puntaje
         int size = genomaList.Count / 2;
         for (int i = 0; i < size; i++)
         {
@@ -102,17 +135,25 @@ public class ListGenoma : MonoBehaviour
         }
     }
 
-    // Instantiate random number generator.  
+    /// Instantiate random number generator.  
     private readonly System.Random _random = new System.Random();
-
-    // Generates a random number within a range.      
+    /*!
+     * @brief Generates a random number within a range.
+     * @param min Indica el minimo del rango sin incluirlo.
+     * @param max Indica el maximo del rango sin incluirlo.
+     * @return int random value
+     */ 
     public int RandomValue(int min, int max)
     {
         return _random.Next(min, max);
     }
 
-
-    // Generar la puntuacion en base a la suma de los genes de los genomas
+    /*!
+     * @brief PuntuationGenoma() Genera la puntuacion en base a la suma de los genes de los genomas.
+     * @details La puntuacion de los individuos se calcula apartir de una suma de cada gen que tiene un valor de 1 como maximo.
+     * @param aux Se pasa a cada individuo para obtener cada gen de este.
+     * @return float puntaje de cada individuo.
+     */
     private float PuntuationGenoma(nodeGenoma aux)
     {
         float result = 0;
@@ -132,18 +173,23 @@ public class ListGenoma : MonoBehaviour
 
         return result;
     }
-
+    /*!
+     * @brief PuntuationGenomaAux() se usa para calcular que tanto se tiene cada gen.
+     * @param value Indica el valor del gen.
+     * @param max Indica el valor maximo del gen.
+     * @return float value/max
+     */
     private float PuntuationGenomaAux(int value, int max)
     {
         return (float) value / max;
     }
-
-    // Añadir los valores de a los genes de los genomas
+    /*!
+     * @brief AddGenomaValues() se usa para agregar valores random a los genes.
+     * @param aux  Se pasa a cada individuo para obtener cada gen de este.
+     * @return El mismo individuo aux.
+     */
     private nodeGenoma AddGenomaValues(nodeGenoma aux)
     {
-        listLength++;
-        aux.ID = listLength;
-
         aux.gen_velocidad = RandomValue(0, 101);
         aux.gen_esconderse = RandomValue(0, 101);
         aux.gen_bomba_cruz = RandomValue(0, 101);
@@ -164,32 +210,13 @@ public class ListGenoma : MonoBehaviour
         return aux;
     }
 
-    // Retornar genoma en especial
-    private nodeGenoma ReturnGenoma(int selectGenoma)
-    {
-
-        nodeGenoma aux = genomaList[0];
-        return aux;
-
-    }
-
-    //Convertidores de bases
-    private int DecimalToBinary(int num)
-    {
-        return int.Parse(System.Convert.ToString(num, 2)) ;
-    }
-
-    private int BinaryToDecimal(int num)
-    {
-        return int.Parse(System.Convert.ToString(num, 10));
-
-    }
-
-    // Organizar lista de los genomas -> Requiere que la lista de los genomas sea global
+    /*!
+     * @brief Organizar() se usa para organizar la lista de individuos de mayor puntaje a menor.
+     * @details Para organizar la lista se usa un bublesort, esta lista de individuos es la lista global donde estan los individuos, es decir, la poblacion del algoritmo genetico.
+     */
     private void Organizar()
     {
         //Metodo de burbuja
-
         bool sw = false;
         while (!sw)
         {
@@ -206,8 +233,12 @@ public class ListGenoma : MonoBehaviour
             }
         }
     }
-
-    // Algoritmo genetico
+    /*!
+     * @brief Validacion() se usa para evitar los casos en los genes se pasen del valor maximo.
+     * @details Se revisa cada gen del individuo y en el caso de que este sea mayor al maximo se hace reset de este al valor maximo.
+     * @param c Se pasa a cada individuo para obtener cada gen de este.
+     * @return c se retorna el individuo ya validado.
+     */
     private nodeGenoma Validacion(nodeGenoma c)
     {
         if (c.gen_bombas_numero > 100)
@@ -256,6 +287,10 @@ public class ListGenoma : MonoBehaviour
         }
         return c;
     }
+    /*!
+     * @brief Combine()
+     * 
+     */
     private nodeGenoma Combine(nodeGenoma a, nodeGenoma b)
     {
         nodeGenoma c = new nodeGenoma();

@@ -1,81 +1,91 @@
-﻿using System.Collections;
+﻿/*!
+* @file Bomb.cs 
+* @author Adrian Gomez 
+* @date 15/11/2020
+* @brief  Codigo para generar las explosiones de las bombas
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*!
+* @class Bomb
+* @brief La clase Bomb se encarga de instanciar las explosiones al instante en el que el jugador pone una bomba en el suelo.
+* @details Para crear las explosiones se invoca el la funcion de Explode() se instancian las explosiones mediante coroutines.
+* Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente.
+* @public 
+*/
 public class Bomb : MonoBehaviour
 {
+    /// Objeto prefab de la explosion.
     public GameObject explosionPrefab;
+    /// Layermask donde hace efecto el RaycastHit.
     public LayerMask levelMask;
+    /// Indica si alguna bomba cercana ha explotado o no.
     private bool exploded = false;
 
-    // Start is called before the first frame update
+    /*!
+    * @brief Start() is called before the first frame update.
+    * @details Se invoca la funcion de Explode para instanciar las explosiones de la bomba.
+    */
     void Start()
     {
         Invoke("Explode", 3f);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /*!
+    * @brief Explode() es invocado para instanciar explosiones en el juego.
+    * @details Para instanciar las explosiones se usan coroutines apuntado a todas las direcciones para crear la explosion.
+    * Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente.
+    */
     void Explode()
     {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity); //1
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity); 
         StartCoroutine(CreateExplosions(Vector3.forward));
         StartCoroutine(CreateExplosions(Vector3.right));
         StartCoroutine(CreateExplosions(Vector3.back));
         StartCoroutine(CreateExplosions(Vector3.left));
-        GetComponent<MeshRenderer>().enabled = false; //2
         GetComponent<MeshRenderer>().enabled = false;
         exploded = true;
-        transform.Find("Collider").gameObject.SetActive(false); //3
-        Destroy(gameObject, .3f); //4
+        transform.Find("Collider").gameObject.SetActive(false); 
+        Destroy(gameObject, .3f);
     }
+    /*!
+    * @brief CreateExplosions() es un algoritmo dedicado la creacion de las explosiones.
+    * @details Para crear estas explosiones se crea un rayo de colision para detectar si existe un bloque en donde no se puede crear una explosion.
+    * Sino existe ningun bloque en la LayerMask entonces se instancia una la explosion en la hacia la direccion elegida.
+    * @param direction Indica la direccion a la que se va a crear la explosion.
+    */
     private IEnumerator CreateExplosions(Vector3 direction)
     {
-        //1
         for (int i = 1; i < 3; i++)
         {
-            //2
             RaycastHit hit;
-            //3
-            Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out hit,
-              i, levelMask);
+            Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out hit, i, levelMask);
 
-            //4
             if (!hit.collider)
             {
-                Instantiate(explosionPrefab, transform.position + (i * direction),
-                  //5 
-                  explosionPrefab.transform.rotation);
-                //6
+                Instantiate(explosionPrefab, transform.position + (i * direction), explosionPrefab.transform.rotation);
             }
             else
-            { //7
-                /*
-                if (hit.collider.CompareTag("Brick"))
-                {
-                    Instantiate(explosionPrefab, transform.position + (i * direction),
-                    //5 
-                    explosionPrefab.transform.rotation);
-
-                }
-                */
+            {
                 break;
             }
-
-            //8
             yield return new WaitForSeconds(.05f);
         }
 
     }
+    /*!
+    * @brief OnTriggerEnter() se usa para detectar si otra explosion toca la bomba.
+    * @details Si una explosion toca una bomba que no ha explotado, esta bomba prodece a explotar tambien.
+    * @param other Indica que objeto ha entrado en el collider de la bomba.
+    */
     public void OnTriggerEnter(Collider other)
     {
         if (!exploded && other.CompareTag("Explosion"))
-        { // 1 & 2  
-            CancelInvoke("Explode"); // 2
-            Explode(); // 3
+        { 
+            CancelInvoke("Explode");
+            Explode();
         }
 
     }

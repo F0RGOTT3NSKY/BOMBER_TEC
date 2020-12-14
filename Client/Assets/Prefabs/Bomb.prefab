@@ -210,9 +210,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 177540, guid: 69dfce71c987ee94ebd40421847e3c8e, type: 3}
+  explosionCube: {fileID: 4447425214941234688, guid: 006efe21f6156694fbe56b7ff9c98fa3,
+    type: 3}
   levelMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!1 &127508
 GameObject:
   m_ObjectHideFlags: 0
