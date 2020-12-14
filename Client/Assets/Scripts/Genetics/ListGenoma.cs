@@ -59,9 +59,9 @@ public struct nodeGenoma
 public class ListGenoma : MonoBehaviour
 {
     /// Lista que guarda a todos los individuos con su estructura de genes.
-    private List<nodeGenoma> genomaList;
+    public List<nodeGenoma> genomaList;
     /// Variable para contar los frames
-    private int frames = 0;
+    public int frames = 0;
     
     /*!
      * @brief ListGenoma() es el constructor de la clase para instanciar la lista de individuos
@@ -75,7 +75,7 @@ public class ListGenoma : MonoBehaviour
      * @brief Start() is called before the first frame update.
      * @details Se usa para iniciar la creacion de los individuos por primera vez y asi empezar con el algoritmo genetico.
      */
-    void Start()
+    public void Start()
     {
         AddNodeGenoma(20);
     }
@@ -84,7 +84,7 @@ public class ListGenoma : MonoBehaviour
      * @details Se usa para actualizar la poblacion de individuos cada n numero de frames 
      * y asi aplicar el algoritmo genetico al combinar y mutar a los individuos.
      */
-    void Update()
+    public void Update()
     {
         frames++;
         if(frames % 200 == 0)
@@ -116,7 +116,7 @@ public class ListGenoma : MonoBehaviour
      * @details Se anaden nuevos individuos, se organizan de mayor puntaje a menor, y luego se descarta la mitad de peor puntaje.
      * @param town Indica la cantidad de nuevos individuos a la poblacion.
      */
-    private void AddNodeGenoma(int town)
+    public void AddNodeGenoma(int town)
     {
         for(int t = 0; t < town; t++)
         {
@@ -136,7 +136,7 @@ public class ListGenoma : MonoBehaviour
     }
 
     /// Instantiate random number generator.  
-    private readonly System.Random _random = new System.Random();
+    public readonly System.Random _random = new System.Random();
     /*!
      * @brief Generates a random number within a range.
      * @param min Indica el minimo del rango sin incluirlo.
@@ -154,7 +154,7 @@ public class ListGenoma : MonoBehaviour
      * @param aux Se pasa a cada individuo para obtener cada gen de este.
      * @return float puntaje de cada individuo.
      */
-    private float PuntuationGenoma(nodeGenoma aux)
+    public float PuntuationGenoma(nodeGenoma aux)
     {
         float result = 0;
 
@@ -179,7 +179,7 @@ public class ListGenoma : MonoBehaviour
      * @param max Indica el valor maximo del gen.
      * @return float value/max
      */
-    private float PuntuationGenomaAux(int value, int max)
+    public float PuntuationGenomaAux(int value, int max)
     {
         return (float) value / max;
     }
@@ -188,7 +188,7 @@ public class ListGenoma : MonoBehaviour
      * @param aux  Se pasa a cada individuo para obtener cada gen de este.
      * @return El mismo individuo aux.
      */
-    private nodeGenoma AddGenomaValues(nodeGenoma aux)
+    public nodeGenoma AddGenomaValues(nodeGenoma aux)
     {
         aux.gen_velocidad = RandomValue(0, 101);
         aux.gen_esconderse = RandomValue(0, 101);
@@ -214,7 +214,7 @@ public class ListGenoma : MonoBehaviour
      * @brief Organizar() se usa para organizar la lista de individuos de mayor puntaje a menor.
      * @details Para organizar la lista se usa un bublesort, esta lista de individuos es la lista global donde estan los individuos, es decir, la poblacion del algoritmo genetico.
      */
-    private void Organizar()
+    public void Organizar()
     {
         //Metodo de burbuja
         bool sw = false;
@@ -239,7 +239,7 @@ public class ListGenoma : MonoBehaviour
      * @param c Se pasa a cada individuo para obtener cada gen de este.
      * @return c se retorna el individuo ya validado.
      */
-    private nodeGenoma Validacion(nodeGenoma c)
+    public nodeGenoma Validacion(nodeGenoma c)
     {
         if (c.gen_bombas_numero > 100)
         {
@@ -288,10 +288,13 @@ public class ListGenoma : MonoBehaviour
         return c;
     }
     /*!
-     * @brief Combine()
-     * 
+     * @brief Combine() se usa para combinar dos cromosomas.
+     * @details En esta funcion se combinan todos los genes de ambos cromosomas usando bitwise operators.
+     * @param a Para obtener todos los genes del cromosoma padre.
+     * @param b Para obtener todos los genes del cromosoma madre.
+     * @return c Se retorna el hijo para su validacion, existe un 5% en que se retorna un hijo mutado para su validacion.
      */
-    private nodeGenoma Combine(nodeGenoma a, nodeGenoma b)
+    public nodeGenoma Combine(nodeGenoma a, nodeGenoma b)
     {
         nodeGenoma c = new nodeGenoma();
 
@@ -400,8 +403,14 @@ public class ListGenoma : MonoBehaviour
         }
         return Validacion(c);
     }
-    // Mutar
-    private nodeGenoma Mutacion(nodeGenoma c)
+    /*!
+     * @brief Mutacion() se usa para mutar un bit aleatorio de un gen de un individuo random.
+     * @details Se usan potencias de 2 para crear un numero binario con un 1 random, 
+     * y se obtiene un random para indicar el gen al cual se usa xor para apagar o encender un bit random.
+     * @param c Se usa para obtener el gen del individuo.
+     * @return c Retorna el individuo con el gen ya mutado.
+     */
+    public nodeGenoma Mutacion(nodeGenoma c)
     {
         int value = (int)(Mathf.Pow(2, RandomValue(0, 8)));
         int gen = RandomValue(0, 12);
