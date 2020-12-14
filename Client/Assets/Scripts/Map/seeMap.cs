@@ -33,6 +33,9 @@ public class seeMap : MonoBehaviour
     public GameObject fixBlockPrefab;
     /// Bloques destruibles del juego
     public GameObject destructibleBlockPrefab;
+    /// MenuManagerScript
+    public MenuManagerScript mms;
+
 
     /*!
      * @brief Start() is called before the first frame update
@@ -40,6 +43,11 @@ public class seeMap : MonoBehaviour
      */
     public void Start()
     {
+        mms = FindObjectOfType<MenuManagerScript>();
+        NPlayers_Map = mms.nPlayers;
+        NFilas_Map = mms.heightMap;
+        NColumnas_Map = mms.widthMap;
+
         map = randomMap(NFilas_Map, NColumnas_Map);
         map = checkPlayersWay(map, NPlayers_Map) ;
 

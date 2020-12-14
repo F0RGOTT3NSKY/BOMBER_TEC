@@ -63,36 +63,80 @@ public class MenuManagerScript : MonoBehaviour
 
     public void WidthPlus()
     {
-        if(widthMap < 50)
+        switch (widthMap)
         {
-            widthMap++;
+            case 15:
+                widthMap = 20;
+                break;
+            case 20:
+                widthMap = 25;
+                break;
+            case 25:
+                widthMap = 50;
+                break;
+            case 50:
+                widthMap = 50;
+                break;
         }
         WidthText.text = widthMap.ToString();
     }
 
     public void WidthLess()
     {
-        if (widthMap > 15)
+        switch (widthMap)
         {
-            widthMap--;
+            case 15:
+                widthMap = 15;
+                break;
+            case 20:
+                widthMap = 15;
+                break;
+            case 25:
+                widthMap = 20;
+                break;
+            case 50:
+                widthMap = 25;
+                break;
         }
         WidthText.text = widthMap.ToString();
     }
 
     public void HeightPlus()
     {
-        if(heightMap < 50)
+        switch (heightMap)
         {
-            heightMap++;
+            case 15:
+                heightMap = 20;
+                break;
+            case 20:
+                heightMap = 25;
+                break;
+            case 25:
+                heightMap = 50;
+                break;
+            case 50:
+                heightMap = 50;
+                break;
         }
         HeightText.text = heightMap.ToString();
     }
 
     public void HeightLess()
     {
-        if (heightMap > 15)
+        switch (heightMap)
         {
-            heightMap--;
+            case 15:
+                heightMap = 15;
+                break;
+            case 20:
+                heightMap = 15;
+                break;
+            case 25:
+                heightMap = 20;
+                break;
+            case 50:
+                heightMap = 25;
+                break;
         }
         HeightText.text = heightMap.ToString();
     }
