@@ -24,9 +24,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
+   &#160;<span id="projectnumber">1.0</span>
    </div>
+   <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
  </tr>
  </tbody>
@@ -99,7 +102,8 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>bombPrefab
-: <a class="el" href="class_player.html#a1c5a35087d3db825a5caecb90c87f41c">Player</a>
+: <a class="el" href="class_enemy.html#a38995fddf78b3574d1f6baa67b11e400">Enemy</a>
+, <a class="el" href="class_player.html#a1c5a35087d3db825a5caecb90c87f41c">Player</a>
 </li>
 </ul>
 
@@ -110,17 +114,20 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 , <a class="el" href="struct_path_result.html#a42c9abfa7d60ebfef4935899581343d6">PathResult</a>
 </li>
 <li>canDropBombs
-: <a class="el" href="class_player.html#aaa7e80793be256397abf1ac8a5606fae">Player</a>
+: <a class="el" href="class_enemy.html#a89848f0bc2348e110444b3bc70f3de7f">Enemy</a>
+, <a class="el" href="class_player.html#aaa7e80793be256397abf1ac8a5606fae">Player</a>
 </li>
 <li>canMove
-: <a class="el" href="class_player.html#a0ada65ecc94257d2516d9a398bc5f109">Player</a>
+: <a class="el" href="class_enemy.html#ab20c235c726fa78788de574bdce02aa3">Enemy</a>
+, <a class="el" href="class_player.html#a0ada65ecc94257d2516d9a398bc5f109">Player</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>dead
-: <a class="el" href="class_player.html#a90c72d76eee2ff83b328afaf463f78ed">Player</a>
+: <a class="el" href="class_enemy.html#a5781471eeb8099a31fe51c3e274542b1">Enemy</a>
+, <a class="el" href="class_player.html#a90c72d76eee2ff83b328afaf463f78ed">Player</a>
 </li>
 <li>Delay
 : <a class="el" href="class_destroy_self.html#a0bded28b8e0e258f8762ca8ce1a0efc0">DestroySelf</a>
@@ -135,6 +142,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>enemymodel
+: <a class="el" href="class_enemy.html#abf4325e7037b94f5f8c04647c83fff28">Enemy</a>
+</li>
+<li>exploded
+: <a class="el" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">Bomb</a>
+</li>
 <li>explosionPrefab
 : <a class="el" href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">Bomb</a>
 </li>
@@ -198,7 +211,8 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="class_list_genoma.html#af03a0bdd98f3b56b40eeaea1e9108fdb">ListGenoma</a>
 </li>
 <li>globalManager
-: <a class="el" href="class_player.html#a279c6694617ee3d06cd78fec4d0ca5eb">Player</a>
+: <a class="el" href="class_enemy.html#a6c518b6bbf529c7b50fe665676585d03">Enemy</a>
+, <a class="el" href="class_player.html#a279c6694617ee3d06cd78fec4d0ca5eb">Player</a>
 </li>
 <li>gradient
 : <a class="el" href="struct_line.html#a77c02cd04ca62faf93629d8c625b4f7b">Line</a>
@@ -222,6 +236,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>hCost
 : <a class="el" href="class_node.html#a2d51e0628a13bdbed10c749a72c50b8d">Node</a>
 </li>
+<li>heightMap
+: <a class="el" href="class_menu_manager_script.html#adbd9999fc1d36bd05c284e6d2c6e8c88">MenuManagerScript</a>
+</li>
+<li>HeightText
+: <a class="el" href="class_menu_manager_script.html#a4e8711491f207636bb4add7f50978960">MenuManagerScript</a>
+</li>
 </ul>
 
 
@@ -239,24 +259,40 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>Maincamera
 : <a class="el" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">CameraConfig</a>
 </li>
+<li>MenuOptions
+: <a class="el" href="class_enemies_script.html#a3c998f2ebc06037761cb0bbc0cf1e2cc">EnemiesScript</a>
+</li>
+<li>MFMap
+: <a class="el" href="class_enemies_script.html#a99b9113d87edc7937123042d5b820cec">EnemiesScript</a>
+</li>
 <li>movementPenalty
 : <a class="el" href="class_node.html#a653b01625eb17021a47383a141bbf4a7">Node</a>
 </li>
 <li>moveSpeed
-: <a class="el" href="class_player.html#af75dce28d0c467e06f984717a283ebcb">Player</a>
+: <a class="el" href="class_enemy.html#aa15aa5eb8a52292f4e7580140ab933e1">Enemy</a>
+, <a class="el" href="class_player.html#af75dce28d0c467e06f984717a283ebcb">Player</a>
 </li>
 </ul>
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
+<li>NCMap
+: <a class="el" href="class_enemies_script.html#a1ccf08c6aecd647889e47af2e6a54cea">EnemiesScript</a>
+</li>
 <li>NColumnas_Map
 : <a class="el" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">seeMap</a>
+</li>
+<li>NEnemies
+: <a class="el" href="class_enemies_script.html#a787c6fd8a422fb84624a1b3b23e69199">EnemiesScript</a>
 </li>
 <li>NFilas_Map
 : <a class="el" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">seeMap</a>
 </li>
 <li>nodeRadius
 : <a class="el" href="class_grid.html#a63282028a75f6f14417c4b8668a3d984">Grid</a>
+</li>
+<li>nPlayers
+: <a class="el" href="class_menu_manager_script.html#a7d785323373be5eff9e4282beca20f7f">MenuManagerScript</a>
 </li>
 </ul>
 
@@ -284,8 +320,15 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>pathStart
 : <a class="el" href="struct_path_request.html#a5da7b6f7bb2bae11458fc12cfb207751">PathRequest</a>
 </li>
+<li>PlayerEnemy
+: <a class="el" href="class_enemies_script.html#a8c80e079a3d14e48e5abf9935185525c">EnemiesScript</a>
+</li>
 <li>playerNumber
-: <a class="el" href="class_player.html#af6ea80cdb79784632fde6e49b5c78393">Player</a>
+: <a class="el" href="class_enemy.html#aabc16d1e44b52fe9dc8e2c4bc83c41ac">Enemy</a>
+, <a class="el" href="class_player.html#af6ea80cdb79784632fde6e49b5c78393">Player</a>
+</li>
+<li>PlayerText
+: <a class="el" href="class_menu_manager_script.html#a5a44bcf238cba38dea59bd2f94014309">MenuManagerScript</a>
 </li>
 <li>pointOnLine_1
 : <a class="el" href="struct_line.html#a7ec4fc63f8b4e8a71cb3830ba34faab5">Line</a>
@@ -357,6 +400,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>walkableRegions
 : <a class="el" href="class_grid.html#a994c1d0353bd758c00a3a791bfc7d98c">Grid</a>
+</li>
+<li>widthMap
+: <a class="el" href="class_menu_manager_script.html#ad729057a114d86ffdd7eaf020b82a807">MenuManagerScript</a>
+</li>
+<li>WidthText
+: <a class="el" href="class_menu_manager_script.html#a905e58ede48b08ce95758b0ca7b91b30">MenuManagerScript</a>
 </li>
 <li>worldPosition
 : <a class="el" href="class_node.html#ae20cabf197a68687cfafb62dddaeb042">Node</a>

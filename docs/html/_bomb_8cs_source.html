@@ -24,9 +24,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
+   &#160;<span id="projectnumber">1.0</span>
    </div>
+   <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
  </tr>
  </tbody>
@@ -94,25 +97,25 @@ $(document).ready(function(){initNavTree('_bomb_8cs_source.html',''); initResiza
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">   22</a></span>&#160;    <span class="keyword">public</span> GameObject <a class="code" href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">explosionPrefab</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">   24</a></span>&#160;    <span class="keyword">public</span> LayerMask <a class="code" href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">levelMask</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">bool</span> exploded = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">   26</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">exploded</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> Start()</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">   32</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">Start</a>()</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        Invoke(<span class="stringliteral">&quot;Explode&quot;</span>, 3f);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> Explode()</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">Explode</a>()</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        Instantiate(<a class="code" href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">explosionPrefab</a>, transform.position, Quaternion.identity); </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        StartCoroutine(CreateExplosions(Vector3.forward));</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        StartCoroutine(CreateExplosions(Vector3.right));</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        StartCoroutine(CreateExplosions(Vector3.back));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        StartCoroutine(CreateExplosions(Vector3.left));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        StartCoroutine(<a class="code" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">CreateExplosions</a>(Vector3.forward));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        StartCoroutine(<a class="code" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">CreateExplosions</a>(Vector3.right));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        StartCoroutine(<a class="code" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">CreateExplosions</a>(Vector3.back));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        StartCoroutine(<a class="code" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">CreateExplosions</a>(Vector3.left));</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        GetComponent&lt;MeshRenderer&gt;().enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        exploded = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">exploded</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        transform.Find(<span class="stringliteral">&quot;Collider&quot;</span>).gameObject.SetActive(<span class="keyword">false</span>); </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        Destroy(gameObject, .3f);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">private</span> IEnumerator CreateExplosions(Vector3 direction)</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">   59</a></span>&#160;    <span class="keyword">public</span> IEnumerator <a class="code" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">CreateExplosions</a>(Vector3 direction)</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 3; i++)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
@@ -133,10 +136,10 @@ $(document).ready(function(){initNavTree('_bomb_8cs_source.html',''); initResiza
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">   83</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">OnTriggerEnter</a>(Collider other)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (!exploded &amp;&amp; other.CompareTag(<span class="stringliteral">&quot;Explosion&quot;</span>))</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">exploded</a> &amp;&amp; other.CompareTag(<span class="stringliteral">&quot;Explosion&quot;</span>))</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        { </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            CancelInvoke(<span class="stringliteral">&quot;Explode&quot;</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            Explode();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">Explode</a>();</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
@@ -145,9 +148,13 @@ $(document).ready(function(){initNavTree('_bomb_8cs_source.html',''); initResiza
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_bomb_html"><div class="ttname"><a href="class_bomb.html">Bomb</a></div><div class="ttdoc">La clase Bomb se encarga de instanciar las explosiones al instante en el que el jugador pone una bomb...</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00019">Bomb.cs:20</a></div></div>
+<div class="ttc" id="aclass_bomb_html_a6b5b1e0131287a0d455dd21fb40b8470"><div class="ttname"><a href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">Bomb.Explode</a></div><div class="ttdeci">void Explode()</div><div class="ttdoc">Explode() es invocado para instanciar explosiones en el juego.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00041">Bomb.cs:41</a></div></div>
 <div class="ttc" id="aclass_bomb_html_a4ecb0c70df116c48cf660e177e6aebb9"><div class="ttname"><a href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">Bomb.levelMask</a></div><div class="ttdeci">LayerMask levelMask</div><div class="ttdoc">Layermask donde hace efecto el RaycastHit.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00024">Bomb.cs:24</a></div></div>
 <div class="ttc" id="aclass_bomb_html_a28a3e6cb0f4e42799aa80a4815e62234"><div class="ttname"><a href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">Bomb.explosionPrefab</a></div><div class="ttdeci">GameObject explosionPrefab</div><div class="ttdoc">Objeto prefab de la explosion.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00022">Bomb.cs:22</a></div></div>
+<div class="ttc" id="aclass_bomb_html_a004264c6f0bcc40243bb21c430796af7"><div class="ttname"><a href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">Bomb.exploded</a></div><div class="ttdeci">bool exploded</div><div class="ttdoc">Indica si alguna bomba cercana ha explotado o no.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00026">Bomb.cs:26</a></div></div>
 <div class="ttc" id="aclass_bomb_html_a4cf03bfee024acacc138df5f2cc02fb2"><div class="ttname"><a href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">Bomb.OnTriggerEnter</a></div><div class="ttdeci">void OnTriggerEnter(Collider other)</div><div class="ttdoc">OnTriggerEnter() se usa para detectar si otra explosion toca la bomba.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00083">Bomb.cs:83</a></div></div>
+<div class="ttc" id="aclass_bomb_html_aa8cb1ce982cc73c2dce708b305ca589c"><div class="ttname"><a href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">Bomb.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Start() is called before the first frame update.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00032">Bomb.cs:32</a></div></div>
+<div class="ttc" id="aclass_bomb_html_a829fb41bafd6024642f33a38061a477e"><div class="ttname"><a href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">Bomb.CreateExplosions</a></div><div class="ttdeci">IEnumerator CreateExplosions(Vector3 direction)</div><div class="ttdoc">CreateExplosions() es un algoritmo dedicado la creacion de las explosiones.</div><div class="ttdef"><b>Definition:</b> <a href="_bomb_8cs_source.html#l00059">Bomb.cs:59</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

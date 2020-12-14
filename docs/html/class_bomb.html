@@ -24,9 +24,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
+   &#160;<span id="projectnumber">1.0</span>
    </div>
+   <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
  </tr>
  </tbody>
@@ -101,6 +104,15 @@ Inheritance diagram for Bomb:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aa8cb1ce982cc73c2dce708b305ca589c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">Start</a> ()</td></tr>
+<tr class="memdesc:aa8cb1ce982cc73c2dce708b305ca589c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c" title="Start() is called before the first frame update.">Start()</a> is called before the first frame update.  <a href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">More...</a><br /></td></tr>
+<tr class="separator:aa8cb1ce982cc73c2dce708b305ca589c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5b1e0131287a0d455dd21fb40b8470"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">Explode</a> ()</td></tr>
+<tr class="memdesc:a6b5b1e0131287a0d455dd21fb40b8470"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470" title="Explode() es invocado para instanciar explosiones en el juego.">Explode()</a> es invocado para instanciar explosiones en el juego.  <a href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">More...</a><br /></td></tr>
+<tr class="separator:a6b5b1e0131287a0d455dd21fb40b8470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a829fb41bafd6024642f33a38061a477e"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">CreateExplosions</a> (Vector3 direction)</td></tr>
+<tr class="memdesc:a829fb41bafd6024642f33a38061a477e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e" title="CreateExplosions() es un algoritmo dedicado la creacion de las explosiones.">CreateExplosions()</a> es un algoritmo dedicado la creacion de las explosiones.  <a href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">More...</a><br /></td></tr>
+<tr class="separator:a829fb41bafd6024642f33a38061a477e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cf03bfee024acacc138df5f2cc02fb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">OnTriggerEnter</a> (Collider other)</td></tr>
 <tr class="memdesc:a4cf03bfee024acacc138df5f2cc02fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2" title="OnTriggerEnter() se usa para detectar si otra explosion toca la bomba.">OnTriggerEnter()</a> se usa para detectar si otra explosion toca la bomba.  <a href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">More...</a><br /></td></tr>
 <tr class="separator:a4cf03bfee024acacc138df5f2cc02fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,13 +125,66 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4ecb0c70df116c48cf660e177e6aebb9"><td class="memItemLeft" align="right" valign="top">LayerMask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">levelMask</a></td></tr>
 <tr class="memdesc:a4ecb0c70df116c48cf660e177e6aebb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layermask donde hace efecto el RaycastHit.  <a href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">More...</a><br /></td></tr>
 <tr class="separator:a4ecb0c70df116c48cf660e177e6aebb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a004264c6f0bcc40243bb21c430796af7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">exploded</a> = false</td></tr>
+<tr class="memdesc:a004264c6f0bcc40243bb21c430796af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica si alguna bomba cercana ha explotado o no.  <a href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">More...</a><br /></td></tr>
+<tr class="separator:a004264c6f0bcc40243bb21c430796af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>La clase <a class="el" href="class_bomb.html" title="La clase Bomb se encarga de instanciar las explosiones al instante en el que el jugador pone una bomb...">Bomb</a> se encarga de instanciar las explosiones al instante en el que el jugador pone una bomba en el suelo. </p>
-<p>Para crear las explosiones se invoca el la funcion de Explode() se instancian las explosiones mediante coroutines. Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente. </p>
+<p>Para crear las explosiones se invoca el la funcion de <a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470" title="Explode() es invocado para instanciar explosiones en el juego.">Explode()</a> se instancian las explosiones mediante coroutines. Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente. </p>
 
 <p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00019">19</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a829fb41bafd6024642f33a38061a477e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a829fb41bafd6024642f33a38061a477e">&#9670;&nbsp;</a></span>CreateExplosions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Bomb.CreateExplosions </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>direction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e" title="CreateExplosions() es un algoritmo dedicado la creacion de las explosiones.">CreateExplosions()</a> es un algoritmo dedicado la creacion de las explosiones. </p>
+<p>Para crear estas explosiones se crea un rayo de colision para detectar si existe un bloque en donde no se puede crear una explosion. Sino existe ningun bloque en la LayerMask entonces se instancia una la explosion en la hacia la direccion elegida. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Indica la direccion a la que se va a crear la explosion. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00059">59</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6b5b1e0131287a0d455dd21fb40b8470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b5b1e0131287a0d455dd21fb40b8470">&#9670;&nbsp;</a></span>Explode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bomb.Explode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470" title="Explode() es invocado para instanciar explosiones en el juego.">Explode()</a> es invocado para instanciar explosiones en el juego. </p>
+<p>Para instanciar las explosiones se usan coroutines apuntado a todas las direcciones para crear la explosion. Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente. </p>
+
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00041">41</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+
+</div>
+</div>
 <a id="a4cf03bfee024acacc138df5f2cc02fb2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4cf03bfee024acacc138df5f2cc02fb2">&#9670;&nbsp;</a></span>OnTriggerEnter()</h2>
 
@@ -148,7 +213,47 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aa8cb1ce982cc73c2dce708b305ca589c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8cb1ce982cc73c2dce708b305ca589c">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Bomb.Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c" title="Start() is called before the first frame update.">Start()</a> is called before the first frame update. </p>
+<p>Se invoca la funcion de Explode para instanciar las explosiones de la bomba. </p>
+
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00032">32</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a004264c6f0bcc40243bb21c430796af7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a004264c6f0bcc40243bb21c430796af7">&#9670;&nbsp;</a></span>exploded</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Bomb.exploded = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indica si alguna bomba cercana ha explotado o no. </p>
+
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00026">26</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+
+</div>
+</div>
 <a id="a28a3e6cb0f4e42799aa80a4815e62234"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28a3e6cb0f4e42799aa80a4815e62234">&#9670;&nbsp;</a></span>explosionPrefab</h2>
 

@@ -24,9 +24,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
+   &#160;<span id="projectnumber">1.0</span>
    </div>
+   <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
  </tr>
  </tbody>
@@ -122,6 +125,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>Contains()
 : <a class="el" href="class_heap.html#a378a87ac02e39baf6ad9bd54cc5fbcd7">Heap&lt; T &gt;</a>
 </li>
+<li>CreateExplosions()
+: <a class="el" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">Bomb</a>
+</li>
 <li>CreateGrid()
 : <a class="el" href="class_grid.html#a2bdec7e3a339307893195a1596a5a89e">Grid</a>
 </li>
@@ -138,6 +144,16 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>DrawWithGizmos()
 : <a class="el" href="struct_line.html#a0193377e7d2cd765e22d36f7afa28a91">Line</a>
 , <a class="el" href="class_path.html#adca8a4470ea87bb9301935d79ee998c8">Path</a>
+</li>
+</ul>
+
+
+<h3><a id="index_e"></a>- e -</h3><ul>
+<li>Enemy()
+: <a class="el" href="class_enemy.html#a165df92c8e692e5769c05421c1d75dbb">Enemy</a>
+</li>
+<li>Explode()
+: <a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">Bomb</a>
 </li>
 </ul>
 
@@ -168,6 +184,12 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>Heap()
 : <a class="el" href="class_heap.html#a692154fc29b383f6b66ac16adf695be7">Heap&lt; T &gt;</a>
+</li>
+<li>HeightLess()
+: <a class="el" href="class_menu_manager_script.html#a57eb928f48ef8f8e15a2b91c018b785c">MenuManagerScript</a>
+</li>
+<li>HeightPlus()
+: <a class="el" href="class_menu_manager_script.html#adb3b286596cf30ee025462f89d92d30f">MenuManagerScript</a>
 </li>
 </ul>
 
@@ -209,9 +231,13 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>OnPathFound()
 : <a class="el" href="class_unit.html#a6a8200238df497501728b461ee79aa09">Unit</a>
 </li>
+<li>OnPlayButton()
+: <a class="el" href="class_menu_manager_script.html#a0bfa1fd4fd4610337388056c4852c619">MenuManagerScript</a>
+</li>
 <li>OnTriggerEnter()
 : <a class="el" href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">Bomb</a>
 , <a class="el" href="class_brick.html#a9d4b847f75c1940f27b7aa1b4694d166">Brick</a>
+, <a class="el" href="class_enemy.html#aea781049668ed26f4dae11153893c42b">Enemy</a>
 , <a class="el" href="class_player.html#a395c273f4e2fdd87fc8beef4ae797b56">Player</a>
 </li>
 <li>OnTriggerExit()
@@ -235,6 +261,12 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>PlayerDied()
 : <a class="el" href="class_global_state_manager.html#a4e5f9f095b723660e20fdf8fa4d984c2">GlobalStateManager</a>
+</li>
+<li>PlayersLess()
+: <a class="el" href="class_menu_manager_script.html#a1dfb29b8d8e3fd15388524cb153c9379">MenuManagerScript</a>
+</li>
+<li>PlayersPlus()
+: <a class="el" href="class_menu_manager_script.html#a9708a5d46c36eb98b14f0e503e54eb79">MenuManagerScript</a>
 </li>
 <li>PuntuationGenoma()
 : <a class="el" href="class_list_genoma.html#a92ec184e070ecb5cc56d168b7d7bea45">ListGenoma</a>
@@ -269,7 +301,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="structnode_genoma.html#a0bb1276fdd212a23256b632b2826e4b4">nodeGenoma</a>
 </li>
 <li>Start()
-: <a class="el" href="class_camera_config.html#ac9f42b8be6f48464919011cc193194fa">CameraConfig</a>
+: <a class="el" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">Bomb</a>
+, <a class="el" href="class_camera_config.html#ac9f42b8be6f48464919011cc193194fa">CameraConfig</a>
 , <a class="el" href="class_list_genoma.html#acbb1a2ee0ca705478edae60a8769f0d1">ListGenoma</a>
 , <a class="el" href="classsee_map.html#a46d8adbda7d85ad8bebd8a460449ba6b">seeMap</a>
 </li>
@@ -280,6 +313,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>Update()
 : <a class="el" href="class_list_genoma.html#a901e0f2a5dc8ccd081ddc5ee0d0e56ca">ListGenoma</a>
 </li>
+<li>UpdateEnemyMovement()
+: <a class="el" href="class_enemy.html#ac94317bc3067026e04f5d8ffebdddf00">Enemy</a>
+</li>
 <li>UpdateItem()
 : <a class="el" href="class_heap.html#a70c91d70f4696f32a53c72d4dfc68ba1">Heap&lt; T &gt;</a>
 </li>
@@ -289,6 +325,16 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <h3><a id="index_v"></a>- v -</h3><ul>
 <li>Validacion()
 : <a class="el" href="class_list_genoma.html#a3556b1e886151a86220f5e0ed9040b57">ListGenoma</a>
+</li>
+</ul>
+
+
+<h3><a id="index_w"></a>- w -</h3><ul>
+<li>WidthLess()
+: <a class="el" href="class_menu_manager_script.html#abd4fc6a0442485880f8e551a410e7481">MenuManagerScript</a>
+</li>
+<li>WidthPlus()
+: <a class="el" href="class_menu_manager_script.html#a9f2429e9ca46306273d7495b8c199a0b">MenuManagerScript</a>
 </li>
 </ul>
 </div><!-- contents -->

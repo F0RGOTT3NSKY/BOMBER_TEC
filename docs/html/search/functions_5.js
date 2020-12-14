@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getneighbours_208',['GetNeighbours',['../class_grid.html#ac430f0863dc0ea15daa8eda586954ba9',1,'Grid']]],
-  ['getside_209',['GetSide',['../struct_line.html#a49648f151a5d77fed9ba11b6ffbd08fb',1,'Line']]]
+  ['findpath_244',['FindPath',['../class_pathfinding.html#aee6f70cbb7304851d47d9be343a5fc4e',1,'Pathfinding']]],
+  ['finishedprocessingpath_245',['FinishedProcessingPath',['../class_path_request_manager.html#a5c8855a5d33070dbb293414efc0423f4',1,'PathRequestManager']]]
 ];

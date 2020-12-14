@@ -24,9 +24,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
+   &#160;<span id="projectnumber">1.0</span>
    </div>
+   <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
  </tr>
  </tbody>
@@ -111,7 +114,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>bombPrefab
-: <a class="el" href="class_player.html#a1c5a35087d3db825a5caecb90c87f41c">Player</a>
+: <a class="el" href="class_enemy.html#a38995fddf78b3574d1f6baa67b11e400">Enemy</a>
+, <a class="el" href="class_player.html#a1c5a35087d3db825a5caecb90c87f41c">Player</a>
 </li>
 <li>Bt()
 : <a class="el" href="classsee_map.html#ab3e3cb5004119885ca2cec26d4820388">seeMap</a>
@@ -125,10 +129,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="struct_path_result.html#a42c9abfa7d60ebfef4935899581343d6">PathResult</a>
 </li>
 <li>canDropBombs
-: <a class="el" href="class_player.html#aaa7e80793be256397abf1ac8a5606fae">Player</a>
+: <a class="el" href="class_enemy.html#a89848f0bc2348e110444b3bc70f3de7f">Enemy</a>
+, <a class="el" href="class_player.html#aaa7e80793be256397abf1ac8a5606fae">Player</a>
 </li>
 <li>canMove
-: <a class="el" href="class_player.html#a0ada65ecc94257d2516d9a398bc5f109">Player</a>
+: <a class="el" href="class_enemy.html#ab20c235c726fa78788de574bdce02aa3">Enemy</a>
+, <a class="el" href="class_player.html#a0ada65ecc94257d2516d9a398bc5f109">Player</a>
 </li>
 <li>changeMapBT()
 : <a class="el" href="classsee_map.html#acb1463e910bf41ccb7cef20a5f853f20">seeMap</a>
@@ -148,6 +154,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>Count
 : <a class="el" href="class_heap.html#a256828315052dd555c0f3feb3d09d7cd">Heap&lt; T &gt;</a>
 </li>
+<li>CreateExplosions()
+: <a class="el" href="class_bomb.html#a829fb41bafd6024642f33a38061a477e">Bomb</a>
+</li>
 <li>CreateGrid()
 : <a class="el" href="class_grid.html#a2bdec7e3a339307893195a1596a5a89e">Grid</a>
 </li>
@@ -159,7 +168,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>dead
-: <a class="el" href="class_player.html#a90c72d76eee2ff83b328afaf463f78ed">Player</a>
+: <a class="el" href="class_enemy.html#a5781471eeb8099a31fe51c3e274542b1">Enemy</a>
+, <a class="el" href="class_player.html#a90c72d76eee2ff83b328afaf463f78ed">Player</a>
 </li>
 <li>Delay
 : <a class="el" href="class_destroy_self.html#a0bded28b8e0e258f8762ca8ce1a0efc0">DestroySelf</a>
@@ -181,6 +191,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>Enemy()
+: <a class="el" href="class_enemy.html#a165df92c8e692e5769c05421c1d75dbb">Enemy</a>
+</li>
+<li>enemymodel
+: <a class="el" href="class_enemy.html#abf4325e7037b94f5f8c04647c83fff28">Enemy</a>
+</li>
+<li>Explode()
+: <a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470">Bomb</a>
+</li>
+<li>exploded
+: <a class="el" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">Bomb</a>
+</li>
 <li>explosionPrefab
 : <a class="el" href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">Bomb</a>
 </li>
@@ -259,7 +281,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="struct_line.html#a49648f151a5d77fed9ba11b6ffbd08fb">Line</a>
 </li>
 <li>globalManager
-: <a class="el" href="class_player.html#a279c6694617ee3d06cd78fec4d0ca5eb">Player</a>
+: <a class="el" href="class_enemy.html#a6c518b6bbf529c7b50fe665676585d03">Enemy</a>
+, <a class="el" href="class_player.html#a279c6694617ee3d06cd78fec4d0ca5eb">Player</a>
 </li>
 <li>gradient
 : <a class="el" href="struct_line.html#a77c02cd04ca62faf93629d8c625b4f7b">Line</a>
@@ -293,6 +316,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="interface_i_heap_item.html#af238895db51d3198f9a157c26bfb068e">IHeapItem&lt; T &gt;</a>
 , <a class="el" href="class_node.html#abf6c0d29d692e1e33ae9f8ca732c266c">Node</a>
 </li>
+<li>HeightLess()
+: <a class="el" href="class_menu_manager_script.html#a57eb928f48ef8f8e15a2b91c018b785c">MenuManagerScript</a>
+</li>
+<li>heightMap
+: <a class="el" href="class_menu_manager_script.html#adbd9999fc1d36bd05c284e6d2c6e8c88">MenuManagerScript</a>
+</li>
+<li>HeightPlus()
+: <a class="el" href="class_menu_manager_script.html#adb3b286596cf30ee025462f89d92d30f">MenuManagerScript</a>
+</li>
+<li>HeightText
+: <a class="el" href="class_menu_manager_script.html#a4e8711491f207636bb4add7f50978960">MenuManagerScript</a>
+</li>
 </ul>
 
 
@@ -322,11 +357,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>MaxSize
 : <a class="el" href="class_grid.html#a2bd29e434092f4f1fb7d3398806374ad">Grid</a>
 </li>
+<li>MenuOptions
+: <a class="el" href="class_enemies_script.html#a3c998f2ebc06037761cb0bbc0cf1e2cc">EnemiesScript</a>
+</li>
+<li>MFMap
+: <a class="el" href="class_enemies_script.html#a99b9113d87edc7937123042d5b820cec">EnemiesScript</a>
+</li>
 <li>movementPenalty
 : <a class="el" href="class_node.html#a653b01625eb17021a47383a141bbf4a7">Node</a>
 </li>
 <li>moveSpeed
-: <a class="el" href="class_player.html#af75dce28d0c467e06f984717a283ebcb">Player</a>
+: <a class="el" href="class_enemy.html#aa15aa5eb8a52292f4e7580140ab933e1">Enemy</a>
+, <a class="el" href="class_player.html#af75dce28d0c467e06f984717a283ebcb">Player</a>
 </li>
 <li>Mutacion()
 : <a class="el" href="class_list_genoma.html#a48ce150148bcfa3a9e9330a9d20b08ce">ListGenoma</a>
@@ -335,8 +377,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
+<li>NCMap
+: <a class="el" href="class_enemies_script.html#a1ccf08c6aecd647889e47af2e6a54cea">EnemiesScript</a>
+</li>
 <li>NColumnas_Map
 : <a class="el" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">seeMap</a>
+</li>
+<li>NEnemies
+: <a class="el" href="class_enemies_script.html#a787c6fd8a422fb84624a1b3b23e69199">EnemiesScript</a>
 </li>
 <li>NFilas_Map
 : <a class="el" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">seeMap</a>
@@ -349,6 +397,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>nodeRadius
 : <a class="el" href="class_grid.html#a63282028a75f6f14417c4b8668a3d984">Grid</a>
+</li>
+<li>nPlayers
+: <a class="el" href="class_menu_manager_script.html#a7d785323373be5eff9e4282beca20f7f">MenuManagerScript</a>
 </li>
 </ul>
 
@@ -363,9 +414,13 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>OnPathFound()
 : <a class="el" href="class_unit.html#a6a8200238df497501728b461ee79aa09">Unit</a>
 </li>
+<li>OnPlayButton()
+: <a class="el" href="class_menu_manager_script.html#a0bfa1fd4fd4610337388056c4852c619">MenuManagerScript</a>
+</li>
 <li>OnTriggerEnter()
 : <a class="el" href="class_bomb.html#a4cf03bfee024acacc138df5f2cc02fb2">Bomb</a>
 , <a class="el" href="class_brick.html#a9d4b847f75c1940f27b7aa1b4694d166">Brick</a>
+, <a class="el" href="class_enemy.html#aea781049668ed26f4dae11153893c42b">Enemy</a>
 , <a class="el" href="class_player.html#a395c273f4e2fdd87fc8beef4ae797b56">Player</a>
 </li>
 <li>OnTriggerExit()
@@ -405,8 +460,21 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>PlayerDied()
 : <a class="el" href="class_global_state_manager.html#a4e5f9f095b723660e20fdf8fa4d984c2">GlobalStateManager</a>
 </li>
+<li>PlayerEnemy
+: <a class="el" href="class_enemies_script.html#a8c80e079a3d14e48e5abf9935185525c">EnemiesScript</a>
+</li>
 <li>playerNumber
-: <a class="el" href="class_player.html#af6ea80cdb79784632fde6e49b5c78393">Player</a>
+: <a class="el" href="class_enemy.html#aabc16d1e44b52fe9dc8e2c4bc83c41ac">Enemy</a>
+, <a class="el" href="class_player.html#af6ea80cdb79784632fde6e49b5c78393">Player</a>
+</li>
+<li>PlayersLess()
+: <a class="el" href="class_menu_manager_script.html#a1dfb29b8d8e3fd15388524cb153c9379">MenuManagerScript</a>
+</li>
+<li>PlayersPlus()
+: <a class="el" href="class_menu_manager_script.html#a9708a5d46c36eb98b14f0e503e54eb79">MenuManagerScript</a>
+</li>
+<li>PlayerText
+: <a class="el" href="class_menu_manager_script.html#a5a44bcf238cba38dea59bd2f94014309">MenuManagerScript</a>
 </li>
 <li>pointOnLine_1
 : <a class="el" href="struct_line.html#a7ec4fc63f8b4e8a71cb3830ba34faab5">Line</a>
@@ -456,7 +524,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="class_unit.html#a59ecfd120f8d95c1cf987957bdab11df">Unit</a>
 </li>
 <li>Start()
-: <a class="el" href="class_camera_config.html#ac9f42b8be6f48464919011cc193194fa">CameraConfig</a>
+: <a class="el" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c">Bomb</a>
+, <a class="el" href="class_camera_config.html#ac9f42b8be6f48464919011cc193194fa">CameraConfig</a>
 , <a class="el" href="class_list_genoma.html#acbb1a2ee0ca705478edae60a8769f0d1">ListGenoma</a>
 , <a class="el" href="classsee_map.html#a46d8adbda7d85ad8bebd8a460449ba6b">seeMap</a>
 </li>
@@ -498,6 +567,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>Update()
 : <a class="el" href="class_list_genoma.html#a901e0f2a5dc8ccd081ddc5ee0d0e56ca">ListGenoma</a>
 </li>
+<li>UpdateEnemyMovement()
+: <a class="el" href="class_enemy.html#ac94317bc3067026e04f5d8ffebdddf00">Enemy</a>
+</li>
 <li>UpdateItem()
 : <a class="el" href="class_heap.html#a70c91d70f4696f32a53c72d4dfc68ba1">Heap&lt; T &gt;</a>
 </li>
@@ -520,6 +592,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>walkableRegions
 : <a class="el" href="class_grid.html#a994c1d0353bd758c00a3a791bfc7d98c">Grid</a>
+</li>
+<li>WidthLess()
+: <a class="el" href="class_menu_manager_script.html#abd4fc6a0442485880f8e551a410e7481">MenuManagerScript</a>
+</li>
+<li>widthMap
+: <a class="el" href="class_menu_manager_script.html#ad729057a114d86ffdd7eaf020b82a807">MenuManagerScript</a>
+</li>
+<li>WidthPlus()
+: <a class="el" href="class_menu_manager_script.html#a9f2429e9ca46306273d7495b8c199a0b">MenuManagerScript</a>
+</li>
+<li>WidthText
+: <a class="el" href="class_menu_manager_script.html#a905e58ede48b08ce95758b0ca7b91b30">MenuManagerScript</a>
 </li>
 <li>worldPosition
 : <a class="el" href="class_node.html#ae20cabf197a68687cfafb62dddaeb042">Node</a>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hascrossedline_210',['HasCrossedLine',['../struct_line.html#a10358d804102f44724074ddb82221a3b',1,'Line']]],
-  ['heap_211',['Heap',['../class_heap.html#a692154fc29b383f6b66ac16adf695be7',1,'Heap']]]
+  ['getneighbours_246',['GetNeighbours',['../class_grid.html#ac430f0863dc0ea15daa8eda586954ba9',1,'Grid']]],
+  ['getside_247',['GetSide',['../struct_line.html#a49648f151a5d77fed9ba11b6ffbd08fb',1,'Line']]]
 ];

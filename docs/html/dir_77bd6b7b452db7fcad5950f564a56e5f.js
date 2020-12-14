@@ -16,8 +16,17 @@ var dir_77bd6b7b452db7fcad5950f564a56e5f =
     [ "DisableTriggerOnPlayerExit.cs", "_disable_trigger_on_player_exit_8cs.html", [
       [ "DisableTriggerOnPlayerExit", "class_disable_trigger_on_player_exit.html", "class_disable_trigger_on_player_exit" ]
     ] ],
+    [ "EnemiesScript.cs", "_enemies_script_8cs.html", [
+      [ "EnemiesScript", "class_enemies_script.html", "class_enemies_script" ]
+    ] ],
+    [ "Enemy.cs", "_enemy_8cs.html", [
+      [ "Enemy", "class_enemy.html", "class_enemy" ]
+    ] ],
     [ "GlobalStateManager.cs", "_global_state_manager_8cs.html", [
       [ "GlobalStateManager", "class_global_state_manager.html", "class_global_state_manager" ]
+    ] ],
+    [ "MenuManagerScript.cs", "_menu_manager_script_8cs.html", [
+      [ "MenuManagerScript", "class_menu_manager_script.html", "class_menu_manager_script" ]
     ] ],
     [ "Player.cs", "_player_8cs.html", [
       [ "Player", "class_player.html", "class_player" ]
