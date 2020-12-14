@@ -1,49 +1,64 @@
-﻿using System.Collections;
+﻿/*!
+* @file ListGenoma.cs 
+* @authors Adrian Gomez Garro
+* @authors Kevin Masis Leandro
+* @date 10/12/2020
+* @brief  Codigo que determina y gestiona los cromosomas.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*!
+* @class EnemiesScript
+* @brief EnemiesScript Clase que se encarga de realizar los movimientos de los jugadores enemigos
+* @details Esta clase se encarga de asignar el genoma a cada jugador enemigo, además, realiza reparte la ejecucion de estos en los frames.
+* @public
+*/
 
 
 public class Enemy : MonoBehaviour
 {
 
-    // GlobalStateManager
+    /// GlobalStateManager
     public GlobalStateManager globalManager;
 
-    // Genoma del enemigo 
+    /// Genoma del enemigo 
     private nodeGenoma enemyGenoma;
 
 
-
-
-
-    //___________________________________________
-
     //Player parameters
     [Range(1, 2)] //Enables a nifty slider in the editor
+
+    /// Numero de jugador
     public int playerNumber;
+    /// Velocidad a la que avanza el jugador
     public float moveSpeed;
+    /// Cantidad de bombas que dispone el jugador
     private int bombs;
 
-
+    /// El jugador está habilitado para lanzar combas
     public bool canDropBombs = true;
-    //Can the player drop bombs?
+    /// El jugador puede moverse
     public bool canMove = true;
-    //Can the player move?
+    /// El jugador se encuentra destruido
     public bool dead = false;
 
 
 
-    //Prefabs
+    /// Objeto prefabricado de las bombas
     public GameObject bombPrefab;
+    /// Objeto prefabricado del enemigo
     public GameObject enemymodel;
 
-    //Cached components
+    ///Cached components
     private Rigidbody rigidBody;
     private Transform myTransform;
     private Animator animator;
 
-    // Método Constructor
+    /// Método Constructor
 
     public Enemy()
     {
@@ -60,10 +75,12 @@ public class Enemy : MonoBehaviour
         AsignarGenoma();
     }
 
-  
 
 
-    // Updates Enemy movement and facing rotation using the WASD keys and drops bombs using Space
+    /*!
+    * @brief UpdateEnemyMovement() Se encarga de acutalizar los movimientos y acciones del enemigo
+    * @param mov Señala la dirección en la que se dirije el enemigo o la acción que va a ejecutar
+    */
     public void UpdateEnemyMovement(int mov)
     {
         if (mov == 1)
@@ -100,8 +117,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Drops a bomb
-    
+    /*!
+    * @brief DropBomb() Metodo que se encarga de ejecutar la salida de bombas
+    */
     private void DropBomb()
     {
         if (bombPrefab)
@@ -113,7 +131,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    /*!
+    * @brief OnTriggerEnter() Metodo que se encarga de señalar la colicion del objeto
+    * @param other Objeto que esta colicionando 
+    */
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Explosion"))
@@ -125,8 +146,10 @@ public class Enemy : MonoBehaviour
 
         }
     }
-    
-    // Asignar valores del genoma al enemigo 
+
+    /*!
+    * @brief AsignarGenoma() Metodo que se encarga de asignar los genes del genoma a los atributos del objeto enemigo
+    */
     private void AsignarGenoma()
     {
         bombs = enemyGenoma.gen_bombas_numero;
