@@ -43,10 +43,17 @@ public class seeMap : MonoBehaviour
      */
     public void Start()
     {
-        mms = FindObjectOfType<MenuManagerScript>();
-        NPlayers_Map = mms.nPlayers;
-        NFilas_Map = mms.heightMap;
-        NColumnas_Map = mms.widthMap;
+        try
+        {
+            mms = FindObjectOfType<MenuManagerScript>();
+            NPlayers_Map = mms.nPlayers;
+            NFilas_Map = mms.heightMap;
+            NColumnas_Map = mms.widthMap;
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e);
+        }
 
         map = randomMap(NFilas_Map, NColumnas_Map);
         map = checkPlayersWay(map, NPlayers_Map) ;
