@@ -1,40 +1,35 @@
-﻿/*
- * Copyright (c) 2017 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish, 
- * distribute, sublicense, create a derivative work, and/or sell copies of the 
- * Software in any work that is designed, intended, or marketed for pedagogical or 
- * instructional purposes related to programming, coding, application development, 
- * or information technology.  Permission for such use, copying, modification,
- * merger, publication, distribution, sublicensing, creation of derivative works, 
- * or sale is expressly withheld.
- *    
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+﻿/*!
+* @file ListGenoma.cs 
+* @authors Adrian Gomez Garro
+* @authors Kevin Masis Leandro
+* @date 10/12/2020
+* @brief Analiza si los jugadores estan muertos o no
+*/
+
 
 using UnityEngine;
 using System.Collections;
 
+
+/*!
+* @class GlobalStateManager
+* @brief GlobalStateManager Analiza la destruccion de los jugadores
+* @details Esta clases analiza la destruccion de los objetos para declarar un ganador
+* @public
+*/
 public class GlobalStateManager : MonoBehaviour
 {
+    /// Numero de jugadores
     private int deadPlayers = 0;
+
+    /// Numero de jugadores muertos
     private int deadPlayerNumber = -1;
+
+
+    /*!
+    * @brief PlayerDied() Destruye el personaje
+    * @param playerNumber Ingrese sel personaje que ha sido destruido
+    */
     public void PlayerDied (int playerNumber)
     {
         deadPlayers++; // 1
@@ -46,6 +41,10 @@ public class GlobalStateManager : MonoBehaviour
         }
 
     }
+
+    /*!
+    * @brief CheckPlayerDeath() Termina el juego y señala el ganador
+    */
     void CheckPlayersDeath()
     {
         // 1
