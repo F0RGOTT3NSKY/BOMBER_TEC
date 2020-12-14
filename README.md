@@ -40,6 +40,6 @@ Una lista de preguntas frecuentes
 Dirijase a https://visualstudio.microsoft.com/es/vs/ y siga los pasos que presenta el sitio
 
 2. __Instalación de Unity__ 
-Dirijase a https://unity.com/ y siga los pasas que muestra el sitio
+Dirijase a https://unity.com/ y siga los pasos que muestra el sitio
 
 | Tecnológico de Costa Rica | 2020 | Ingeniería en Computadores |
