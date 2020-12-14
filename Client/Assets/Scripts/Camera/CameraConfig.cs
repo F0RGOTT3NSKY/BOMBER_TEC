@@ -1,13 +1,28 @@
-﻿using System.Collections;
+﻿/*!
+* @file CameraConfig.cs 
+* @author Adrian Gomez Garro
+* @date 10/12/2020
+* @brief  Codigo para gestionar la posicion de la camara.
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*!
+ * @brief La clase CameraConfig se utiliza para gestionar la posicion de la camara.
+ * @details Con base a los distintos tamanos preseleccionados se pone la camara y el area de A* en la posicion correcta.
+ * @public
+ */
 public class CameraConfig : MonoBehaviour
 {
+    /// Indica el objeto de la camara en Unity
     public GameObject Maincamera;
+    /// Indica el objeto del area de A* en Unity
     public GameObject PathfingArea;
-    // Start is called before the first frame update
-    void Start()
+    /*!
+     * @brief Start() is called before the first frame update
+     * @details Dependiendo del tamano del mapa se coloca la camara y el area A* en el lugar correcto.
+     */
+    public void Start()
     {
          if(seeMap.NColumnas_Map==50 && seeMap.NFilas_Map == 50)
         {
@@ -28,13 +43,6 @@ public class CameraConfig : MonoBehaviour
         {
             Maincamera.transform.position = new Vector3(6.5f, 18f, 0.2f);
             PathfingArea.transform.position = new Vector3(7f, 2f, 7f);
-        }
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }    
     }
 }

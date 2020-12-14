@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*!
+* @file Heap.cs 
+* @author Adrian Gomez Garro
+* @date 10/11/2020
+* @brief  Codigo que gestiona el Heap para el pathfinding.
+*/
+using UnityEngine;
 using System.Collections;
 using System;
 
