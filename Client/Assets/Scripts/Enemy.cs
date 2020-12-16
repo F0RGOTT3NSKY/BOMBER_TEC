@@ -50,8 +50,6 @@ public class Enemy : MonoBehaviour
 
     /// Objeto prefabricado de las bombas
     public GameObject bombPrefab;
-    /// Objeto prefabricado del enemigo
-    public GameObject enemymodel;
 
     ///Cached components
     private Rigidbody rigidBody;
@@ -137,14 +135,9 @@ public class Enemy : MonoBehaviour
     */
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Explosion"))
-        {
-            Debug.Log("P" + playerNumber + " hit by explosion!");
-            dead = true; // 1
-            globalManager.PlayerDied(playerNumber); // 2
-            Destroy(gameObject); // 3  
 
-        }
+        dead = true;
+        Destroy(gameObject); // 3
     }
 
     /*!

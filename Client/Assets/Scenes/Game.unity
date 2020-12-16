@@ -427,7 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mms: {fileID: 0}
-  PlayerEnemy: {fileID: 100032, guid: d4032cc66acb2dd49b5e299a0bd51a3f, type: 3}
+  PlayerEnemy: {fileID: 8749142432929202977, guid: cbe94d7d4498cca48b321ee6f49603af,
+    type: 3}
 --- !u!4 &1528427205
 Transform:
   m_ObjectHideFlags: 0
