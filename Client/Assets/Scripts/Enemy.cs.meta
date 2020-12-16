@@ -6,8 +6,7 @@ MonoImporter:
   defaultReferences:
   - globalManager: {instanceID: 0}
   - bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
-  - enemymodel: {fileID: 285858319680774338, guid: 96ac9575b675ed544a4e7dbfbc2ab44d,
-      type: 3}
+  - enemymodel: {fileID: 100032, guid: d4032cc66acb2dd49b5e299a0bd51a3f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

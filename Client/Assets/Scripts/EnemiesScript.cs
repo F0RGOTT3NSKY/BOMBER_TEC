@@ -71,22 +71,22 @@ public class EnemiesScript : MonoBehaviour
             
             switch (i){
                 case 0:
-                    screenPosition = new Vector3(-1.5f, 1f, NCMap - 2.5f);
+                    screenPosition = new Vector3(1f, 1f, NCMap - 2f);
                     break;
                 case 1:
-                    screenPosition = new Vector3(MFMap - 5.5f, 2f, 1f);
+                    screenPosition = new Vector3(MFMap - 2f, 1f, 1f);
                     break;
                 case 2:
-                    screenPosition = new Vector3(MFMap/2 - 2.3f, 2f, 1f);
+                    screenPosition = new Vector3(MFMap/2 , 1f, 1f);
                     break;
                 case 3:
-                    screenPosition = new Vector3(MFMap/2 -2.5f, 2f, NCMap -3f);
+                    screenPosition = new Vector3(MFMap/2 , 1f, NCMap -2f);
                     break;
                 case 4:
-                    screenPosition = new Vector3(MFMap- 5, 2f, NCMap/2 );
+                    screenPosition = new Vector3(MFMap - 2f, 1f, NCMap/2 );
                     break;
                 case 5:
-                    screenPosition = new Vector3(-1.5F, 2f, NCMap/2);
+                    screenPosition = new Vector3(1F, 1f, NCMap/2);
                     break;
             }
 
