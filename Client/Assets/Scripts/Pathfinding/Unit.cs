@@ -15,13 +15,28 @@ public class Unit : MonoBehaviour {
 	Path path;
 
 	void Start() {
-		StartCoroutine (UpdatePath ());
+		StartCoroutine(UpdatePath());
+		//PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
 	}
-
+	
     private void Update()
     {
-		StartCoroutine(UpdatePath());
-    }
+
+		/*
+		//StartCoroutine(UpdatePath());
+		Debug.Log("Target: " + target.position);
+		PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+
+		float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
+		Vector3 targetPosOld = target.position;
+
+		print(((target.position - targetPosOld).sqrMagnitude) + "    " + sqrMoveThreshold);
+		if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold)
+		{
+			PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
+			targetPosOld = target.position;
+		}*/
+	}
 
     public void OnPathFound(Vector3[] waypoints, bool pathSuccessful) {
 		if (pathSuccessful) {
@@ -33,9 +48,9 @@ public class Unit : MonoBehaviour {
 	}
 
 	IEnumerator UpdatePath() {
-		if (Time.timeSinceLevelLoad < .3f) {
+		/*if (Time.timeSinceLevelLoad < .3f) {
 			yield return new WaitForSeconds (.3f);
-		}
+		}*/
 		PathRequestManager.RequestPath (new PathRequest(transform.position, target.position, OnPathFound));
 
 		float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;

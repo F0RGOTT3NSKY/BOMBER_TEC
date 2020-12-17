@@ -102,14 +102,14 @@ public class ListGenoma : MonoBehaviour
             {
                 genomaList.RemoveAt(genomaList.Count - 1);
             }
-
+            /*
             // Asignar a los jugadores
             Debug.Log("Every 200th frame");
             for (int i = 0; i < genomaList.Count; i++)
             {
                 Debug.Log(genomaList[i].Puntaje);
 
-            }
+            }*/
         }
     }
     /*!

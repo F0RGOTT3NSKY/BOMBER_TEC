@@ -397,6 +397,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Maincamera: {fileID: 963194225}
   PathfingArea: {fileID: 1568322166}
+--- !u!4 &1049149881 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 414260, guid: 4cddbee81240ff04c8e7c994dc501178,
+    type: 3}
+  m_PrefabInstance: {fileID: 1800413345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1528427203
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +587,29 @@ PrefabInstance:
       objectReference: {fileID: 196314164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab921f8d90e43e43a20029d71815f87, type: 3}
+--- !u!1 &1729928929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 116334, guid: 6ab921f8d90e43e43a20029d71815f87,
+    type: 3}
+  m_PrefabInstance: {fileID: 1573991047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1729928934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729928929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea2723117c577543834ffef312898b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1049149881}
+  speed: 5
+  turnSpeed: 3
+  turnDst: 5
+  stoppingDst: 0
 --- !u!1001 &1800413345
 PrefabInstance:
   m_ObjectHideFlags: 0

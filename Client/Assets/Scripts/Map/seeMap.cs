@@ -82,15 +82,17 @@ public class seeMap : MonoBehaviour
                 } 
                 else if (_map[i, j] == 2f)
                 {
+                    
                     screenPosition = new Vector3(i, 2f, j);
                     GameObject a = Instantiate(fixBlockPrefab) as GameObject;
                     a.transform.position = screenPosition;
                 }
                 else if (_map[i,j] == 3f)
                 {
+                    /*
                     screenPosition = new Vector3(i, 2f, j);
                     GameObject a = Instantiate(destructibleBlockPrefab) as GameObject;
-                    a.transform.position = screenPosition;
+                    a.transform.position = screenPosition;*/
 
                     screenPosition = new Vector3(i, 1f, j);
                     GameObject b = Instantiate(floorPrefab) as GameObject;

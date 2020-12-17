@@ -15,8 +15,9 @@ public class PathRequestManager : MonoBehaviour {
 		instance = this;
 		pathfinding = GetComponent<Pathfinding>();
 	}
-
-	void Update() {
+    void Update() {
+		instance = this;
+		pathfinding = GetComponent<Pathfinding>();
 		if (results.Count > 0) {
 			int itemsInQueue = results.Count;
 			lock (results) {
