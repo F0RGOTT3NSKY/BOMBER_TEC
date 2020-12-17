@@ -23,7 +23,7 @@ public class Bomb : MonoBehaviour
     /// Layermask donde hace efecto el RaycastHit.
     public LayerMask levelMask;
     /// Indica si alguna bomba cercana ha explotado o no.
-    public bool exploded = false;
+    private bool exploded = false;
 
     /*!
     * @brief Start() is called before the first frame update.

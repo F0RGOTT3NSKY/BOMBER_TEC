@@ -42,7 +42,7 @@ public class Brick : MonoBehaviour
      */
     public void OnTriggerEnter(Collider other)
     {
-        Invoke("DestroyObject", 3f);
+        Invoke("DestroyObject", .3f);
     }
     public void DestroyObject()
     {
