@@ -111,6 +111,11 @@ public class EnemiesScript : MonoBehaviour
 
         for(int i = 0; i < NEnemies; i++)
         {
+            float x = ListEnemies[i].transform.position.x;
+            float z = ListEnemies[i].transform.position.z;
+
+
+
             ListEnemies[i].UpdateEnemyMovement(6);
         }
        
