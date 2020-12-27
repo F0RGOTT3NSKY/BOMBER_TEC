@@ -1,4 +1,4 @@
-# Proyecto_II_BomberTEC
+# BOMBER_TEC
 
 ## Tabla de Contenido
 1. [Informacion General](#general-info)
