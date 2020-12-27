@@ -66,85 +66,54 @@ public class MenuManagerScript : MonoBehaviour
         PlayerText.text = nPlayers.ToString();
     }
 
-    public void WidthPlus()
+    public void DimensionsPlus()
     {
         switch (widthMap)
         {
             case 15:
                 widthMap = 20;
+                heightMap = 20;
                 break;
             case 20:
                 widthMap = 25;
+                heightMap = 25;
                 break;
             case 25:
                 widthMap = 50;
+                heightMap = 50;
                 break;
             case 50:
                 widthMap = 50;
+                heightMap = 50;
                 break;
         }
         WidthText.text = widthMap.ToString();
     }
 
-    public void WidthLess()
+    public void DimensionsLess()
     {
         switch (widthMap)
         {
             case 15:
                 widthMap = 15;
+                heightMap = 15;
                 break;
             case 20:
                 widthMap = 15;
+                heightMap = 15;
                 break;
             case 25:
                 widthMap = 20;
+                heightMap = 20;
                 break;
             case 50:
                 widthMap = 25;
+                heightMap = 25;
                 break;
         }
         WidthText.text = widthMap.ToString();
     }
 
-    public void HeightPlus()
-    {
-        switch (heightMap)
-        {
-            case 15:
-                heightMap = 20;
-                break;
-            case 20:
-                heightMap = 25;
-                break;
-            case 25:
-                heightMap = 50;
-                break;
-            case 50:
-                heightMap = 50;
-                break;
-        }
-        HeightText.text = heightMap.ToString();
-    }
-
-    public void HeightLess()
-    {
-        switch (heightMap)
-        {
-            case 15:
-                heightMap = 15;
-                break;
-            case 20:
-                heightMap = 15;
-                break;
-            case 25:
-                heightMap = 20;
-                break;
-            case 50:
-                heightMap = 25;
-                break;
-        }
-        HeightText.text = heightMap.ToString();
-    }
 
 
     // Cambiar de escena
