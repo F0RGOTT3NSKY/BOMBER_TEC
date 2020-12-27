@@ -47,6 +47,8 @@ public class EnemiesScript : MonoBehaviour
     // Matriz del Menu
     public float[,] mapMatriz;
 
+    public AStar path;
+
     /// Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,8 @@ public class EnemiesScript : MonoBehaviour
             MFMap = mms.heightMap;
             NCMap = mms.widthMap;
             mapMatriz = mms.mapMatriz;
+            path = new AStar(10, mapMatriz, MFMap, NCMap);
+
         }
         catch (System.Exception e)
         {
