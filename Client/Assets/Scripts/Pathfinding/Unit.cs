@@ -58,7 +58,7 @@ public class Unit : MonoBehaviour {
 
 		while (true) {
 			yield return new WaitForSeconds (minPathUpdateTime);
-			print (((target.position - targetPosOld).sqrMagnitude) + "    " + sqrMoveThreshold);
+			//print (((target.position - targetPosOld).sqrMagnitude) + "    " + sqrMoveThreshold);
 			if ((target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold) {
 				PathRequestManager.RequestPath (new PathRequest(transform.position, target.position, OnPathFound));
 				targetPosOld = target.position;

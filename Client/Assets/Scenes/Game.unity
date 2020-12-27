@@ -403,6 +403,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1800413345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1360840113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 174940, guid: 4cddbee81240ff04c8e7c994dc501178,
+    type: 3}
+  m_PrefabInstance: {fileID: 1800413345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1360840117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360840113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161a07222f9816244be3c392a0b0e3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalStateManager: {fileID: 196314164}
+  playerNumber: 1
+  moveSpeed: 3
+  canDropBombs: 1
+  bombs: 0
+  canMove: 1
+  dead: 0
+  canHeal: 1
+  frames: 0
+  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!1 &1528427203
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,5 +697,9 @@ PrefabInstance:
       propertyPath: globalManager
       value: 
       objectReference: {fileID: 196314164}
+    - target: {fileID: 11411282, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
