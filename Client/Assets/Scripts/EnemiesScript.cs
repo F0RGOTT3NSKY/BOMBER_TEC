@@ -44,6 +44,9 @@ public class EnemiesScript : MonoBehaviour
     /// Cantidad de enemgos
     public static int NEnemies = 6;
 
+    // Matriz del Menu
+    public float[,] mapMatriz;
+
     /// Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,7 @@ public class EnemiesScript : MonoBehaviour
             NEnemies = mms.nPlayers - 2;
             MFMap = mms.heightMap;
             NCMap = mms.widthMap;
+            mapMatriz = mms.mapMatriz;
         }
         catch (System.Exception e)
         {
