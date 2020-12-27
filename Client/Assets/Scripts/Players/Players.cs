@@ -18,19 +18,33 @@ public class Players : MonoBehaviour
     public int maxBombs = 10;
     /// Indica el numero de bombas que ha tirado el jugador.
     public int droppedBombs = 0;
+    /// Indica la potencia de damage que tendra la bomba.
+    public int potenciaGenoma = 0;
+    /// Indica la potencia maxima que tendra la bomba.
+    public int maxPotencia = 50;
+    /// Indica la cantidad de vidas que tendra el jugador.
+    public int vidasGenoma = 0;
+    /// Indica el numero maximo de vidas que pueden tener los jugadores.
+    public int maxVidas = 5;
+    /// Indica el numero de vidas que ha perdido el jugador.
+    public int usedLifes = 0;
+    /// Indica la cantidad de vida del jugador.
+    public float playerHealth = 100;
     /// Indica que si puede moverse
     public bool canMove = true;
     /// Indica que si el jugador ha sido destruido
     public bool dead = false;
     /// Indica si el jugador se puede curar.
     public bool canHeal = true;
+    
     /// Indica el numero de frames.
     public int frames = 0;
+ 
+    public int lastHitExplosionFrame = 0;
     
 
     ///Prefabs
     public GameObject bombPrefab;
-
     ///Cached components
     private Rigidbody rigidBody;
     private Transform myTransform;
@@ -53,22 +67,34 @@ public class Players : MonoBehaviour
     void Update()
     {
         UpdateMovement();
+        UpdateGenomas();
         //Verifica si el personaje puede dropear bombas segun el gen
         CheckBombDrop();
         UpdatePlayerGenoma();
         frames++;
     }
+    private void UpdateGenomas()
+    {
+        // Update gen_bombas_numero
+        bombGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero;
+        // Update gen_bomba_potencia
+        potenciaGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bomba_potencia;
+        // Update gen_vidas
+        vidasGenoma = playerGenoma.genomaList[playerNumber - 1].gen_vidas;
+    }
     private void CheckBombDrop()
     {
-        int conversor = 100 / maxBombs;
-        Debug.Log(playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero / conversor);
-        bombGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero;
+        // Hace reset a las bombas disponibles
         if (frames % 1000 == 0)
         {
             Debug.Log("Bombs Reset");
             droppedBombs = 0;
         }
-        if (!(droppedBombs < (playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero / conversor)))
+
+        int conversor = 100 / maxBombs;
+        // Verifica si tiene bombas disponibles.
+        //Debug.Log(playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero / conversor);
+        if (!(droppedBombs < (bombGenoma / conversor)))
         {
             canDropBombs = false;
         }
@@ -160,21 +186,64 @@ public class Players : MonoBehaviour
     {
         if (bombPrefab)
         { //Check if bomb prefab is assigned first
-            Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x),
-                bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
+            GameObject Bomb = Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
                 bombPrefab.transform.rotation);
+            Bomb.GetComponent<Bomb>().spawnOrigin = gameObject;
 
+            //bombPrefab.transform.parent = player.transform;
+        }
+    }
+    private void CheckCurrentHealth(int potenciaGenomaOrigin)
+    {
+        int conversor = 100 / maxPotencia;
+        Debug.Log("-" + (potenciaGenomaOrigin / conversor) + " Vida");
+        if (lastHitExplosionFrame == 0)
+        {
+            playerHealth = playerHealth - (potenciaGenomaOrigin / conversor);
+            lastHitExplosionFrame = frames;
+        }
+        if ((frames - lastHitExplosionFrame) >= 500)
+        {
+            playerHealth = playerHealth - (potenciaGenomaOrigin / conversor);
+            lastHitExplosionFrame = frames;
+        }
+        if (playerHealth <= 0)
+        {
+            CheckLifesLeft();
+            playerHealth = 100;
+        }
+    }
+    private void CheckLifesLeft()
+    {
+        int conversor = 100 / maxVidas;
+        //Debug.Log(vidasGenoma / conversor);
+        if (usedLifes > (vidasGenoma / conversor))
+        {
+            dead = true;
+            globalStateManager.PlayerDied(playerNumber);
+            Destroy(gameObject);
+        }
+        else
+        {
+            usedLifes++;
         }
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Explosion"))
         {
+            GameObject playerOrigin = other.gameObject.GetComponent<DestroySelf>().spawnBombOrigin;
+            CheckCurrentHealth(playerOrigin.GetComponent<Players>().potenciaGenoma);
+            
+            /*
+            
+            Debug.Log("Potencia:"+playerOrigin.GetComponent<Players>().potenciaGenoma);
+            //Debug.Log("works" + other.gameObject.GetComponent<>.potenciaGenoma);
             Debug.Log("P" + playerNumber + " hit by explosion!");
             dead = true; // 1
             globalStateManager.PlayerDied(playerNumber); // 2
             Destroy(gameObject); // 3  
-
+            */
         }
     }
 }

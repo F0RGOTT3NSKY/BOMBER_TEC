@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 402648}
+  - component: {fileID: -4393941868664626666}
   - component: {fileID: 5481638}
-  - component: {fileID: 11458260}
   - component: {fileID: 13614668}
   m_Layer: 0
   m_Name: Player 2
@@ -157,6 +157,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4393941868664626666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161a07222f9816244be3c392a0b0e3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalStateManager: {fileID: 0}
+  playerNumber: 2
+  moveSpeed: 3
+  canDropBombs: 1
+  bombGenoma: 0
+  maxBombs: 10
+  droppedBombs: 0
+  potenciaGenoma: 0
+  canMove: 1
+  dead: 0
+  canHeal: 1
+  frames: 0
+  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!54 &5481638
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,25 +198,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &11458260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd8ffa16d817be4bad533723d48a0b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  globalManager: {fileID: 0}
-  playerNumber: 2
-  moveSpeed: 4
-  canDropBombs: 1
-  canMove: 1
-  dead: 0
-  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!136 &13614668
 CapsuleCollider:
   m_ObjectHideFlags: 0

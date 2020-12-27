@@ -20,6 +20,8 @@ public class Bomb : MonoBehaviour
 {
     /// Objeto prefab de la explosion.
     public GameObject explosionPrefab;
+    /// Indica el jugador que spawnea la bomba.
+    public GameObject spawnOrigin;
     /// Layermask donde hace efecto el RaycastHit.
     public LayerMask levelMask;
     /// Indica si alguna bomba cercana ha explotado o no.
@@ -40,7 +42,8 @@ public class Bomb : MonoBehaviour
     */
     public void Explode()
     {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity); 
+        GameObject Explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Explosion.GetComponent<DestroySelf>().spawnBombOrigin = spawnOrigin;
         StartCoroutine(CreateExplosions(Vector3.forward));
         StartCoroutine(CreateExplosions(Vector3.right));
         StartCoroutine(CreateExplosions(Vector3.back));
@@ -65,7 +68,8 @@ public class Bomb : MonoBehaviour
 
             if (!hit.collider)
             {
-                Instantiate(explosionPrefab, transform.position + (i * direction), explosionPrefab.transform.rotation);
+               GameObject Explosion = Instantiate(explosionPrefab, transform.position + (i * direction), explosionPrefab.transform.rotation);
+               Explosion.GetComponent<DestroySelf>().spawnBombOrigin = spawnOrigin;
             }
             else
             {

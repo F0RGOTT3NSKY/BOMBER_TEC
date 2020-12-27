@@ -17,7 +17,7 @@ using System.Collections;
 */
 public class DestroySelf : MonoBehaviour
 {
-
+    public GameObject spawnBombOrigin;
     /// Tiempo de espera mientras destruye el objeto
     public float Delay = 3f;
 
