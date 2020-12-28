@@ -276,4 +276,17 @@ public class AStar
             return res;
         }
     }
+
+    /*!
+    *@brief Purga las listas (Abierta, Solucion, Cerrada)
+    *@details Purga las listas (Abierta, Solucion, Cerrada) con el fin de 
+    *       que esten limpias para la siguiente corrida del algoritmo
+    *@return void
+    */
+    public void purge()
+    {
+        listaAbierta.cleanLista();
+        listaCerrada.cleanLista();
+        solucion.cleanLista();
+    }
 }

@@ -73,6 +73,21 @@ public class Enemy : MonoBehaviour
         AsignarGenoma();
     }
 
+    void Start()
+    {
+        //Cache the attached components for better performance and less typing
+        rigidBody = GetComponent<Rigidbody>();
+        myTransform = transform;
+        animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
+    }
+
+    
+    private void Update()
+    {
+        //transform.Translate(Vector3.forward * Time.deltaTime);
+        //transform.Translate(0f, 0f, 1f);
+    }
+    
 
 
     /*!
@@ -83,6 +98,9 @@ public class Enemy : MonoBehaviour
     {
         if (mov == 1)
         { //Up movement
+            Debug.Log("Me muevo ARRIBA");
+
+            transform.Translate(Vector3.forward * Time.deltaTime);
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Walking", true);
@@ -90,6 +108,9 @@ public class Enemy : MonoBehaviour
 
         if (mov == 2)
         { //Left movement
+            Debug.Log("Me muevo IZQUIERDA");
+
+            transform.Translate(Vector3.left * Time.deltaTime);
             rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Walking", true);
@@ -97,13 +118,20 @@ public class Enemy : MonoBehaviour
 
         if (mov == 3)
         { //Down movement
+            Debug.Log("Me muevo ABAJO");
+
+            transform.Translate(Vector3.back * Time.deltaTime);
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Walking", true);
+            
         }
 
         if (mov == 4)
         { //Right movement
+            Debug.Log("Me muevo DERECHA");
+
+            transform.Translate(Vector3.right * Time.deltaTime);
             rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 90, 0);
             animator.SetBool("Walking", true);
