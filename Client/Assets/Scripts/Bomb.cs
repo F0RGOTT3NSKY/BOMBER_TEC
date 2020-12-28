@@ -66,7 +66,7 @@ public class Bomb : MonoBehaviour
     public IEnumerator CreateExplosions(Vector3 direction)
     {
         int conversor = 100 / maxDistanceExplosion;
-        Debug.Log(explosiondistanceGenoma / conversor);
+        //Debug.Log(explosiondistanceGenoma / conversor);
         for (int i = 0; i < (explosiondistanceGenoma/conversor); i++)
         {
             RaycastHit hit;
