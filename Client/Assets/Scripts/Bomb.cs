@@ -22,6 +22,10 @@ public class Bomb : MonoBehaviour
     public GameObject explosionPrefab;
     /// Indica el jugador que spawnea la bomba.
     public GameObject spawnOrigin;
+    /// Indica lo largo que se generan la explosiones de las bombas.
+    public int explosiondistanceGenoma;
+    /// Indica la distancia maxima a la que puede alcanzar las explosiones de las bombas.
+    public int maxDistanceExplosion;
     /// Layermask donde hace efecto el RaycastHit.
     public LayerMask levelMask;
     /// Indica si alguna bomba cercana ha explotado o no.
@@ -61,7 +65,9 @@ public class Bomb : MonoBehaviour
     */
     public IEnumerator CreateExplosions(Vector3 direction)
     {
-        for (int i = 1; i < 3; i++)
+        int conversor = 100 / maxDistanceExplosion;
+        Debug.Log(explosiondistanceGenoma / conversor);
+        for (int i = 0; i < (explosiondistanceGenoma/conversor); i++)
         {
             RaycastHit hit;
             Physics.Raycast(transform.position + new Vector3(0, .5f, 0), direction, out hit, i, levelMask);

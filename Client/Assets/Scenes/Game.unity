@@ -527,6 +527,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4393941868664626666, guid: 6ab921f8d90e43e43a20029d71815f87,
+        type: 3}
+      propertyPath: globalStateManager
+      value: 
+      objectReference: {fileID: 196314164}
     - target: {fileID: 116334, guid: 6ab921f8d90e43e43a20029d71815f87, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -588,6 +593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 174940, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 414260, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -645,5 +654,15 @@ PrefabInstance:
       propertyPath: globalStateManager
       value: 
       objectReference: {fileID: 196314164}
+    - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
+        type: 3}
+      propertyPath: maxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
+        type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}

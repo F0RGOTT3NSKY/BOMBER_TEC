@@ -5,43 +5,60 @@ using UnityEngine;
 public class Players : MonoBehaviour
 {
     public GlobalStateManager globalStateManager;
+    
+    // Caracteristicas
+
     [Range(1, 4)]
     /// Indica el numero del jugador qe se está manipulado
     public int playerNumber = 1;
     /// Velocidad del movimiento
     public float moveSpeed = 3f;
-    /// Indica si puede lanzar bombas
-    public bool canDropBombs = true;
-    /// Indica el valor del genoma especializado en la cantidad de bombas en el inventario del jugador.
-    public int bombGenoma = 0;
-    /// Indica el numero maximo de bombas que se pueden lanzar por jugador.
-    public int maxBombs = 10;
     /// Indica el numero de bombas que ha tirado el jugador.
     public int droppedBombs = 0;
-    /// Indica la potencia de damage que tendra la bomba.
-    public int potenciaGenoma = 0;
-    /// Indica la potencia maxima que tendra la bomba.
-    public int maxPotencia = 50;
-    /// Indica la cantidad de vidas que tendra el jugador.
-    public int vidasGenoma = 0;
-    /// Indica el numero maximo de vidas que pueden tener los jugadores.
-    public int maxVidas = 5;
     /// Indica el numero de vidas que ha perdido el jugador.
     public int usedLifes = 0;
     /// Indica la cantidad de vida del jugador.
     public float playerHealth = 100;
-    /// Indica que si puede moverse
-    public bool canMove = true;
     /// Indica que si el jugador ha sido destruido
     public bool dead = false;
+
+    // Genomas
+
+    /// Indica el valor del genoma especializado en la cantidad de bombas en el inventario del jugador.
+    public int bombGenoma = 0;
+    /// Indica lo largo que se generan la explosiones de las bombas.
+    public int distanceGenoma = 0;
+    /// Indica la potencia de damage que tendra la bomba.
+    public int potenciaGenoma = 0;
+    /// Indica la cantidad de vidas que tendra el jugador.
+    public int vidasGenoma = 0;
+    
+    // Maximos
+
+    /// Indica el numero maximo de bombas que se pueden lanzar por jugador.
+    public int maxBombs = 10;
+    /// Indica la distancia maxima a la que puede alcanzar las explosiones de las bombas.
+    public int maxDistance = 10;
+    /// Indica la potencia maxima que tendra la bomba.
+    public int maxPotencia = 50;
+    /// Indica el numero maximo de vidas que pueden tener los jugadores.
+    public int maxVidas = 5;
+
+    // Limitadores
+
+    /// Indica si puede lanzar bombas
+    public bool canDropBombs = true;
+    /// Indica que si puede moverse
+    public bool canMove = true;
     /// Indica si el jugador se puede curar.
     public bool canHeal = true;
-    
+
+    //Contadores
+
     /// Indica el numero de frames.
     public int frames = 0;
- 
+    /// Indica la ultima vez que una bomba colisiono al jugador;
     public int lastHitExplosionFrame = 0;
-    
 
     ///Prefabs
     public GameObject bombPrefab;
@@ -81,6 +98,8 @@ public class Players : MonoBehaviour
         potenciaGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bomba_potencia;
         // Update gen_vidas
         vidasGenoma = playerGenoma.genomaList[playerNumber - 1].gen_vidas;
+        // Update gen_bomba_cruz
+        distanceGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bomba_cruz;
     }
     private void CheckBombDrop()
     {
@@ -189,8 +208,8 @@ public class Players : MonoBehaviour
             GameObject Bomb = Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(myTransform.position.x), bombPrefab.transform.position.y, Mathf.RoundToInt(myTransform.position.z)),
                 bombPrefab.transform.rotation);
             Bomb.GetComponent<Bomb>().spawnOrigin = gameObject;
-
-            //bombPrefab.transform.parent = player.transform;
+            Bomb.GetComponent<Bomb>().explosiondistanceGenoma = distanceGenoma;
+            Bomb.GetComponent<Bomb>().maxDistanceExplosion = maxDistance;
         }
     }
     private void CheckCurrentHealth(int potenciaGenomaOrigin)
