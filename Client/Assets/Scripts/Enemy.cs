@@ -51,27 +51,12 @@ public class Enemy : MonoBehaviour
     /// Objeto prefabricado de las bombas
     public GameObject bombPrefab;
 
+
+
     ///Cached components
     private Rigidbody rigidBody;
     private Transform myTransform;
     private Animator animator;
-
-    /// Método Constructor
-
-    public Enemy()
-    {
-
-    }
-
-    public Enemy(nodeGenoma aux, Material _EnemySkin)
-    {
-        enemyGenoma = aux;
-        this.gameObject.GetComponent<MeshRenderer>().material = _EnemySkin;
-
-        
-
-        AsignarGenoma();
-    }
 
     void Start()
     {
@@ -81,11 +66,24 @@ public class Enemy : MonoBehaviour
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
     }
 
-    
-    private void Update()
+    void Update()
     {
-        //transform.Translate(Vector3.forward * Time.deltaTime);
-        //transform.Translate(0f, 0f, 1f);
+
+    }
+
+    void Start()
+    {
+        //Cache the attached components for better performance and less typing
+        rigidBody = GetComponent<Rigidbody>();
+        myTransform = transform;
+        animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
+    }
+
+    
+    private void Update()
+    {
+        //transform.Translate(Vector3.forward * Time.deltaTime);
+        //transform.Translate(0f, 0f, 1f);
     }
     
 
@@ -98,8 +96,8 @@ public class Enemy : MonoBehaviour
     {
         if (mov == 1)
         { //Up movement
-            Debug.Log("Me muevo ARRIBA");
-
+            Debug.Log("Me muevo ARRIBA");
+
             transform.Translate(Vector3.forward * Time.deltaTime);
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 0, 0);
@@ -118,8 +116,8 @@ public class Enemy : MonoBehaviour
 
         if (mov == 3)
         { //Down movement
-            Debug.Log("Me muevo ABAJO");
-
+            Debug.Log("Me muevo ABAJO");
+
             transform.Translate(Vector3.back * Time.deltaTime);
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);

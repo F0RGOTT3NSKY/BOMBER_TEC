@@ -7,8 +7,7 @@
 */
 
 using UnityEngine;
-using System.Collections;
-using System;
+using System.Collections.Generic;
 
 
 /*!
@@ -26,7 +25,7 @@ public class EnemiesScript : MonoBehaviour
 
 
     /// Lista de los enemigos
-    private System.Collections.Generic.List<Enemy> ListEnemies;
+    private List<GameObject> ListEnemies;
 
     /// Vector3 para posicionar los bloques en la zona de trabajo
     private Vector3 screenPosition;
@@ -72,7 +71,7 @@ public class EnemiesScript : MonoBehaviour
 
 
 
-        ListEnemies = new System.Collections.Generic.List<Enemy>();
+        ListEnemies = new List<GameObject>();
 
         for(int i = 0; i < NEnemies; i++)
         {
@@ -98,16 +97,13 @@ public class EnemiesScript : MonoBehaviour
                     break;
             }
 
-
-            // Se crea el nuevo Genoma y se añade los valores de los genes
-            Enemy aux = new Enemy();
-         
-
-            // Se añade el genoma la lista de genomas
-            ListEnemies.Add(aux);
             
             GameObject a = Instantiate(PlayerEnemy) as GameObject;
             a.transform.position = screenPosition;
+
+            
+            ListEnemies.Add(a);
+          
         }
 
         
@@ -116,12 +112,57 @@ public class EnemiesScript : MonoBehaviour
     /// Update is called once per frame
     void Update()
     {
-
-        for(int i = 0; i < NEnemies; i++)
+        // Actualizar posición del enemigo
+        //ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(3);
+        
+        for (int i = 0; i < NEnemies; i++)
         {
-            ListEnemies[i].UpdateEnemyMovement(6);
+            int[] Pos1 = { (int)ListEnemies[0].transform.position.x, (int)ListEnemies[0].transform.position.z };
+            int[] Pos2 = { (int)ListEnemies[1].transform.position.x, (int)ListEnemies[1].transform.position.z };
+
+
+
+            if (path.findPath(Pos1, Pos2))
+            {
+                int[] tmp = path.getNearNodo();
+
+                int xPos = (int)ListEnemies[0].transform.position.x;
+                int yPos = (int)ListEnemies[0].transform.position.y;
+
+                if (xPos > tmp[0])
+                {
+                    //Muevo ARRIBA
+                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(1);
+                }
+                else if (xPos < tmp[0])
+                {
+                    //Muevo ABAJO
+                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(3);
+                }
+                else if (yPos > tmp[1])
+                {
+                    //Muevo IZQUIERDA
+                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(2);
+                }
+                else if (yPos < tmp[1])
+                {
+                    //Muevo DERECHA
+                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(4);
+                }
+                else
+                {
+                    Debug.Log("ERROR NO CHANGE IN POSITION");
+                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(6);
+                }
+            }
+            else
+            {
+                Debug.Log("No hay camino");
+            }
+
+
         }
-       
+
     }
 
 
