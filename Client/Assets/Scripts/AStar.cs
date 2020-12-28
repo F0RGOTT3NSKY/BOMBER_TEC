@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class AStar
 {
@@ -44,6 +44,9 @@ public class AStar
         //Console.WriteLine("Inicio PathFinder A*:");
         //Console.WriteLine("Inicio: " + _inicio[0] + ", " + _inicio[1]);
         //Console.WriteLine("Final: " + _fin[0] + ", " + _fin[1]);
+
+        //Limpiamos las listas por si se habia ejecutado previamente la misma instancia;
+        purge();
 
         Dato inicio = new Dato(_inicio[0], _inicio[1]);
         Dato final = new Dato(_fin[0], _fin[1]);
