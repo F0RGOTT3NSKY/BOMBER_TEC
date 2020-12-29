@@ -8,7 +8,10 @@ public class MenuManagerScript : MonoBehaviour
 {
 
     // Numero de Jugadores
-    public int nPlayers = 2;
+    public int nPlayers = 1;
+
+    // Numero de Jugadores
+    public int nEnemies = 1;
 
     // Dimensiones del Mapa
     public int widthMap = 15;
@@ -17,8 +20,8 @@ public class MenuManagerScript : MonoBehaviour
 
     // Textos de la pantalla de menu
     public Text PlayerText;
-    public Text WidthText;
-    public Text HeightText;
+    public Text DimensionsText;
+    public Text EnemiesText;
 
     // Generador de la matriz
     public MapGenerator mapGenerator;
@@ -49,21 +52,40 @@ public class MenuManagerScript : MonoBehaviour
     // Sumar los datos del menu
     public void PlayersPlus()
     {
-        if(nPlayers < 8)
+        if(nPlayers < 4)
         {
             nPlayers++;
         }
-        PlayerText.text = nPlayers.ToString();
+        PlayerText.text = "Players: " + nPlayers.ToString();
 
     }
 
     public void PlayersLess()
     {
-        if(nPlayers > 2)
+        if(nPlayers > 1)
         {
             nPlayers--;
         }
-        PlayerText.text = nPlayers.ToString();
+        PlayerText.text = "Players: " + nPlayers.ToString();
+    }
+
+    public void EnemiesPlus()
+    {
+        if (nEnemies < 4)
+        {
+            nEnemies++;
+        }
+        EnemiesText.text = "Enemies: " + nEnemies.ToString();
+
+    }
+
+    public void EnemiesLess()
+    {
+        if (nEnemies > 0)
+        {
+            nEnemies--;
+        }
+        EnemiesText.text = "Enemies: " + nEnemies.ToString();
     }
 
     public void DimensionsPlus()
@@ -87,7 +109,7 @@ public class MenuManagerScript : MonoBehaviour
                 heightMap = 50;
                 break;
         }
-        WidthText.text = widthMap.ToString();
+        DimensionsText.text = "Dimensions: " + widthMap.ToString() + " x " + heightMap.ToString();
     }
 
     public void DimensionsLess()
@@ -111,7 +133,7 @@ public class MenuManagerScript : MonoBehaviour
                 heightMap = 25;
                 break;
         }
-        WidthText.text = widthMap.ToString();
+        DimensionsText.text = "Dimensions: " + widthMap.ToString() + " x " + heightMap.ToString();
     }
 
 
@@ -120,8 +142,10 @@ public class MenuManagerScript : MonoBehaviour
 
     public void OnPlayButton()
     {
+        nPlayers = nPlayers + nEnemies;
         mapMatriz = mapGenerator.randomMap(heightMap, widthMap);
         mapMatriz = mapGenerator.checkPlayersWay(mapMatriz, nPlayers);
+        
         SceneManager.LoadScene("Game");
     }
 
