@@ -48,6 +48,8 @@ public class EnemiesScript : MonoBehaviour
 
     public AStar path;
 
+    private int frame;
+
     /// Start is called before the first frame update
     void Start()
     {
@@ -96,78 +98,104 @@ public class EnemiesScript : MonoBehaviour
                     screenPosition = new Vector3(1F, 2f, NCMap/2);
                     break;
             }
-
-            
+    
             GameObject a = Instantiate(PlayerEnemy) as GameObject;
             a.transform.position = screenPosition;
 
-            
             ListEnemies.Add(a);
           
         }
 
-        
+        frame = 0;
     }
 
     /// Update is called once per frame
     void Update()
     {
-        // Actualizar posición del enemigo
-        //ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(3);
-        
-        for (int i = 0; i < NEnemies; i++)
+        int[] Pos1 = new int[2];
+        int[] Pos2 = new int[2];
+
+        if (frame % 250 == 0)
         {
-            int[] Pos1 = { (int)ListEnemies[0].transform.position.x, (int)ListEnemies[0].transform.position.z };
-            int[] Pos2 = { (int)ListEnemies[1].transform.position.x, (int)ListEnemies[1].transform.position.z };
+            for (int i = 0; i < NEnemies - 1; i++)
+            {
+                Pos1[0] = (int)ListEnemies[i].transform.position.x;
+                Pos1[1] = (int)ListEnemies[i].transform.position.z;
 
+                Pos2[0] = (int)ListEnemies[i + 1].transform.position.x;
+                Pos2[1] = (int)ListEnemies[i + 1].transform.position.z;
 
+                if (path.findPath(Pos1, Pos2))
+                {
+                    int[] tmp = path.getNearNodo();
+                    movementAi(ListEnemies[i], tmp);
+
+                }
+                else
+                {
+                    Debug.Log("NO HAY CAMINO");
+                }
+            }
+            // el ultimo enemigo busca al primero
+
+            Pos1[0] = (int)ListEnemies[NEnemies - 1].transform.position.x;
+            Pos1[1] = (int)ListEnemies[NEnemies - 1].transform.position.z;
+
+            Pos2[0] = (int)ListEnemies[0].transform.position.x;
+            Pos2[1] = (int)ListEnemies[0].transform.position.z;
 
             if (path.findPath(Pos1, Pos2))
             {
                 int[] tmp = path.getNearNodo();
+                movementAi(ListEnemies[NEnemies - 1], tmp);
 
-                int xPos = (int)ListEnemies[0].transform.position.x;
-                int yPos = (int)ListEnemies[0].transform.position.y;
-
-                if (xPos > tmp[0])
-                {
-                    //Muevo ARRIBA
-                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(1);
-                }
-                else if (xPos < tmp[0])
-                {
-                    //Muevo ABAJO
-                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(3);
-                }
-                else if (yPos > tmp[1])
-                {
-                    //Muevo IZQUIERDA
-                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(2);
-                }
-                else if (yPos < tmp[1])
-                {
-                    //Muevo DERECHA
-                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(4);
-                }
-                else
-                {
-                    Debug.Log("ERROR NO CHANGE IN POSITION");
-                    ListEnemies[0].GetComponent<Enemy>().UpdateEnemyMovement(6);
-                }
             }
             else
             {
-                Debug.Log("No hay camino");
+                Debug.Log("NO HAY CAMINO");
             }
 
+            frame = 0;
 
         }
 
+        frame++;
     }
 
+    private void movementAi(GameObject _enemy, int[] _direccion)
+    {
+        int xPos = (int)_enemy.transform.position.x;
+        int yPos = (int)_enemy.transform.position.z;
 
+        if (xPos > _direccion[0])
+        {
+            //Muevo ARRIBA
+            _enemy.GetComponent<Enemy>().UpdateEnemyMovement(1);
 
+        }
+        else if (xPos < _direccion[0])
+        {
+            //Muevo ABAJO
+            _enemy.GetComponent<Enemy>().UpdateEnemyMovement(3);
 
+        }
+        else if (yPos > _direccion[1])
+        {
+            //Muevo IZQUIERDA
+            _enemy.GetComponent<Enemy>().UpdateEnemyMovement(2);
 
+        }
+        else if (yPos < _direccion[1])
+        {
+            //Muevo DERECHA
+            _enemy.GetComponent<Enemy>().UpdateEnemyMovement(4);
+
+        }
+        else
+        {
+            Debug.Log("ERROR NO CHANGE IN POSITION");
+            _enemy.GetComponent<Enemy>().UpdateEnemyMovement(5);
+        }
+    }
 }
 
