@@ -66,19 +66,7 @@ public class Enemy : MonoBehaviour
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
     }
 
-    void Update()
-    {
-
-    }
-
-    void Start()
-    {
-        //Cache the attached components for better performance and less typing
-        rigidBody = GetComponent<Rigidbody>();
-        myTransform = transform;
-        animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
-    }
-
+    
     
     private void Update()
     {
