@@ -232,4 +232,9 @@ public class ListaSimple
     {
         return this.head;
     }
+
+    public int getSize()
+    {
+        return this.size;
+    }
 }

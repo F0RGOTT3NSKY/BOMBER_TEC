@@ -292,4 +292,9 @@ public class AStar
         listaCerrada.cleanLista();
         solucion.cleanLista();
     }
+
+    public int solTamanno()
+    {
+        return solucion.getSize();
+    }
 }

@@ -6,7 +6,7 @@
 * @brief  Codigo que determina y gestiona los cromosomas.
 */
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     /// Genoma del enemigo 
     private nodeGenoma enemyGenoma;
 
+    /// MenuScriptOptions
+    public MenuManagerScript mms;
 
     //Player parameters
     [Range(1, 2)] //Enables a nifty slider in the editor
@@ -58,22 +60,169 @@ public class Enemy : MonoBehaviour
     private Transform myTransform;
     private Animator animator;
 
+
+    //Moviemiento
+    public static List<GameObject> listaEnemigos;
+    public bool safe;
+    private GameObject tmpEnemy;
+    private AStar path;
+    private int nEnemigos;
+    private int frame;
+    private int moveCommand;
+    private int bestSol;
+    private int[] bestSolPos;
+    private int[] myPos;
+    private int[] enemyPos;
+    private int[] home;
+
+    private void Awake()
+    {
+        listaEnemigos = new List<GameObject>();
+    }
+
     void Start()
     {
+        try
+        {
+            mms = FindObjectOfType<MenuManagerScript>();
+            nEnemigos = mms.nEnemies;
+            path = new AStar(10, mms.mapMatriz, mms.heightMap, mms.widthMap);
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e);
+        }
+
         //Cache the attached components for better performance and less typing
         rigidBody = GetComponent<Rigidbody>();
         myTransform = transform;
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
+
+        tmpEnemy = null;
+
+        safe = true;
+
+        frame = 1;
+        moveCommand = 0;
+        bestSol = int.MaxValue;
+        bestSolPos = new int[2];
+        myPos = new int[2];
+        enemyPos = new int[2];
+
+        //Posicion Inicial "Home"
+        home = new int[2];
+        home[0] = Mathf.RoundToInt(myTransform.position.x); home[1] = Mathf.RoundToInt(myTransform.position.z);
     }
 
     
     
-    private void Update()
-    {
-        //transform.Translate(Vector3.forward * Time.deltaTime);
-        //transform.Translate(0f, 0f, 1f);
+    private void Update()
+    {        if (frame % 240 == 0)
+        {
+            myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
+                myTransform.transform.position.y, Mathf.RoundToInt(myTransform.position.z));
+
+            frame = 0;
+        }
+
+        if (frame % 30 == 0)
+        {
+            if (safe == true)
+            {
+                whereToGo(1);
+            }
+            else
+            {
+                whereToGo(2);
+            }
+        }
+
+        if (frame % 15 == 0)
+        {
+            UpdateEnemyMovement(moveCommand);
+        }
+
+        frame++;
+    }
+    
+    public void whereToGo(int action)
+    {
+        myPos[0] = Mathf.RoundToInt(myTransform.position.x);
+        myPos[1] = Mathf.RoundToInt(myTransform.position.z);
+
+        //A buscar un enemigo cercano
+        if (action ==1)
+        {
+            for (int i = 0; i < nEnemigos; i++)
+            {
+                try
+                {
+                    tmpEnemy = listaEnemigos[i];
+
+                    if (tmpEnemy.GetComponent<Enemy>() != this)
+                    {
+                        enemyPos[0] = Mathf.RoundToInt(tmpEnemy.transform.position.x);
+                        enemyPos[1] = Mathf.RoundToInt(tmpEnemy.transform.position.z);
+
+                        if (path.findPath(myPos, enemyPos) == true)
+                        {
+                            if (path.solTamanno() < bestSol)
+                            {
+                                bestSol = path.solTamanno();
+                                bestSolPos[0] = path.getNearNodo()[0];
+                                bestSolPos[1] = path.getNearNodo()[1];
+                            }
+                        }
+                    }
+                }catch (System.Exception e)
+                {
+                    Debug.Log(e);
+                }
+            }
+
+            bestSol = int.MaxValue;
+            movementAi(bestSolPos);
+        }
+        //Correr a home para salvarse
+        else if(action == 2)
+        {
+            if (path.findPath(myPos, home) == true)
+            {
+                bestSolPos[0] = path.getNearNodo()[0];
+                bestSolPos[1] = path.getNearNodo()[1];
+                movementAi(bestSolPos);
+            }
+        }
     }
 
+    private void movementAi(int[] _direccion)
+    {
+        if (myPos[0] > _direccion[0])
+        {
+            //Muevo ARRIBA
+            moveCommand = 1;
+        }
+        else if (myPos[0] < _direccion[0])
+        {
+            //Muevo ABAJO
+            moveCommand = 3;
+        }
+        else if (myPos[1] > _direccion[1])
+        {
+            //Muevo IZQUIERDA
+            moveCommand = 2;
+        }
+        else if (myPos[1] < _direccion[1])
+        {
+            //Muevo DERECHA
+            moveCommand = 4;
+        }
+        else
+        {
+            Debug.Log("ERROR NO CHANGE IN POSITION");
+            moveCommand = 0;
+        }
+    }
 
 
     /*!
@@ -82,11 +231,21 @@ public class Enemy : MonoBehaviour
     */
     public void UpdateEnemyMovement(int mov)
     {
+        if (mov == 0)
+        { //Right movement
+            Debug.Log("NO me muevo");
+
+            moveCommand = 0;
+            animator.SetBool("Walking", false);
+
+        }
+
         if (mov == 1)
         { //Up movement
             Debug.Log("Me muevo ARRIBA");
 
-            rigidBody.velocity = new Vector3(-20, rigidBody.velocity.y, rigidBody.velocity.z);
+            moveCommand = 1;
+            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Walking", true);
 
@@ -96,7 +255,8 @@ public class Enemy : MonoBehaviour
         { //Left movement
             Debug.Log("Me muevo IZQUIERDA");
 
-            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -20);
+            moveCommand = 2;
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Walking", true);
 
@@ -106,7 +266,8 @@ public class Enemy : MonoBehaviour
         { //Down movement
             Debug.Log("Me muevo ABAJO");
 
-            rigidBody.velocity = new Vector3(20, rigidBody.velocity.y, rigidBody.velocity.z);
+            moveCommand = 3;
+            rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 90, 0);
             animator.SetBool("Walking", true);
 
@@ -117,7 +278,8 @@ public class Enemy : MonoBehaviour
         { //Right movement
             Debug.Log("Me muevo DERECHA");
 
-            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, 20);
+            moveCommand = 4;
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Walking", true);
 
@@ -174,5 +336,14 @@ public class Enemy : MonoBehaviour
         //playerNumber = enemyGenoma.ID;
     }
 
+    public void setListaEnemigos(List<GameObject> lista)
+    {
+        listaEnemigos = lista;
+    }
+
+    public float PuntuationGenomaAux(int value, int max)
+    {
+        return (float)value / max;
+    }
 
 }
