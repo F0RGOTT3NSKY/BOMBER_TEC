@@ -44,6 +44,12 @@ public class Players : MonoBehaviour
     public int protectionGenoma = 0;
     /// Indica la cantidad de velocidad que tiene el jugador.
     public int velocidadGenoma = 0;
+    /// Indica la cantidad de suerte que puede tener el jugador para esquivar un ataque.
+    public int suerteGenoma = 0;
+    /// Indica la cantidad de distacia a la que puede lanzar la bomba un jugador.
+    public int lanzamientoGenoma = 0;
+    /// Indica la habilidad de esconderse del jugador.
+    public int esconderseGenoma = 0;
     
     // Maximos y Minimos
 
@@ -65,6 +71,8 @@ public class Players : MonoBehaviour
     public int maxSpeed = 12;
     /// Indica la cantidad minima de velocidad del jugador.
     public int minSpeed = 5;
+    /// Indica la cantidad maxima de suerte del jugador.
+    public int maxLuck = 10;
 
     // Limitadores
 
@@ -162,7 +170,12 @@ public class Players : MonoBehaviour
         protectionGenoma = playerGenoma.genomaList[playerNumber - 1].gen_protection;
         // Update gen_velocidad
         velocidadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_velocidad;
-
+        // Update gen_suerte
+        suerteGenoma = playerGenoma.genomaList[playerNumber - 1].gen_suerte;
+        // Update gen_lanzamiento
+        lanzamientoGenoma = playerGenoma.genomaList[playerNumber - 1].gen_lanzamiento;
+        // Update  gen_esconderse
+        esconderseGenoma = playerGenoma.genomaList[playerNumber - 1].gen_esconderse;
     }
     private void CheckBombDrop()
     {
@@ -261,36 +274,46 @@ public class Players : MonoBehaviour
     }
     private void CheckCurrentHealth(int potenciaGenomaOrigin)
     {
-        float potencia_conversor = 100 / maxPotencia;
-        float protection_conversor = 100 / maxProtection;
-        float potencia = (potenciaGenomaOrigin / potencia_conversor);
-        float protection = (protectionGenoma / protection_conversor);
-        Debug.Log("-" + (potencia - ((potencia * protection) / 100)) + " Vida");
-        //Debug.Log("Potencia: " + potencia);
-        //Debug.Log("Protection: " + protection);
-        if (lastHitExplosionFrame == 0 || (frames - lastHitExplosionFrame) >= 500)
+        float suerte_conversor = 100 / maxLuck;
+        float suerte = suerteGenoma / suerte_conversor;
+        Debug.Log(suerte + "% suerte");
+        if(RandomValue(0,101)< suerte)
         {
-            playerHealth -= potencia - ((potencia * protection)/100);
-            lastHitExplosionFrame = frames;
-            if (playerHealth <= 0)
+            Debug.Log("Hit esquivado");
+        }
+        else
+        {
+            if (lastHitExplosionFrame == 0 || (frames - lastHitExplosionFrame) >= 500)
             {
-                CheckLifesLeft();
-                playerHealth = 100;
-            }
-            else
-            {
-                if (canHeal == true)
+                float potencia_conversor = 100 / maxPotencia;
+                float protection_conversor = 100 / maxProtection;
+                float potencia = (potenciaGenomaOrigin / potencia_conversor);
+                float protection = (protectionGenoma / protection_conversor);
+                Debug.Log("-" + (potencia - ((potencia * protection) / 100)) + " Vida");
+                playerHealth -= potencia - ((potencia * protection) / 100);
+                lastHitExplosionFrame = frames;
+                if (playerHealth <= 0)
                 {
-                    //Healing for 10 seconds
-                    StartCoroutine("Healing");
-                    canHeal = false;
+                    CheckLifesLeft();
+                    playerHealth = 100;
                 }
-                if(canGetSick == true)
+                else
                 {
-                    StartCoroutine("Sickness");
+                    if (canHeal == true)
+                    {
+                        // Healing for 10 seconds.
+                        StartCoroutine("Healing");
+                        canHeal = false;
+                    }
+                    if (canGetSick == true)
+                    {
+                        // Sickness for 15 seconds.
+                        StartCoroutine("Sickness");
+                    }
                 }
             }
         }
+        
     }
     private void CheckLifesLeft()
     {
@@ -357,5 +380,17 @@ public class Players : MonoBehaviour
             CheckCurrentHealth(playerOrigin.GetComponent<Players>().potenciaGenoma);
             //animacion de golpe (cambiar la transparencia del renderer)
         }
+    }
+    /// Instantiate random number generator.  
+    public readonly System.Random _random = new System.Random();
+    /*!
+     * @brief Generates a random number within a range.
+     * @param min Indica el minimo del rango sin incluirlo.
+     * @param max Indica el maximo del rango sin incluirlo.
+     * @return int random value
+     */
+    public int RandomValue(int min, int max)
+    {
+        return _random.Next(min, max);
     }
 }
