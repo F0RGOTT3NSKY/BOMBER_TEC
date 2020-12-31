@@ -664,5 +664,20 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
+        type: 3}
+      propertyPath: maxPotencia
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
+        type: 3}
+      propertyPath: maxCuracion
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
+        type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}

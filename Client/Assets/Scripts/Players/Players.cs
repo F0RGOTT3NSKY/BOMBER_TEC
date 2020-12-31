@@ -21,6 +21,8 @@ public class Players : MonoBehaviour
     public float playerHealth = 100;
     /// Indica el tiempo en que se regenera la vida.
     public int healingTime = 10;
+    /// Indica el tiempo en que se reduce la vida por enfermedad.
+    public int sicknessTime = 15;
     /// Indica que si el jugador ha sido destruido
     public bool dead = false;
 
@@ -36,6 +38,8 @@ public class Players : MonoBehaviour
     public int vidasGenoma = 0;
     /// Indica la cantidad de vida que se puede curar el jugador.
     public int curarseGenoma = 0;
+    /// Indica la cantidad de vida que va a perder el jugador por enfermedad.
+    public int enfermedadGenoma = 0;
     
     // Maximos
 
@@ -44,11 +48,13 @@ public class Players : MonoBehaviour
     /// Indica la distancia maxima a la que puede alcanzar las explosiones de las bombas.
     public int maxDistance = 10;
     /// Indica la potencia maxima que tendra la bomba.
-    public int maxPotencia = 100;
+    public int maxPotencia = 50;
     /// Indica el numero maximo de vidas que pueden tener los jugadores.
     public int maxVidas = 5;
     /// Indica la cantidad maxima que se puede curar el jugador.
     public int maxCuracion = 25;
+    /// Indica la cantidad maxima que pierde el jugador por enfermedad;
+    public int maxIllness = 25;
 
     // Limitadores
 
@@ -58,6 +64,8 @@ public class Players : MonoBehaviour
     public bool canMove = true;
     /// Indica si el jugador se puede curar.
     public bool canHeal = true;
+    /// Indica si el jugador puede enfermarse.
+    public bool canGetSick = false;
 
     //Contadores
 
@@ -90,28 +98,39 @@ public class Players : MonoBehaviour
     void Update()
     {
         UpdateMovement();
-        UpdateGenomas();
+        UpdatePlayerGenoma();
         ResetLimits();
         //Verifica si el personaje puede dropear bombas segun el gen
         CheckBombDrop();
-        UpdatePlayerGenoma();
+        UpdateGenomas();
         frames++;
     }
     private void ResetLimits()
     {
-        // Hace reset a las bombas disponibles
+        // Hace reset a las bombas disponibles.
         if (frames % 1000 == 0)
         {
             Debug.Log("Bombs Reset");
             droppedBombs = 0;
         }
-        if (frames % 2000 == 0)
+        // Hace reset de la habilidad de curacion.
+        if (frames % 4500 == 0)
         {
             canHeal = true;
             Debug.Log("Heal Reset");
         }
+        // Verifica si el jugador esta lo suficientemente debil para enfermarse.
+        if (playerHealth <= 80)
+        {
+            canGetSick = true;
+        }
+        if (playerHealth > 80)
+        {
+            canGetSick = false;
+        }
+
     }
-    private void UpdateGenomas()
+    private void UpdatePlayerGenoma()
     {
         // Update gen_bombas_numero
         bombGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero;
@@ -121,8 +140,11 @@ public class Players : MonoBehaviour
         vidasGenoma = playerGenoma.genomaList[playerNumber - 1].gen_vidas;
         // Update gen_bomba_cruz
         distanceGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bomba_cruz;
-        //Update  gen_curarse
+        // Update  gen_curarse
         curarseGenoma = playerGenoma.genomaList[playerNumber - 1].gen_curarse;
+        // Update gen_enfermedad
+        enfermedadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_enfermedad;
+
     }
     private void CheckBombDrop()
     {
@@ -138,7 +160,7 @@ public class Players : MonoBehaviour
             canDropBombs = true;
         }
     }
-    public void UpdatePlayerGenoma()
+    public void UpdateGenomas()
     {
         if (frames % 200 == 0)
         {
@@ -225,7 +247,7 @@ public class Players : MonoBehaviour
     {
         int conversor = 100 / maxPotencia;
         Debug.Log("-" + (potenciaGenomaOrigin / conversor) + " Vida");
-        if (lastHitExplosionFrame == 0)
+        if (lastHitExplosionFrame == 0 || (frames - lastHitExplosionFrame) >= 500)
         {
             playerHealth -= (potenciaGenomaOrigin / conversor);
             lastHitExplosionFrame = frames;
@@ -242,24 +264,9 @@ public class Players : MonoBehaviour
                     StartCoroutine("Healing");
                     canHeal = false;
                 }
-            }
-        }
-        if ((frames - lastHitExplosionFrame) >= 500)
-        {
-            playerHealth -= (potenciaGenomaOrigin / conversor);
-            lastHitExplosionFrame = frames;
-            if (playerHealth <= 0)
-            {
-                CheckLifesLeft();
-                playerHealth = 100;
-            }
-            else
-            {
-                if (canHeal == true)
+                if(canGetSick == true)
                 {
-                    //Healing for 10 seconds
-                    StartCoroutine("Healing");
-                    canHeal = false;
+                    StartCoroutine("Sickness");
                 }
             }
         }
@@ -289,7 +296,19 @@ public class Players : MonoBehaviour
             //Debug.Log("Healed for 1 second");
             yield return new WaitForSeconds(1f);
         }
-       Debug.Log("+" + (curarseGenoma / conversor));    
+       Debug.Log("+" + curacion + " over " + healingTime + " seg");    
+    }
+    private IEnumerator Sickness()
+    {
+        int conversor = 100 / maxIllness;
+        float enfermedad = enfermedadGenoma / conversor;
+        for(int i = 0; i < sicknessTime; i++)
+        {
+            playerHealth -= (enfermedad / sicknessTime);
+            //Debug.Log("Sickness for 1 second");
+            yield return new WaitForSeconds(1f);
+        }
+        Debug.Log("-" + enfermedad + " over " + sicknessTime + " seg");
     }
     public void OnTriggerEnter(Collider other)
     {
