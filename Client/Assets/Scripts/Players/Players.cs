@@ -12,7 +12,7 @@ public class Players : MonoBehaviour
     /// Indica el numero del jugador qe se está manipulado
     public int playerNumber = 1;
     /// Velocidad del movimiento
-    public float moveSpeed = 3f;
+    public float moveSpeed = 0;
     /// Indica el numero de bombas que ha tirado el jugador.
     public int droppedBombs = 0;
     /// Indica el numero de vidas que ha perdido el jugador.
@@ -42,8 +42,10 @@ public class Players : MonoBehaviour
     public int enfermedadGenoma = 0;
     /// Indica la cantidad de proteccion que tiene el jugador.
     public int protectionGenoma = 0;
+    /// Indica la cantidad de velocidad que tiene el jugador.
+    public int velocidadGenoma = 0;
     
-    // Maximos
+    // Maximos y Minimos
 
     /// Indica el numero maximo de bombas que se pueden lanzar por jugador.
     public int maxBombs = 10;
@@ -55,10 +57,14 @@ public class Players : MonoBehaviour
     public int maxVidas = 5;
     /// Indica la cantidad maxima que se puede curar el jugador.
     public int maxCuracion = 25;
-    /// Indica la cantidad maxima que pierde el jugador por enfermedad;
+    /// Indica la cantidad maxima que pierde el jugador por enfermedad.
     public int maxIllness = 25;
-    /// Indica la cantidad maxima de protection que puede tener un jugador;
+    /// Indica la cantidad maxima de protection que puede tener un jugador.
     public int maxProtection = 40;
+    /// Indica la cantidad maxima de velocidad del jugador.
+    public int maxSpeed = 12;
+    /// Indica la cantidad minima de velocidad del jugador.
+    public int minSpeed = 5;
 
     // Limitadores
 
@@ -111,6 +117,10 @@ public class Players : MonoBehaviour
     }
     private void ResetLimits()
     {
+        //Update player movement speed 
+        float conversor = 100 / (maxSpeed - minSpeed);
+        moveSpeed = (velocidadGenoma / conversor) + minSpeed;
+
         // Hace reset a las bombas disponibles.
         if (frames % 1000 == 0)
         {
@@ -150,12 +160,13 @@ public class Players : MonoBehaviour
         enfermedadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_enfermedad;
         // Update gen_protection
         protectionGenoma = playerGenoma.genomaList[playerNumber - 1].gen_protection;
-
+        // Update gen_velocidad
+        velocidadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_velocidad;
 
     }
     private void CheckBombDrop()
     {
-        int conversor = 100 / maxBombs;
+        float conversor = 100 / maxBombs;
         // Verifica si tiene bombas disponibles.
         //Debug.Log(playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero / conversor);
         if (!(droppedBombs < (bombGenoma / conversor)))
@@ -188,12 +199,10 @@ public class Players : MonoBehaviour
     private void UpdateMovement()
     {
         animator.SetBool("Walking", false);
-
         if (!canMove)
         { //Return if player can't move
             return;
         }
-
         //Depending on the player number, use different input for moving
         if (playerNumber == 1)
         {
@@ -252,8 +261,8 @@ public class Players : MonoBehaviour
     }
     private void CheckCurrentHealth(int potenciaGenomaOrigin)
     {
-        int potencia_conversor = 100 / maxPotencia;
-        int protection_conversor = 100 / maxProtection;
+        float potencia_conversor = 100 / maxPotencia;
+        float protection_conversor = 100 / maxProtection;
         float potencia = (potenciaGenomaOrigin / potencia_conversor);
         float protection = (protectionGenoma / protection_conversor);
         Debug.Log("-" + (potencia - ((potencia * protection) / 100)) + " Vida");
@@ -285,7 +294,7 @@ public class Players : MonoBehaviour
     }
     private void CheckLifesLeft()
     {
-        int conversor = 100 / maxVidas;
+        float conversor = 100 / maxVidas;
         //Debug.Log(vidasGenoma / conversor);
         if (usedLifes > (vidasGenoma / conversor))
         {
@@ -300,27 +309,45 @@ public class Players : MonoBehaviour
     }
     private IEnumerator Healing()
     {
-        int conversor = 100 / maxCuracion;
+        float conversor = 100 / maxCuracion;
         float curacion = curarseGenoma / conversor;
         for(int i = 0; i < healingTime; i++)
         {
-            playerHealth += (curacion / healingTime);
-            //Debug.Log("Healed for 1 second");
-            yield return new WaitForSeconds(1f);
+            if (playerHealth >= 100)
+            {
+                playerHealth = 100;
+                yield break;
+            }
+            else
+            {
+                playerHealth += (curacion / healingTime);
+                //Debug.Log("Healed for 1 second");
+                yield return new WaitForSeconds(1f);
+            }
+            
         }
-       Debug.Log("+" + curacion + " over " + healingTime + " seg");    
+       //Debug.Log("+" + curacion + " over " + healingTime + " seg");    
     }
     private IEnumerator Sickness()
     {
-        int conversor = 100 / maxIllness;
+        float conversor = 100 / maxIllness;
         float enfermedad = enfermedadGenoma / conversor;
         for(int i = 0; i < sicknessTime; i++)
         {
-            playerHealth -= (enfermedad / sicknessTime);
-            //Debug.Log("Sickness for 1 second");
-            yield return new WaitForSeconds(1f);
+            if (playerHealth <= 0)
+            {
+                CheckLifesLeft();
+                playerHealth = 100;
+                yield break;
+            }
+            else
+            {
+                playerHealth -= (enfermedad / sicknessTime);
+                //Debug.Log("Sickness for 1 second");
+                yield return new WaitForSeconds(1f);
+            }
         }
-        Debug.Log("-" + enfermedad + " over " + sicknessTime + " seg");
+        //Debug.Log("-" + enfermedad + " over " + sicknessTime + " seg");
     }
     public void OnTriggerEnter(Collider other)
     {

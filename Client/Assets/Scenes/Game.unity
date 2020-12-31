@@ -532,6 +532,21 @@ PrefabInstance:
       propertyPath: globalStateManager
       value: 
       objectReference: {fileID: 196314164}
+    - target: {fileID: -4393941868664626666, guid: 6ab921f8d90e43e43a20029d71815f87,
+        type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4393941868664626666, guid: 6ab921f8d90e43e43a20029d71815f87,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4393941868664626666, guid: 6ab921f8d90e43e43a20029d71815f87,
+        type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
     - target: {fileID: 116334, guid: 6ab921f8d90e43e43a20029d71815f87, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -641,6 +656,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 488536, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 11411282, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
       propertyPath: globalManager
       value: 
@@ -648,6 +667,10 @@ PrefabInstance:
     - target: {fileID: 11411282, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13644608, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
         type: 3}
@@ -679,5 +702,10 @@ PrefabInstance:
       propertyPath: bombPrefab
       value: 
       objectReference: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+    - target: {fileID: 4476022441158667707, guid: 4cddbee81240ff04c8e7c994dc501178,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
