@@ -40,6 +40,8 @@ public class Players : MonoBehaviour
     public int curarseGenoma = 0;
     /// Indica la cantidad de vida que va a perder el jugador por enfermedad.
     public int enfermedadGenoma = 0;
+    /// Indica la cantidad de proteccion que tiene el jugador.
+    public int protectionGenoma = 0;
     
     // Maximos
 
@@ -55,6 +57,8 @@ public class Players : MonoBehaviour
     public int maxCuracion = 25;
     /// Indica la cantidad maxima que pierde el jugador por enfermedad;
     public int maxIllness = 25;
+    /// Indica la cantidad maxima de protection que puede tener un jugador;
+    public int maxProtection = 40;
 
     // Limitadores
 
@@ -144,6 +148,9 @@ public class Players : MonoBehaviour
         curarseGenoma = playerGenoma.genomaList[playerNumber - 1].gen_curarse;
         // Update gen_enfermedad
         enfermedadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_enfermedad;
+        // Update gen_protection
+        protectionGenoma = playerGenoma.genomaList[playerNumber - 1].gen_protection;
+
 
     }
     private void CheckBombDrop()
@@ -245,11 +252,16 @@ public class Players : MonoBehaviour
     }
     private void CheckCurrentHealth(int potenciaGenomaOrigin)
     {
-        int conversor = 100 / maxPotencia;
-        Debug.Log("-" + (potenciaGenomaOrigin / conversor) + " Vida");
+        int potencia_conversor = 100 / maxPotencia;
+        int protection_conversor = 100 / maxProtection;
+        float potencia = (potenciaGenomaOrigin / potencia_conversor);
+        float protection = (protectionGenoma / protection_conversor);
+        Debug.Log("-" + (potencia - ((potencia * protection) / 100)) + " Vida");
+        //Debug.Log("Potencia: " + potencia);
+        //Debug.Log("Protection: " + protection);
         if (lastHitExplosionFrame == 0 || (frames - lastHitExplosionFrame) >= 500)
         {
-            playerHealth -= (potenciaGenomaOrigin / conversor);
+            playerHealth -= potencia - ((potencia * protection)/100);
             lastHitExplosionFrame = frames;
             if (playerHealth <= 0)
             {
@@ -316,6 +328,7 @@ public class Players : MonoBehaviour
         {
             GameObject playerOrigin = other.gameObject.GetComponent<DestroySelf>().spawnBombOrigin;
             CheckCurrentHealth(playerOrigin.GetComponent<Players>().potenciaGenoma);
+            //animacion de golpe (cambiar la transparencia del renderer)
         }
     }
 }
