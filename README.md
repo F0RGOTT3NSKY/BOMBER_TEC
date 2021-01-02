@@ -21,7 +21,7 @@ Una lista de las tecnologías usadas en el proyecto
 ***
 Actualmente el juego debe ejecutado dentro de la intefaz de Unity
 ```
-$ git clone https://github.com/F0RGOTT3NSKY/Proyecto_II_BomberTEC.git
+$ git clone https://github.com/F0RGOTT3NSKY/BomberTEC.git
 ```
 
 ## Collaboration
