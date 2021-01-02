@@ -23,6 +23,7 @@ public class PlayersScript : MonoBehaviour
     public GameObject EnemyPrefab;
 
 
+
     /// Numero de Filas del mapa
     public static int MFMap = 25;
 

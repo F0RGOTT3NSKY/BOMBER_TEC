@@ -246,6 +246,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 174940, guid: 4cddbee81240ff04c8e7c994dc501178, type: 3}
   EnemyPrefab: {fileID: 8749142432929202977, guid: cbe94d7d4498cca48b321ee6f49603af,
     type: 3}
+  TotalPlayers: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,81 +445,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Maincamera: {fileID: 963194225}
-  PathfingArea: {fileID: 1568322166}
---- !u!1 &1568322166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1568322170}
-  - component: {fileID: 1568322169}
-  - component: {fileID: 1568322168}
-  - component: {fileID: 1568322167}
-  m_Layer: 0
-  m_Name: A*
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1568322167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568322166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea464ec8ecfc1747896e983034432cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1568322168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568322166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8034961aa875a2d4da60b8bd96dcccc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1568322169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568322166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8216335c80d7894479794c1a054d8e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayGridGizmos: 0
-  unwalkableMask:
-    serializedVersion: 2
-    m_Bits: 256
-  gridWorldSize: {x: 25, y: 25}
-  nodeRadius: 0.5
-  walkableRegions: []
-  obstacleProximityPenalty: 0
---- !u!4 &1568322170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568322166}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 2, z: 7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  PathfingArea: {fileID: 0}
