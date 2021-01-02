@@ -22,9 +22,6 @@ Una lista de las tecnologías usadas en el proyecto
 Actualmente el juego debe ejecutado dentro de la intefaz de Unity
 ```
 $ git clone https://github.com/F0RGOTT3NSKY/Proyecto_II_BomberTEC.git
-$ cd ../path/to/the/file
-$ npm install
-$ npm start
 ```
 
 ## Collaboration
@@ -33,6 +30,9 @@ Este proyecto fue realizado por:
 > Kevin Masis
 
 > Adrian Gomez
+
+> Andrés Rojas Madrigal
+
 ## FAQs
 ***
 Una lista de preguntas frecuentes
