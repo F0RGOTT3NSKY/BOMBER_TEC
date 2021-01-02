@@ -596,16 +596,40 @@ MonoBehaviour:
   globalStateManager: {fileID: 0}
   playerNumber: 1
   moveSpeed: 3
-  canDropBombs: 1
-  bombGenoma: 0
-  maxBombs: 10
   droppedBombs: 0
-  canMove: 1
+  usedLifes: 0
+  playerHealth: 100
+  healingTime: 10
+  sicknessTime: 15
   dead: 0
+  bombGenoma: 0
+  distanceGenoma: 0
+  potenciaGenoma: 0
+  vidasGenoma: 0
+  curarseGenoma: 0
+  enfermedadGenoma: 0
+  protectionGenoma: 0
+  velocidadGenoma: 0
+  suerteGenoma: 0
+  lanzamientoGenoma: 0
+  esconderseGenoma: 0
+  maxBombs: 10
+  maxDistance: 10
+  maxPotencia: 50
+  maxVidas: 5
+  maxCuracion: 25
+  maxIllness: 25
+  maxProtection: 40
+  maxSpeed: 12
+  minSpeed: 5
+  maxLuck: 10
+  canDropBombs: 1
+  canMove: 1
   canHeal: 1
+  canGetSick: 0
   frames: 0
+  lastHitExplosionFrame: 0
   bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
-  player: {fileID: 174940}
 --- !u!54 &5418200
 Rigidbody:
   m_ObjectHideFlags: 0
