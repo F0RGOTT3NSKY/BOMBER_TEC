@@ -13,6 +13,8 @@ public class Players : MonoBehaviour
     public int playerNumber = 1;
 
     public int totalplayers = 0;
+
+    public int elegido = -1;
     /// Velocidad del movimiento
     public float moveSpeed = 0;
     /// Indica el numero de bombas que ha tirado el jugador.
@@ -110,6 +112,8 @@ public class Players : MonoBehaviour
     /// Indica la ultima vez que una bomba colisiono al jugador;
     public int lastHitExplosionFrame = 0;
 
+    public Vector3 lastPosition;
+
     ///Prefabs
     public GameObject bombPrefab;
     ///Cached components
@@ -130,6 +134,7 @@ public class Players : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         myTransform = transform;
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
+        lastPosition = myTransform.position;
         //Inicia la poblacion de genomas
         playerGenoma.AddNodeGenoma(20);
 
@@ -171,6 +176,7 @@ public class Players : MonoBehaviour
         ResetLimits();
         //Verifica si el personaje puede dropear bombas segun el gen
         CheckBombDrop();
+        EnemyDropBomb();
         UpdateGenomas();
         frames++;
     }
@@ -202,6 +208,30 @@ public class Players : MonoBehaviour
                 UpdateEnemyMovement(moveCommand);
             }
         }
+    }
+    private void EnemyDropBomb()
+    {
+        if (frames % 100 == 0)
+        {
+            lastPosition = myTransform.position;
+        }
+        if (playerNumber == 0)
+        {
+            if (frames % 350 == 0)
+            {
+                elegido = RandomValue(0, 11);
+                if (elegido <= 7 && myTransform.position==lastPosition)
+                {
+                    UpdateEnemyMovement(5);
+                    safe = false;
+                }
+                if (frames % 100 == 0)
+                {
+                    safe = true;
+                }
+            }
+        }
+        
     }
     private void ResetLimits()
     {

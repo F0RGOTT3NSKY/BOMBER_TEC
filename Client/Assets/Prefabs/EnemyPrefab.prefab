@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalStateManager: {fileID: 0}
   playerNumber: 1
+  totalplayers: 0
   moveSpeed: 0
   droppedBombs: 0
   usedLifes: 0
@@ -80,9 +81,12 @@ MonoBehaviour:
   canMove: 1
   canHeal: 1
   canGetSick: 0
+  myObject: {fileID: 0}
+  safe: 0
+  mms: {fileID: 0}
   frames: 0
   lastHitExplosionFrame: 0
-  bombPrefab: {fileID: 0}
+  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
 --- !u!54 &5015606174960767847
 Rigidbody:
   m_ObjectHideFlags: 0

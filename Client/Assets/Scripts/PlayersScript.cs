@@ -96,12 +96,12 @@ public class PlayersScript : MonoBehaviour
             RectTransform rt = display.GetComponent<RectTransform>();
             //b.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "Player 1";
             Debug.Log("ScreenWidth: " + Screen.width + "ScreenHeight: "+ Screen.height);
-            Debug.Log("ScreenWidth: " + Screen.width/3 + "ScreenHeight: " + Screen.height/2);
+            Debug.Log("ScreenWidth: " + canvas.transform.localPosition.x + "ScreenHeight: " + canvas.transform.localPosition.y);
             switch (i)
             {
                 case 1:
                     player.transform.position = new Vector3(1f, 2f, 1f);
-                    rt.transform.localPosition = new Vector3((Screen.width/3) - 684, ((Screen.height/2)-21)-(80*(i-1)), 0);
+                    rt.transform.localPosition = new Vector3(-canvas.transform.localPosition.x, ((Screen.height/2)-21)-(80*(i-1)), 0);
                     break;
                 case 2:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
