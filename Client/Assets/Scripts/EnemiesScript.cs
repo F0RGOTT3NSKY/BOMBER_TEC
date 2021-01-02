@@ -7,8 +7,7 @@
 */
 
 using UnityEngine;
-using System.Collections;
-using System;
+using System.Collections.Generic;
 
 
 /*!
@@ -20,13 +19,12 @@ using System;
 
 public class EnemiesScript : MonoBehaviour
 {
-
     /// MenuScriptOptions
     public MenuManagerScript mms;
 
 
     /// Lista de los enemigos
-    private System.Collections.Generic.List<Enemy> ListEnemies;
+    private List<GameObject> ListEnemies;
 
     /// Vector3 para posicionar los bloques en la zona de trabajo
     private Vector3 screenPosition;
@@ -47,6 +45,9 @@ public class EnemiesScript : MonoBehaviour
     // Matriz del Menu
     public float[,] mapMatriz;
 
+
+    private int frame;
+
     /// Start is called before the first frame update
     void Start()
     {
@@ -60,6 +61,7 @@ public class EnemiesScript : MonoBehaviour
             MFMap = mms.heightMap;
             NCMap = mms.widthMap;
             mapMatriz = mms.mapMatriz;
+
         }
         catch (System.Exception e)
         {
@@ -68,12 +70,13 @@ public class EnemiesScript : MonoBehaviour
 
 
 
-        ListEnemies = new System.Collections.Generic.List<Enemy>();
+        ListEnemies = new List<GameObject>();
 
-        for(int i = 0; i < NEnemies; i++)
+        for (int i = 0; i < NEnemies; i++)
         {
-            
-            switch (i){
+
+            switch (i)
+            {
                 case 0:
                     screenPosition = new Vector3(1f, 2f, NCMap - 2f);
                     break;
@@ -81,43 +84,27 @@ public class EnemiesScript : MonoBehaviour
                     screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
                     break;
                 case 2:
-                    screenPosition = new Vector3(MFMap/2 , 2f, 1f);
+                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
                     break;
                 case 3:
-                    screenPosition = new Vector3(MFMap/2 , 2f, NCMap -2f);
+                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
                     break;
                 case 4:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap/2 );
+                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
                     break;
                 case 5:
-                    screenPosition = new Vector3(1F, 2f, NCMap/2);
+                    screenPosition = new Vector3(1F, 2f, NCMap / 2);
                     break;
             }
 
-
-            // Se crea el nuevo Genoma y se añade los valores de los genes
-            Enemy aux = new Enemy();
-         
-
-            // Se añade el genoma la lista de genomas
-            ListEnemies.Add(aux);
-            
             GameObject a = Instantiate(PlayerEnemy) as GameObject;
             a.transform.position = screenPosition;
+
+            ListEnemies.Add(a);
+
         }
 
-        
-    }
-
-    /// Update is called once per frame
-    void Update()
-    {
-
-        for(int i = 0; i < NEnemies; i++)
-        {
-            ListEnemies[i].UpdateEnemyMovement(6);
-        }
-       
+        frame = 0;
     }
 
 

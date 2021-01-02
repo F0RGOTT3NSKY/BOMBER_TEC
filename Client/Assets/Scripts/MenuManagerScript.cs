@@ -8,17 +8,20 @@ public class MenuManagerScript : MonoBehaviour
 {
 
     // Numero de Jugadores
-    public int nPlayers = 2;
+    public int nPlayers = 1;
+
+    // Numero de Jugadores
+    public int nEnemies = 1;
 
     // Dimensiones del Mapa
-    public int widthMap = 15;
-    public int heightMap = 15;
+    public int widthMap = 25;
+    public int heightMap = 25;
 
 
     // Textos de la pantalla de menu
     public Text PlayerText;
-    public Text WidthText;
-    public Text HeightText;
+    public Text DimensionsText;
+    public Text EnemiesText;
 
     // Generador de la matriz
     public MapGenerator mapGenerator;
@@ -42,109 +45,97 @@ public class MenuManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
     // Sumar los datos del menu
     public void PlayersPlus()
     {
-        if(nPlayers < 8)
+        if (nPlayers < 4)
         {
             nPlayers++;
         }
-        PlayerText.text = nPlayers.ToString();
+        PlayerText.text = "Players: " + nPlayers.ToString();
 
     }
 
     public void PlayersLess()
     {
-        if(nPlayers > 2)
+        if (nPlayers > 1)
         {
             nPlayers--;
         }
-        PlayerText.text = nPlayers.ToString();
+        PlayerText.text = "Players: " + nPlayers.ToString();
     }
 
-    public void WidthPlus()
+    public void EnemiesPlus()
+    {
+        if (nEnemies < 4)
+        {
+            nEnemies++;
+        }
+        EnemiesText.text = "Enemies: " + nEnemies.ToString();
+
+    }
+
+    public void EnemiesLess()
+    {
+        if (nEnemies > 0)
+        {
+            nEnemies--;
+        }
+        EnemiesText.text = "Enemies: " + nEnemies.ToString();
+    }
+
+    public void DimensionsPlus()
     {
         switch (widthMap)
         {
             case 15:
                 widthMap = 20;
+                heightMap = 20;
                 break;
             case 20:
                 widthMap = 25;
+                heightMap = 25;
                 break;
             case 25:
                 widthMap = 50;
+                heightMap = 50;
                 break;
             case 50:
                 widthMap = 50;
+                heightMap = 50;
                 break;
         }
-        WidthText.text = widthMap.ToString();
+        DimensionsText.text = "Dimensions: " + widthMap.ToString() + " x " + heightMap.ToString();
     }
 
-    public void WidthLess()
+    public void DimensionsLess()
     {
         switch (widthMap)
         {
             case 15:
                 widthMap = 15;
+                heightMap = 15;
                 break;
             case 20:
                 widthMap = 15;
+                heightMap = 15;
                 break;
             case 25:
                 widthMap = 20;
+                heightMap = 20;
                 break;
             case 50:
                 widthMap = 25;
-                break;
-        }
-        WidthText.text = widthMap.ToString();
-    }
-
-    public void HeightPlus()
-    {
-        switch (heightMap)
-        {
-            case 15:
-                heightMap = 20;
-                break;
-            case 20:
-                heightMap = 25;
-                break;
-            case 25:
-                heightMap = 50;
-                break;
-            case 50:
-                heightMap = 50;
-                break;
-        }
-        HeightText.text = heightMap.ToString();
-    }
-
-    public void HeightLess()
-    {
-        switch (heightMap)
-        {
-            case 15:
-                heightMap = 15;
-                break;
-            case 20:
-                heightMap = 15;
-                break;
-            case 25:
-                heightMap = 20;
-                break;
-            case 50:
                 heightMap = 25;
                 break;
         }
-        HeightText.text = heightMap.ToString();
+        DimensionsText.text = "Dimensions: " + widthMap.ToString() + " x " + heightMap.ToString();
     }
+
 
 
     // Cambiar de escena
@@ -152,12 +143,14 @@ public class MenuManagerScript : MonoBehaviour
     public void OnPlayButton()
     {
         mapMatriz = mapGenerator.randomMap(heightMap, widthMap);
-        mapMatriz = mapGenerator.checkPlayersWay(mapMatriz, nPlayers);
+        mapMatriz = mapGenerator.checkPlayersWay(mapMatriz, nPlayers + nEnemies);
+
         SceneManager.LoadScene("Game");
     }
 
 
 }
+
 
 public class MapGenerator
 {

@@ -57,6 +57,7 @@ public struct nodeGenoma
  * @details Con esta clase se puede gestionar todo lo referente a los genes de los cromosomas de cada individio. 
  * @public
  */
+
 public class ListGenoma : MonoBehaviour
 {
     /// Lista que guarda a todos los individuos con su estructura de genes.

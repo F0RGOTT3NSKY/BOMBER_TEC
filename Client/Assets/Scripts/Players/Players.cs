@@ -8,7 +8,7 @@ public class Players : MonoBehaviour
     
     // Caracteristicas
 
-    [Range(1, 4)]
+    [Range(0, 4)]
     /// Indica el numero del jugador qe se está manipulado
     public int playerNumber = 1;
     /// Velocidad del movimiento
