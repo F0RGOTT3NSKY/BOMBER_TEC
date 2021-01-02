@@ -67,7 +67,8 @@ public class PlayersScript : MonoBehaviour
         ListPlayers = new List<GameObject>();
         ListEnemies = new List<GameObject>();
 
-        for (int i = 1; i < nPlayers; i++)
+        int f = nPlayers + 1;
+        for (int i = 1 ; i < f ; i++)
         {
 
             switch (i)
@@ -84,6 +85,18 @@ public class PlayersScript : MonoBehaviour
                 case 4:
                     screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
                     break;
+                case 5:
+                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
+                    break;
+                case 6:
+                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
+                    break;
+                case 7:
+                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
+                    break;
+                case 8:
+                    screenPosition = new Vector3(1F, 2f, NCMap / 2);
+                    break;
             }
 
             GameObject a = Instantiate(PlayerPrefab) as GameObject;
@@ -94,22 +107,33 @@ public class PlayersScript : MonoBehaviour
             ListPlayers.Add(a);
 
         }
-
-
-        for (int i = 0; i < nEnemies; i++)
+        int j = f + nEnemies;
+        for (int i = f; i < j; i++)
         {
             switch (i)
             {
                 case 1:
-                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
+                    screenPosition = new Vector3(1f, 2f, 1f);
                     break;
                 case 2:
-                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
+                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
                     break;
                 case 3:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
+                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
                     break;
                 case 4:
+                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
+                    break;
+                case 5:
+                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
+                    break;
+                case 6:
+                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
+                    break;
+                case 7:
+                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
+                    break;
+                case 8:
                     screenPosition = new Vector3(1F, 2f, NCMap / 2);
                     break;
             }
@@ -126,3 +150,25 @@ public class PlayersScript : MonoBehaviour
     }
 
 }
+
+
+/*
+                case 0:
+                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
+                    break;
+                case 1:
+                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
+                    break;
+                case 2:
+                    screenPosition = new Vector3(MFMap/2 , 2f, 1f);
+                    break;
+                case 3:
+                    screenPosition = new Vector3(MFMap/2 , 2f, NCMap -2f);
+                    break;
+                case 4:
+                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap/2 );
+                    break;
+                case 5:
+                    screenPosition = new Vector3(1F, 2f, NCMap/2);
+                    break;
+ */
