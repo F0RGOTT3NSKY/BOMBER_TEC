@@ -1,0 +1,14 @@
+digraph "ListaSimple.cleanLista"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ListaSimple.cleanLista",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Libera todos los nodos guardados en la lista."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AStar.purge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#a0e22a9352a0f9eb465451c51ad7d7d59",tooltip="Purga las listas (Abierta, Solucion, Cerrada)"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AStar.findPath",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#af8f7c385bb92a46e1dfbc069de6c3ee3",tooltip="Prepara la matriz y los nodos de inicio y meta para buscar la posible solucion."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Players.whereToGo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_players.html#af768f0d413b2a4254525d94988b2bf2a",tooltip=" "];
+}

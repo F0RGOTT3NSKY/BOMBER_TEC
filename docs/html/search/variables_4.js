@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['dead_291',['dead',['../class_enemy.html#a5781471eeb8099a31fe51c3e274542b1',1,'Enemy.dead()'],['../class_player.html#a90c72d76eee2ff83b328afaf463f78ed',1,'Player.dead()']]],
-  ['delay_292',['Delay',['../class_destroy_self.html#a0bded28b8e0e258f8762ca8ce1a0efc0',1,'DestroySelf']]],
-  ['destructibleblockprefab_293',['destructibleBlockPrefab',['../classsee_map.html#a2ab7833e63d5a70491f53128f7f5989d',1,'seeMap']]],
-  ['displaygridgizmos_294',['displayGridGizmos',['../class_grid.html#a595606f409adcc067cfeb08f9c3be53b',1,'Grid']]]
+  ['elegido_301',['elegido',['../class_players.html#a736ae17ddb83ebc698ce0376275d7944',1,'Players']]],
+  ['enemiestext_302',['EnemiesText',['../class_menu_manager_script.html#a9b457af13c91b56faa81b8b8658c8221',1,'MenuManagerScript']]],
+  ['enemyprefab_303',['EnemyPrefab',['../class_players_script.html#a12a049eea5b39292be6aed5f95e8bc5a',1,'PlayersScript']]],
+  ['enfermedadgenoma_304',['enfermedadGenoma',['../class_players.html#a2b972c824512a882271498b0df27e901',1,'Players']]],
+  ['escondersegenoma_305',['esconderseGenoma',['../class_players.html#a85cfdfe4d70546bceb98833774d25444',1,'Players']]],
+  ['explosiondistancegenoma_306',['explosiondistanceGenoma',['../class_bomb.html#abb65278e2d010633aa76a8cbd5745c22',1,'Bomb']]],
+  ['explosionprefab_307',['explosionPrefab',['../class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234',1,'Bomb']]]
 ];

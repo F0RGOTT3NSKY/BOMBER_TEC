@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['approachside_286',['approachSide',['../struct_line.html#aba482119f3ff3cc1c63d04bc784b7553',1,'Line']]]
+  ['bombgenoma_287',['bombGenoma',['../class_players.html#a18a380f99809ddff13332134efb8fd99',1,'Players']]],
+  ['bombprefab_288',['bombPrefab',['../class_players.html#a64a4defb77a261b101789d23e9a323f6',1,'Players']]]
 ];

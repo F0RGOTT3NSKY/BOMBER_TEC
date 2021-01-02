@@ -1,0 +1,12 @@
+digraph "ListaSimple.getSize"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ListaSimple.getSize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AStar.solTamanno",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#afd7af760fab61556bd5bba5025e06d9a",tooltip="Devuelve la cantidad de nodos entre el puntode inicio y el punto meta @retrun int."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Players.whereToGo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_players.html#af768f0d413b2a4254525d94988b2bf2a",tooltip=" "];
+}

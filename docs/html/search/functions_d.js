@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['randommap_272',['randomMap',['../classsee_map.html#a3cc41df3f0d57d33667983579257b798',1,'seeMap']]],
-  ['randomvalue_273',['RandomValue',['../class_list_genoma.html#a950a3dcfbf78a17858e7b66a619cfb49',1,'ListGenoma']]],
-  ['removefirst_274',['RemoveFirst',['../class_heap.html#a8a8e2e119649fe0b1a64faa6712b6ac3',1,'Heap']]],
-  ['requestpath_275',['RequestPath',['../class_path_request_manager.html#ac75d0c3bdd709842dccdb41e13565f06',1,'PathRequestManager']]],
-  ['rutasbt_276',['rutasBT',['../classsee_map.html#af6973f8d2ff8cdccb6908ff9581bfaaa',1,'seeMap']]]
+  ['updateenemymovement_282',['UpdateEnemyMovement',['../class_players.html#a736698b5f2df886b341e7532d38289f2',1,'Players']]],
+  ['updategenomas_283',['UpdateGenomas',['../class_players.html#a06f5916911912d6b3dc9bbf8e694248c',1,'Players']]]
 ];

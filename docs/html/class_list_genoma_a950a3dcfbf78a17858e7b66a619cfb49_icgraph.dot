@@ -1,0 +1,21 @@
+digraph "ListGenoma.RandomValue"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ListGenoma.RandomValue",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Generates a random number within a range."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ListGenoma.AddGenomaValues",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a43d8d1d5559105161bff4fc553ac416d",tooltip="AddGenomaValues() se usa para agregar valores random a los genes."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ListGenoma.AddNodeGenoma",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a1dc41c3894c21324fc4f59caac858ab3",tooltip="AddNodeGenoma se usa para anadir nuevos individuos a la lista de la poblacion."];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Players.UpdateGenomas",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_players.html#a06f5916911912d6b3dc9bbf8e694248c",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ListGenoma.Combine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#abcc9b373491a696e129f44116ed5655c",tooltip="Combine() se usa para combinar dos cromosomas."];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ListGenoma.Mutacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a48ce150148bcfa3a9e9330a9d20b08ce",tooltip="Mutacion() se usa para mutar un bit aleatorio de un gen de un individuo random."];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

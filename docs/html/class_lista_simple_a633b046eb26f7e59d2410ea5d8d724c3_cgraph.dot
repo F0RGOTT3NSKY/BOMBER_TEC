@@ -1,0 +1,14 @@
+digraph "ListaSimple.enqueue"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ListaSimple.enqueue",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Funcion que annade un nodo a la lista con el dato especificado."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="NodoLista.getSig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nodo_lista.html#a01954a05f2a6814e4e4cabf1d8084630",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="NodoLista.setData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nodo_lista.html#ad56ea5165c53e00938467ed3e0ae7fa1",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="NodoLista.setSig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nodo_lista.html#a410be4176bebc7c4652af336e55e0ab9",tooltip=" "];
+}

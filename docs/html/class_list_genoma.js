@@ -9,8 +9,6 @@ var class_list_genoma =
     [ "PuntuationGenoma", "class_list_genoma.html#a92ec184e070ecb5cc56d168b7d7bea45", null ],
     [ "PuntuationGenomaAux", "class_list_genoma.html#adbb7a7c46826392493b653e7eb98a3cf", null ],
     [ "RandomValue", "class_list_genoma.html#a950a3dcfbf78a17858e7b66a619cfb49", null ],
-    [ "Start", "class_list_genoma.html#acbb1a2ee0ca705478edae60a8769f0d1", null ],
-    [ "Update", "class_list_genoma.html#a901e0f2a5dc8ccd081ddc5ee0d0e56ca", null ],
     [ "Validacion", "class_list_genoma.html#a3556b1e886151a86220f5e0ed9040b57", null ],
     [ "_random", "class_list_genoma.html#ac9fbd5ea2d8a7c76af899831beed5d6f", null ],
     [ "frames", "class_list_genoma.html#acb9b541f9c7e9d0e1e35e74c4c2ffd66", null ],

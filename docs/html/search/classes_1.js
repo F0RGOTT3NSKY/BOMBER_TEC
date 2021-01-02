@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cameraconfig_183',['CameraConfig',['../class_camera_config.html',1,'']]]
+  ['bomb_188',['Bomb',['../class_bomb.html',1,'']]],
+  ['brick_189',['Brick',['../class_brick.html',1,'']]]
 ];

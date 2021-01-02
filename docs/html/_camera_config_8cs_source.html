@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BomberTEC: C:/GitHub/Proyecto_II_BomberTEC/Client/Assets/Scripts/Camera/CameraConfig.cs Source File</title>
+<title>BomberTEC: C:/GitHub/BOMBER_TEC/Client/Assets/Scripts/Camera/CameraConfig.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
    <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
@@ -98,28 +98,30 @@ $(document).ready(function(){initNavTree('_camera_config_8cs_source.html',''); i
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">   20</a></span>&#160;    <span class="keyword">public</span> GameObject <a class="code" href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">PathfingArea</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_camera_config.html#ac9f42b8be6f48464919011cc193194fa">   25</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_camera_config.html#ac9f42b8be6f48464919011cc193194fa">Start</a>()</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;         <span class="keywordflow">if</span>(<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a>==50 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 50)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a> == 50 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 50)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(22.5f, 52.5f, 2.5f);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">PathfingArea</a>.transform.position = <span class="keyword">new</span> Vector3(24.5f, 2f, 24.5f);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(24.5f, 59f, 24.5f);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="comment">//PathfingArea.transform.position = new Vector3(24.5f, 2f, 24.5f);</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a> == 25 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 25)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a> == 25 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 25)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(11.5f, 28f, 0.5f);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">PathfingArea</a>.transform.position = <span class="keyword">new</span> Vector3(12f, 2f, 12f);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(12f, 31f, 12f);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="comment">//PathfingArea.transform.position = new Vector3(12f, 2f, 12f);</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a> == 20 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 20)</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(9f, 24f, 9f);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">PathfingArea</a>.transform.position = <span class="keyword">new</span> Vector3(9.5f, 2f, 9.5f);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(9.5f, 25f, 9.5f);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">//PathfingArea.transform.position = new Vector3(9.5f, 2f, 9.5f);</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a> == 15 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 15)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a9bbf912ad1bee2d2ec16e2b671b752d3">NColumnas_Map</a> == 15 &amp;&amp; <a class="code" href="classsee_map.html">seeMap</a>.<a class="code" href="classsee_map.html#a13f1b620f83a71a022434f917f6c06a3">NFilas_Map</a> == 15)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(6.5f, 18f, 0.2f);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">PathfingArea</a>.transform.position = <span class="keyword">new</span> Vector3(7f, 2f, 7f);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }    </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.position = <span class="keyword">new</span> Vector3(7f, 20f, 7f);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="comment">// PathfingArea.transform.position = new Vector3(7f, 2f, 7f);</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_camera_config.html#a99089b5e013890d011505c0c5b3c1a07">Maincamera</a>.transform.rotation = Quaternion.Euler(90f, 0f, 90f);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_camera_config_html_a01cc7e59ca6291537430379aece33430"><div class="ttname"><a href="class_camera_config.html#a01cc7e59ca6291537430379aece33430">CameraConfig.PathfingArea</a></div><div class="ttdeci">GameObject PathfingArea</div><div class="ttdoc">Indica el objeto del area de A* en Unity.</div><div class="ttdef"><b>Definition:</b> <a href="_camera_config_8cs_source.html#l00020">CameraConfig.cs:20</a></div></div>

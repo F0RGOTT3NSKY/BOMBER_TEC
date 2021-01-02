@@ -1,0 +1,28 @@
+digraph "Players.UpdateGenomas"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Players.UpdateGenomas",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ListGenoma.AddGenomaValues",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a43d8d1d5559105161bff4fc553ac416d",tooltip="AddGenomaValues() se usa para agregar valores random a los genes."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ListGenoma.PuntuationGenoma",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a92ec184e070ecb5cc56d168b7d7bea45",tooltip="PuntuationGenoma() Genera la puntuacion en base a la suma de los genes de los genomas."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ListGenoma.PuntuationGenomaAux",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#adbb7a7c46826392493b653e7eb98a3cf",tooltip="PuntuationGenomaAux() se usa para calcular que tanto se tiene cada gen."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ListGenoma.RandomValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a950a3dcfbf78a17858e7b66a619cfb49",tooltip="Generates a random number within a range."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ListGenoma.Combine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#abcc9b373491a696e129f44116ed5655c",tooltip="Combine() se usa para combinar dos cromosomas."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ListGenoma.Mutacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a48ce150148bcfa3a9e9330a9d20b08ce",tooltip="Mutacion() se usa para mutar un bit aleatorio de un gen de un individuo random."];
+  Node7 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="ListGenoma.Validacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#a3556b1e886151a86220f5e0ed9040b57",tooltip="Validacion() se usa para evitar los casos en los genes se pasen del valor maximo."];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="ListGenoma.Organizar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#ae000c281c9e0629c35a5e21020314db1",tooltip="Organizar() se usa para organizar la lista de individuos de mayor puntaje a menor."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

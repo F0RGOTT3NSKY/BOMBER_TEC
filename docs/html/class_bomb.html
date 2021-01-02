@@ -27,7 +27,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo-tec-2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BomberTEC
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">3.0</span>
    </div>
    <div id="projectbrief">Proyecto II | Algoritmos y Estructuras de Datos II</div>
   </td>
@@ -122,12 +122,18 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a28a3e6cb0f4e42799aa80a4815e62234"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">explosionPrefab</a></td></tr>
 <tr class="memdesc:a28a3e6cb0f4e42799aa80a4815e62234"><td class="mdescLeft">&#160;</td><td class="mdescRight">Objeto prefab de la explosion.  <a href="class_bomb.html#a28a3e6cb0f4e42799aa80a4815e62234">More...</a><br /></td></tr>
 <tr class="separator:a28a3e6cb0f4e42799aa80a4815e62234"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacca4cd34fa252e1c4529a101c7387f4"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#aacca4cd34fa252e1c4529a101c7387f4">spawnOrigin</a></td></tr>
+<tr class="memdesc:aacca4cd34fa252e1c4529a101c7387f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica el jugador que spawnea la bomba.  <a href="class_bomb.html#aacca4cd34fa252e1c4529a101c7387f4">More...</a><br /></td></tr>
+<tr class="separator:aacca4cd34fa252e1c4529a101c7387f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb65278e2d010633aa76a8cbd5745c22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#abb65278e2d010633aa76a8cbd5745c22">explosiondistanceGenoma</a></td></tr>
+<tr class="memdesc:abb65278e2d010633aa76a8cbd5745c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica lo largo que se generan la explosiones de las bombas.  <a href="class_bomb.html#abb65278e2d010633aa76a8cbd5745c22">More...</a><br /></td></tr>
+<tr class="separator:abb65278e2d010633aa76a8cbd5745c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a410c3b8ab55bc5cbb46e5bda170fae17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a410c3b8ab55bc5cbb46e5bda170fae17">maxDistanceExplosion</a></td></tr>
+<tr class="memdesc:a410c3b8ab55bc5cbb46e5bda170fae17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica la distancia maxima a la que puede alcanzar las explosiones de las bombas.  <a href="class_bomb.html#a410c3b8ab55bc5cbb46e5bda170fae17">More...</a><br /></td></tr>
+<tr class="separator:a410c3b8ab55bc5cbb46e5bda170fae17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ecb0c70df116c48cf660e177e6aebb9"><td class="memItemLeft" align="right" valign="top">LayerMask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">levelMask</a></td></tr>
 <tr class="memdesc:a4ecb0c70df116c48cf660e177e6aebb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layermask donde hace efecto el RaycastHit.  <a href="class_bomb.html#a4ecb0c70df116c48cf660e177e6aebb9">More...</a><br /></td></tr>
 <tr class="separator:a4ecb0c70df116c48cf660e177e6aebb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a004264c6f0bcc40243bb21c430796af7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">exploded</a> = false</td></tr>
-<tr class="memdesc:a004264c6f0bcc40243bb21c430796af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indica si alguna bomba cercana ha explotado o no.  <a href="class_bomb.html#a004264c6f0bcc40243bb21c430796af7">More...</a><br /></td></tr>
-<tr class="separator:a004264c6f0bcc40243bb21c430796af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>La clase <a class="el" href="class_bomb.html" title="La clase Bomb se encarga de instanciar las explosiones al instante en el que el jugador pone una bomb...">Bomb</a> se encarga de instanciar las explosiones al instante en el que el jugador pone una bomba en el suelo. </p>
@@ -159,7 +165,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00059">59</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00066">66</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 
 </div>
 </div>
@@ -181,7 +187,7 @@ Public Attributes</h2></td></tr>
 <p><a class="el" href="class_bomb.html#a6b5b1e0131287a0d455dd21fb40b8470" title="Explode() es invocado para instanciar explosiones en el juego.">Explode()</a> es invocado para instanciar explosiones en el juego. </p>
 <p>Para instanciar las explosiones se usan coroutines apuntado a todas las direcciones para crear la explosion. Ademas, si la explosion toca una bomba sin explotar se procede a explotarla instantaneamente. </p>
 
-<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00041">41</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00047">47</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 
 </div>
 </div>
@@ -209,7 +215,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00083">83</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00093">93</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 
 </div>
 </div>
@@ -231,24 +237,24 @@ Public Attributes</h2></td></tr>
 <p><a class="el" href="class_bomb.html#aa8cb1ce982cc73c2dce708b305ca589c" title="Start() is called before the first frame update.">Start()</a> is called before the first frame update. </p>
 <p>Se invoca la funcion de Explode para instanciar las explosiones de la bomba. </p>
 
-<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00032">32</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00038">38</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a004264c6f0bcc40243bb21c430796af7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a004264c6f0bcc40243bb21c430796af7">&#9670;&nbsp;</a></span>exploded</h2>
+<a id="abb65278e2d010633aa76a8cbd5745c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb65278e2d010633aa76a8cbd5745c22">&#9670;&nbsp;</a></span>explosiondistanceGenoma</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Bomb.exploded = false</td>
+          <td class="memname">int Bomb.explosiondistanceGenoma</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Indica si alguna bomba cercana ha explotado o no. </p>
+<p>Indica lo largo que se generan la explosiones de las bombas. </p>
 
 <p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00026">26</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 
@@ -286,12 +292,48 @@ Public Attributes</h2></td></tr>
 
 <p>Layermask donde hace efecto el RaycastHit. </p>
 
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00030">30</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+
+</div>
+</div>
+<a id="a410c3b8ab55bc5cbb46e5bda170fae17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a410c3b8ab55bc5cbb46e5bda170fae17">&#9670;&nbsp;</a></span>maxDistanceExplosion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Bomb.maxDistanceExplosion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indica la distancia maxima a la que puede alcanzar las explosiones de las bombas. </p>
+
+<p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00028">28</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
+
+</div>
+</div>
+<a id="aacca4cd34fa252e1c4529a101c7387f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacca4cd34fa252e1c4529a101c7387f4">&#9670;&nbsp;</a></span>spawnOrigin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject Bomb.spawnOrigin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indica el jugador que spawnea la bomba. </p>
+
 <p class="definition">Definition at line <a class="el" href="_bomb_8cs_source.html#l00024">24</a> of file <a class="el" href="_bomb_8cs_source.html">Bomb.cs</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/GitHub/Proyecto_II_BomberTEC/Client/Assets/Scripts/<a class="el" href="_bomb_8cs_source.html">Bomb.cs</a></li>
+<li>C:/GitHub/BOMBER_TEC/Client/Assets/Scripts/<a class="el" href="_bomb_8cs_source.html">Bomb.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

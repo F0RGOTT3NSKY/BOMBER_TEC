@@ -1,0 +1,10 @@
+digraph "MapGenerator.checkPlayersWay"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="MapGenerator.checkPlayersWay",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="checkPlayersWay() Analiza que haya camino entre los jugadores, retorna la matriz analizada"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MenuManagerScript.OnPlay\lButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_menu_manager_script.html#a0bfa1fd4fd4610337388056c4852c619",tooltip=" "];
+}

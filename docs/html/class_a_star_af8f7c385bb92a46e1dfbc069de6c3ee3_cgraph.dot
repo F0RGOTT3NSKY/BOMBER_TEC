@@ -1,0 +1,12 @@
+digraph "AStar.findPath"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="AStar.findPath",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Prepara la matriz y los nodos de inicio y meta para buscar la posible solucion."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AStar.purge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#a0e22a9352a0f9eb465451c51ad7d7d59",tooltip="Purga las listas (Abierta, Solucion, Cerrada)"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ListaSimple.cleanLista",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_lista_simple.html#a775eca18e2c5cb942f2d1b0acbac56ca",tooltip="Libera todos los nodos guardados en la lista."];
+}

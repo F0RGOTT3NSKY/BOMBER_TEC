@@ -1,0 +1,10 @@
+digraph "ListGenoma.PuntuationGenoma"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ListGenoma.PuntuationGenoma",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="PuntuationGenoma() Genera la puntuacion en base a la suma de los genes de los genomas."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ListGenoma.PuntuationGenomaAux",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list_genoma.html#adbb7a7c46826392493b653e7eb98a3cf",tooltip="PuntuationGenomaAux() se usa para calcular que tanto se tiene cada gen."];
+}

@@ -1,0 +1,28 @@
+digraph "Players.whereToGo"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Players.whereToGo",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="AStar.findPath",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#af8f7c385bb92a46e1dfbc069de6c3ee3",tooltip="Prepara la matriz y los nodos de inicio y meta para buscar la posible solucion."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="AStar.purge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#a0e22a9352a0f9eb465451c51ad7d7d59",tooltip="Purga las listas (Abierta, Solucion, Cerrada)"];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ListaSimple.cleanLista",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_lista_simple.html#a775eca18e2c5cb942f2d1b0acbac56ca",tooltip="Libera todos los nodos guardados en la lista."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="AStar.getNearNodo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#a0cfba38a52a243809a8843f1a5cf0268",tooltip="Devuelve el par ordenado de la solucion que se encuentre mas cercano al inicio, si este es (-1,..."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="NodoLista.getData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nodo_lista.html#a3319603a73749e5504e7d1540b9b6b99",tooltip=" "];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ListaSimple.getHead",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_lista_simple.html#a9ee09111637f9cbd8e64234544b97d4f",tooltip="Retorna en nodo head de la lista."];
+  Node5 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Dato.getId",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_dato.html#a5b50e1c87bccc654074c49f07801ef87",tooltip=" "];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Players.RandomValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_players.html#a9d4d1955408ccabd5ce6894c12264ae8",tooltip="Generates a random number within a range."];
+  Node1 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="AStar.solTamanno",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_star.html#afd7af760fab61556bd5bba5025e06d9a",tooltip="Devuelve la cantidad de nodos entre el puntode inicio y el punto meta @retrun int."];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="ListaSimple.getSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_lista_simple.html#a95e1ef0d1017b4e8189675a2de9b6ffe",tooltip=" "];
+}

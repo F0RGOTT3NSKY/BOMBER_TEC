@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['enemiesscript_186',['EnemiesScript',['../class_enemies_script.html',1,'']]],
-  ['enemy_187',['Enemy',['../class_enemy.html',1,'']]]
+  ['dato_191',['Dato',['../class_dato.html',1,'']]],
+  ['destroyself_192',['DestroySelf',['../class_destroy_self.html',1,'']]],
+  ['disabletriggeronplayerexit_193',['DisableTriggerOnPlayerExit',['../class_disable_trigger_on_player_exit.html',1,'']]]
 ];
