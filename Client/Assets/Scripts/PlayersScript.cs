@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayersScript : MonoBehaviour
 {
@@ -33,6 +34,14 @@ public class PlayersScript : MonoBehaviour
 
     /// Objeto para instanciar el display de atributos. 
     private GameObject diplay;
+
+    /// Objetos que guardan las imagenes de las vidas
+    public Sprite life0;
+    public Sprite life1;
+    public Sprite life2;
+    public Sprite life3;
+    public Sprite life4;
+    public Sprite life5;
 
     /// Numero de Filas del mapa
     public static int MFMap = 25;
@@ -94,42 +103,42 @@ public class PlayersScript : MonoBehaviour
             GameObject display = Instantiate(playerDisplay) as GameObject;
             display.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
             RectTransform rt = display.GetComponent<RectTransform>();
-            //b.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "Player 1";
-            Debug.Log("ScreenWidth: " + Screen.width + "ScreenHeight: "+ Screen.height);
+
+            Debug.Log("ScreenWidth: " + Screen.width + "ScreenHeight: " + Screen.height);
             Debug.Log("ScreenWidth: " + canvas.transform.localPosition.x + "ScreenHeight: " + canvas.transform.localPosition.y);
             switch (i)
             {
                 case 1:
                     player.transform.position = new Vector3(1f, 2f, 1f);
-                    rt.transform.localPosition = new Vector3(-canvas.transform.localPosition.x, ((Screen.height/2)-21)-(80*(i-1)), 0);
+                    rt.transform.localPosition = new Vector3(-canvas.transform.localPosition.x + 100, canvas.transform.localPosition.y - (30 + 80 * (i - 1)), 0);
                     break;
                 case 2:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) - 684, ((Screen.height / 2) - 21) - (80 * (i - 1)), 0);
+                    rt.transform.localPosition = new Vector3(-canvas.transform.localPosition.x + 100, canvas.transform.localPosition.y - (30 + 80 * (i - 1)), 0);
                     break;
                 case 3:
                     player.transform.position = new Vector3(1f, 2f, NCMap - 2f);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) - 684, ((Screen.height / 2) - 21) - (80 * (i - 1)), 0);
+                    rt.transform.localPosition = new Vector3(-canvas.transform.localPosition.x + 100, canvas.transform.localPosition.y - (30 + 80 * (i - 1)), 0);
                     break;
                 case 4:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, 1f);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) - 684, ((Screen.height / 2) - 21) - (80 * (i - 1)), 0);
+                    rt.transform.localPosition = new Vector3(-canvas.transform.localPosition.x + 100, canvas.transform.localPosition.y - (30 + 80 * (i - 1)), 0);
                     break;
                 case 5:
                     player.transform.position = new Vector3(MFMap / 2, 2f, 1f);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
+                    rt.transform.localPosition = new Vector3(canvas.transform.localPosition.x - 120, canvas.transform.localPosition.y - (30 + 80 * (i - 5)), 0);
                     break;
                 case 6:
                     player.transform.position = new Vector3(MFMap / 2, 2f, NCMap - 2f);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
+                    rt.transform.localPosition = new Vector3(canvas.transform.localPosition.x - 120, canvas.transform.localPosition.y - (30 + 80 * (i - 5)), 0);
                     break;
                 case 7:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap / 2);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
+                    rt.transform.localPosition = new Vector3(canvas.transform.localPosition.x - 120, canvas.transform.localPosition.y - (30 + 80 * (i - 5)), 0);
                     break;
                 case 8:
                     player.transform.position = new Vector3(1F, 2f, NCMap / 2);
-                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
+                    rt.transform.localPosition = new Vector3(canvas.transform.localPosition.x - 120, canvas.transform.localPosition.y - (30 + 80 * (i - 5)), 0);
                     break;
             }
         }
@@ -138,5 +147,108 @@ public class PlayersScript : MonoBehaviour
             ListPlayers[i].GetComponent<Players>().myObject = ListPlayers[i];
             ListPlayers[i].GetComponent<Players>().setListaEnemigos(ListPlayers);
         }
+    }
+    private void Update()
+    {
+        for(int i = 0; i < TotalPlayers; i++)
+        {
+            if (ListPlayers[i])
+            {
+                canvas.transform.GetChild(i).transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Player " + (i + 1);
+                //Update HealthBar
+                canvas.transform.GetChild(i).transform.GetChild(1).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().playerHealth;
+                canvas.transform.GetChild(i).transform.GetChild(1).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().playerHealth.ToString();
+                //Update PotenciaBar
+                canvas.transform.GetChild(i).transform.GetChild(2).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().potenciaGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(2).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().potenciaGenoma.ToString();
+                //Update CuracionBar
+                canvas.transform.GetChild(i).transform.GetChild(3).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().curarseGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(3).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().curarseGenoma.ToString();
+                //Update EnfermedadBar
+                canvas.transform.GetChild(i).transform.GetChild(4).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().enfermedadGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(4).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().enfermedadGenoma.ToString();
+                //Update VidasBar
+                canvas.transform.GetChild(i).transform.GetChild(5).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().vidasGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(5).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().vidasGenoma.ToString();
+                // Update VelocidadBar
+                canvas.transform.GetChild(i).transform.GetChild(6).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().velocidadGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(6).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().velocidadGenoma.ToString();
+                //Update ProtectionBar
+                canvas.transform.GetChild(i).transform.GetChild(7).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().protectionGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(7).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().protectionGenoma.ToString();
+                //Update SuerteBar
+                canvas.transform.GetChild(i).transform.GetChild(8).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().suerteGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(8).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().suerteGenoma.ToString();
+                //Update BombasBar
+                canvas.transform.GetChild(i).transform.GetChild(9).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().bombGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(9).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().bombGenoma.ToString();
+                //Update DistanciaBar
+                canvas.transform.GetChild(i).transform.GetChild(10).gameObject.GetComponent<Slider>().value = ListPlayers[i].GetComponent<Players>().distanceGenoma;
+                canvas.transform.GetChild(i).transform.GetChild(10).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = ListPlayers[i].GetComponent<Players>().distanceGenoma.ToString();
+                //Update CanDromBomb
+                canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(0).gameObject.GetComponent<Image>().enabled = ListPlayers[i].GetComponent<Players>().canDropBombs == true ? true : false;
+                //Update Healing
+                canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(1).gameObject.GetComponent<Image>().enabled = ListPlayers[i].GetComponent<Players>().canHeal == true ? true : false;
+                //Update Sickness
+                canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(3).gameObject.GetComponent<Image>().enabled = ListPlayers[i].GetComponent<Players>().canGetSick == true ? true : false;
+                //Update CurrentLifes
+                switch (ListPlayers[i].GetComponent<Players>().usedLifes)
+                {
+                    case 0:
+                        canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(2).gameObject.GetComponent<Image>().sprite = life0;
+                        break;
+                    case 1:
+                        canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(2).gameObject.GetComponent<Image>().sprite = life1;
+                        break;
+                    case 2:
+                        canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(2).gameObject.GetComponent<Image>().sprite = life2;
+                        break;
+                    case 3:
+                        canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(2).gameObject.GetComponent<Image>().sprite = life3;
+                        break;
+                    case 4:
+                        canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(2).gameObject.GetComponent<Image>().sprite = life4;
+                        break;
+                    case 5:
+                        canvas.transform.GetChild(i).transform.GetChild(11).transform.GetChild(2).gameObject.GetComponent<Image>().sprite = life5;
+                        break;
+                }
+            }
+            else
+            {
+                //Update HealthBar
+                canvas.transform.GetChild(i).transform.GetChild(1).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(1).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update PotenciaBar
+                canvas.transform.GetChild(i).transform.GetChild(2).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(2).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update CuracionBar
+                canvas.transform.GetChild(i).transform.GetChild(3).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(3).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update EnfermedadBar
+                canvas.transform.GetChild(i).transform.GetChild(4).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(4).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update VidasBar
+                canvas.transform.GetChild(i).transform.GetChild(5).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(5).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                // Update VelocidadBar
+                canvas.transform.GetChild(i).transform.GetChild(6).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(6).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update ProtectionBar
+                canvas.transform.GetChild(i).transform.GetChild(7).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(7).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update SuerteBar
+                canvas.transform.GetChild(i).transform.GetChild(8).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(8).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update BombasBar
+                canvas.transform.GetChild(i).transform.GetChild(9).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(9).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+                //Update DistanciaBar
+                canvas.transform.GetChild(i).transform.GetChild(10).gameObject.GetComponent<Slider>().value = 0;
+                canvas.transform.GetChild(i).transform.GetChild(10).transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "0";
+            }
+            
+        }
+        
     }
 }
