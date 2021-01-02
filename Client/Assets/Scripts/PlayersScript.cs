@@ -95,32 +95,41 @@ public class PlayersScript : MonoBehaviour
             display.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
             RectTransform rt = display.GetComponent<RectTransform>();
             //b.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "Player 1";
+            Debug.Log("ScreenWidth: " + Screen.width + "ScreenHeight: "+ Screen.height);
+            Debug.Log("ScreenWidth: " + Screen.width/3 + "ScreenHeight: " + Screen.height/2);
             switch (i)
             {
                 case 1:
                     player.transform.position = new Vector3(1f, 2f, 1f);
-                    rt.transform.localPosition = new Vector3((-Screen.width/3)-30, (Screen.height/2)-20, 0);
+                    rt.transform.localPosition = new Vector3((Screen.width/3) - 684, ((Screen.height/2)-21)-(80*(i-1)), 0);
                     break;
                 case 2:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) - 684, ((Screen.height / 2) - 21) - (80 * (i - 1)), 0);
                     break;
                 case 3:
                     player.transform.position = new Vector3(1f, 2f, NCMap - 2f);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) - 684, ((Screen.height / 2) - 21) - (80 * (i - 1)), 0);
                     break;
                 case 4:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, 1f);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) - 684, ((Screen.height / 2) - 21) - (80 * (i - 1)), 0);
                     break;
                 case 5:
                     player.transform.position = new Vector3(MFMap / 2, 2f, 1f);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
                     break;
                 case 6:
                     player.transform.position = new Vector3(MFMap / 2, 2f, NCMap - 2f);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
                     break;
                 case 7:
                     player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap / 2);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
                     break;
                 case 8:
                     player.transform.position = new Vector3(1F, 2f, NCMap / 2);
+                    rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
                     break;
             }
             
