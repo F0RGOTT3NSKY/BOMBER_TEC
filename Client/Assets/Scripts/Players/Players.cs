@@ -310,29 +310,29 @@ public class Players : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         { //Up movement
-            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
-            myTransform.rotation = Quaternion.Euler(0, 0, 0);
+            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 270, 0);   
             animator.SetBool("Walking", true);
         }
 
         if (Input.GetKey(KeyCode.A))
         { //Left movement
-            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
-            myTransform.rotation = Quaternion.Euler(0, 270, 0);
-            animator.SetBool("Walking", true);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        { //Down movement
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Walking", true);
         }
 
-        if (Input.GetKey(KeyCode.D))
-        { //Right movement
+        if (Input.GetKey(KeyCode.S))
+        { //Down movement
             rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        { //Right movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Walking", true);
         }
 
@@ -599,23 +599,17 @@ public class Players : MonoBehaviour
         if (mov == 0)
         { //Right movement
             Debug.Log("NO me muevo");
-
             moveCommand = 0;
             animator.SetBool("Walking", false);
-
         }
-
         if (mov == 1)
         { //Up movement
             Debug.Log("Me muevo ARRIBA");
-
             moveCommand = 1;
             rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Walking", true);
-
         }
-
         if (mov == 2)
         { //Left movement
             Debug.Log("Me muevo IZQUIERDA");
@@ -624,32 +618,23 @@ public class Players : MonoBehaviour
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Walking", true);
-
         }
-
         if (mov == 3)
         { //Down movement
             Debug.Log("Me muevo ABAJO");
-
             moveCommand = 3;
             rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
             myTransform.rotation = Quaternion.Euler(0, 90, 0);
             animator.SetBool("Walking", true);
-
-
         }
-
         if (mov == 4)
         { //Right movement
             Debug.Log("Me muevo DERECHA");
-
             moveCommand = 4;
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Walking", true);
-
         }
-
         if (canDropBombs && mov == 5)
         {
             DropBomb();

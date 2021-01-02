@@ -132,7 +132,11 @@ public class PlayersScript : MonoBehaviour
                     rt.transform.localPosition = new Vector3((Screen.width / 3) + 36, ((Screen.height / 2) - 21) - (80 * (i - 5)), 0);
                     break;
             }
-            
+        }
+        for (int i = 0; i < TotalPlayers; i++)
+        {
+            ListPlayers[i].GetComponent<Players>().myObject = ListPlayers[i];
+            ListPlayers[i].GetComponent<Players>().setListaEnemigos(ListPlayers);
         }
     }
 }
