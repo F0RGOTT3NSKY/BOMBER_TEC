@@ -13,9 +13,6 @@ public class PlayersScript : MonoBehaviour
     /// Lista de los jugadores
     private List<GameObject> ListPlayers;
 
-    /// Lista de los enemigos
-    private List<GameObject> ListEnemies;
-
     /// Vector3 para posicionar los bloques en la zona de trabajo
     private Vector3 screenPosition;
 
@@ -41,6 +38,8 @@ public class PlayersScript : MonoBehaviour
     // Matriz del Menu
     public float[,] mapMatriz;
 
+    public int TotalPlayers = 0;
+
     /// Start is called before the first frame update
     void Start()
     {
@@ -52,6 +51,7 @@ public class PlayersScript : MonoBehaviour
             mms = FindObjectOfType<MenuManagerScript>();
             nPlayers = mms.nPlayers;
             nEnemies = mms.nEnemies;
+            TotalPlayers = nPlayers + nEnemies;
             MFMap = mms.heightMap;
             NCMap = mms.widthMap;
             mapMatriz = mms.mapMatriz;
@@ -61,14 +61,9 @@ public class PlayersScript : MonoBehaviour
         {
             Debug.Log(e);
         }
-
-
-
         ListPlayers = new List<GameObject>();
-        ListEnemies = new List<GameObject>();
 
-        int f = nPlayers + 1;
-        for (int i = 1 ; i < f ; i++)
+        for (int i = 1; i <= TotalPlayers; i++)
         {
 
             switch (i)
@@ -98,77 +93,26 @@ public class PlayersScript : MonoBehaviour
                     screenPosition = new Vector3(1F, 2f, NCMap / 2);
                     break;
             }
-
-            GameObject a = Instantiate(PlayerPrefab) as GameObject;
-            a.transform.position = screenPosition;
-
-            a.GetComponent<Players>().playerNumber = i;
-
-            ListPlayers.Add(a);
-
-        }
-        int j = f + nEnemies;
-        for (int i = f; i < j; i++)
-        {
-            switch (i)
+            if (i <= nPlayers)
             {
-                case 1:
-                    screenPosition = new Vector3(1f, 2f, 1f);
-                    break;
-                case 2:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
-                    break;
-                case 3:
-                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
-                    break;
-                case 4:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
-                    break;
-                case 5:
-                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
-                    break;
-                case 6:
-                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
-                    break;
-                case 7:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
-                    break;
-                case 8:
-                    screenPosition = new Vector3(1F, 2f, NCMap / 2);
-                    break;
+                GameObject a = Instantiate(PlayerPrefab) as GameObject;
+                a.transform.position = screenPosition;
+
+                a.GetComponent<Players>().playerNumber = i;
+                a.GetComponent<Players>().totalplayers = TotalPlayers;
+                a.GetComponent<Players>().globalStateManager = globalManager;
+                ListPlayers.Add(a);
             }
+            else
+            {
+                GameObject a = Instantiate(EnemyPrefab) as GameObject;
+                a.transform.position = screenPosition;
 
-            GameObject a = Instantiate(EnemyPrefab) as GameObject;
-            a.transform.position = screenPosition;
-
-            a.GetComponent<Players>().playerNumber = 0;
-
-            ListEnemies.Add(a);
-
+                a.GetComponent<Players>().playerNumber = 0;
+                a.GetComponent<Players>().totalplayers = TotalPlayers;
+                a.GetComponent<Players>().globalStateManager = globalManager;
+                ListPlayers.Add(a);
+            }
         }
-
     }
-
 }
-
-
-/*
-                case 0:
-                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
-                    break;
-                case 1:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
-                    break;
-                case 2:
-                    screenPosition = new Vector3(MFMap/2 , 2f, 1f);
-                    break;
-                case 3:
-                    screenPosition = new Vector3(MFMap/2 , 2f, NCMap -2f);
-                    break;
-                case 4:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap/2 );
-                    break;
-                case 5:
-                    screenPosition = new Vector3(1F, 2f, NCMap/2);
-                    break;
- */

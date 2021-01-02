@@ -11,6 +11,8 @@ public class Players : MonoBehaviour
     [Range(0, 4)]
     /// Indica el numero del jugador qe se está manipulado
     public int playerNumber = 1;
+
+    public int totalplayers = 0;
     /// Velocidad del movimiento
     public float moveSpeed = 0;
     /// Indica el numero de bombas que ha tirado el jugador.
@@ -107,7 +109,6 @@ public class Players : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         myTransform = transform;
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
-
         //Inicia la poblacion de genomas
         playerGenoma.AddNodeGenoma(20);
     }
@@ -155,27 +156,27 @@ public class Players : MonoBehaviour
     private void UpdatePlayerGenoma()
     {
         // Update gen_bombas_numero
-        bombGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bombas_numero;
+        bombGenoma = playerGenoma.genomaList[totalplayers - 1].gen_bombas_numero;
         // Update gen_bomba_potencia
-        potenciaGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bomba_potencia;
+        potenciaGenoma = playerGenoma.genomaList[totalplayers - 1].gen_bomba_potencia;
         // Update gen_vidas
-        vidasGenoma = playerGenoma.genomaList[playerNumber - 1].gen_vidas;
+        vidasGenoma = playerGenoma.genomaList[totalplayers - 1].gen_vidas;
         // Update gen_bomba_cruz
-        distanceGenoma = playerGenoma.genomaList[playerNumber - 1].gen_bomba_cruz;
+        distanceGenoma = playerGenoma.genomaList[totalplayers - 1].gen_bomba_cruz;
         // Update  gen_curarse
-        curarseGenoma = playerGenoma.genomaList[playerNumber - 1].gen_curarse;
+        curarseGenoma = playerGenoma.genomaList[totalplayers - 1].gen_curarse;
         // Update gen_enfermedad
-        enfermedadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_enfermedad;
+        enfermedadGenoma = playerGenoma.genomaList[totalplayers - 1].gen_enfermedad;
         // Update gen_protection
-        protectionGenoma = playerGenoma.genomaList[playerNumber - 1].gen_protection;
+        protectionGenoma = playerGenoma.genomaList[totalplayers - 1].gen_protection;
         // Update gen_velocidad
-        velocidadGenoma = playerGenoma.genomaList[playerNumber - 1].gen_velocidad;
+        velocidadGenoma = playerGenoma.genomaList[totalplayers - 1].gen_velocidad;
         // Update gen_suerte
-        suerteGenoma = playerGenoma.genomaList[playerNumber - 1].gen_suerte;
+        suerteGenoma = playerGenoma.genomaList[totalplayers - 1].gen_suerte;
         // Update gen_lanzamiento
-        lanzamientoGenoma = playerGenoma.genomaList[playerNumber - 1].gen_lanzamiento;
+        lanzamientoGenoma = playerGenoma.genomaList[totalplayers - 1].gen_lanzamiento;
         // Update  gen_esconderse
-        esconderseGenoma = playerGenoma.genomaList[playerNumber - 1].gen_esconderse;
+        esconderseGenoma = playerGenoma.genomaList[totalplayers - 1].gen_esconderse;
     }
     private void CheckBombDrop()
     {
