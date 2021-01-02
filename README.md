@@ -23,6 +23,10 @@ Actualmente el juego debe ejecutado dentro de la intefaz de Unity
 ```
 $ git clone https://github.com/F0RGOTT3NSKY/BomberTEC.git
 ```
+## Advertencias
+***
+No ejecutar el programa con las siguientes variables debido a exceso requirimiento de recursos
+* Dimension del Mapa 50x50
 
 ## Collaboration
 ***
