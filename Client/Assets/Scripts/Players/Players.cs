@@ -165,16 +165,17 @@ public class Players : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerNumber != 0)
-        {
-            UpdateMovement();
-        }
+        UpdateMovement();
+        EnemyMovement();
         UpdatePlayerGenoma();
         ResetLimits();
         //Verifica si el personaje puede dropear bombas segun el gen
         CheckBombDrop();
         UpdateGenomas();
-
+        frames++;
+    }
+    private void EnemyMovement()
+    {
         //Si es un ENEMY
         if (playerNumber == 0)
         {
@@ -182,8 +183,6 @@ public class Players : MonoBehaviour
             {
                 myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
                     myTransform.transform.position.y, Mathf.RoundToInt(myTransform.position.z));
-
-                frames = 1;
             }
 
             if (frames % 30 == 0)
@@ -203,9 +202,6 @@ public class Players : MonoBehaviour
                 UpdateEnemyMovement(moveCommand);
             }
         }
-
-
-        frames++;
     }
     private void ResetLimits()
     {
