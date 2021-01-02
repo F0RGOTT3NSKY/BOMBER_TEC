@@ -630,7 +630,7 @@ public class Players : MonoBehaviour
                     myTransform.transform.position.y, Mathf.RoundToInt(myTransform.position.z));
             }
 
-            if (frames % 30 == 0)
+            if (frames % 60 == 0)
             {
                 if (safe == true)
                 {
@@ -642,7 +642,7 @@ public class Players : MonoBehaviour
                 }
             }
 
-            if (frames % 15 == 0)
+            if (frames % 5 == 0)
             {
                 UpdateEnemyMovement(moveCommand);
             }
@@ -682,7 +682,7 @@ public class Players : MonoBehaviour
 
                             // si la cantidad de nodos entre esta posicion y la del enemigo sea menor o igual a la anterior
                             // cambiar a la mejor solucion
-                            if (auxNumber < bestSol)
+                            if (auxNumber > bestSol)
                             {
                                 Debug.Log("Menor camino");
                                 bestSol = auxNumber;
@@ -692,8 +692,7 @@ public class Players : MonoBehaviour
 
                             else
                             {
-                                System.Random random = new System.Random();
-                                int cambio = random.Next(1, 101);
+                                int cambio = RandomValue(0, 101);
                                 Debug.Log("Ahora es un 5% de perseguir a alguien mas " + cambio);
 
                                 if (cambio <= 5)

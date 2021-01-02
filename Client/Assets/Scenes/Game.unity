@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 196314165}
   - component: {fileID: 196314164}
   - component: {fileID: 196314166}
-  - component: {fileID: 196314167}
   m_Layer: 0
   m_Name: Global State Manager
   m_TagString: Untagged
@@ -185,19 +184,6 @@ MonoBehaviour:
   destructibleBlockPrefab: {fileID: 137343104563407224, guid: da662fce6aad53b48b9f351747adb7df,
     type: 3}
   mms: {fileID: 0}
---- !u!114 &196314167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196314163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f69522e0e3ab254ba748a38c4e2cdc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frames: 0
 --- !u!1 &356045260
 GameObject:
   m_ObjectHideFlags: 0
