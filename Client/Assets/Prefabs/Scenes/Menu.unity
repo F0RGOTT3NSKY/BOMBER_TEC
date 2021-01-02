@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 204200015}
   - component: {fileID: 204200014}
   m_Layer: 5
-  m_Name: TextHeight
+  m_Name: TextDimensions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Height
+  m_Text: 'Dimensions: 25 x 25'
 --- !u!222 &204200015
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -352,8 +352,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.2, y: -180.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 402.6, y: -182}
+  m_SizeDelta: {x: 205.19995, y: 32.3779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &444972240
 GameObject:
@@ -391,7 +391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 463.4, y: -26.2}
+  m_AnchoredPosition: {x: 433.39987, y: -28.999989}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444972242
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
+      - m_Target: {fileID: 0}
         m_MethodName: PlayersPlus
         m_Mode: 1
         m_Arguments:
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 620782602}
   - component: {fileID: 620782603}
   m_Layer: 5
-  m_Name: TextWidth
+  m_Name: TextEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.2, y: -88.3}
+  m_AnchoredPosition: {x: 398.39996, y: -91.59999}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &620782602
@@ -718,7 +718,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Width
+  m_Text: 'Enemies: 1'
 --- !u!1 &704944164
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 425.2, y: 0.5}
+  m_AnchoredPosition: {x: 398.39996, y: 1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &704944166
@@ -796,7 +796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Players
+  m_Text: 'Players: 1'
 --- !u!1 &727097780
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 393.6, y: -26.2}
+  m_AnchoredPosition: {x: 360.19998, y: -28.999989}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727097782
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
+      - m_Target: {fileID: 0}
         m_MethodName: PlayersLess
         m_Mode: 1
         m_Arguments:
@@ -963,7 +963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465.2, y: -121.6}
+  m_AnchoredPosition: {x: 433.39996, y: -121.6}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &922876505
@@ -1009,8 +1009,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
-        m_MethodName: WidthPlus
+      - m_Target: {fileID: 0}
+        m_MethodName: EnemiesPlus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1093,7 +1093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 463.4, y: -203.9}
+  m_AnchoredPosition: {x: 435.19992, y: -213.19}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926517073
@@ -1139,8 +1139,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
-        m_MethodName: HeightPlus
+      - m_Target: {fileID: 0}
+        m_MethodName: DimensionsPlus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1360,12 +1360,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49ffd3a6ea70524daad95b2c644cfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nPlayers: 2
-  widthMap: 15
-  heightMap: 15
+  nPlayers: 1
+  nEnemies: 1
+  widthMap: 25
+  heightMap: 25
   PlayerText: {fileID: 704944167}
-  WidthText: {fileID: 620782603}
-  HeightText: {fileID: 204200014}
+  DimensionsText: {fileID: 204200014}
+  EnemiesText: {fileID: 620782603}
 --- !u!4 &1202951525
 Transform:
   m_ObjectHideFlags: 0
@@ -2024,7 +2025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
+      - m_Target: {fileID: 0}
         m_MethodName: OnPlayButton
         m_Mode: 1
         m_Arguments:
@@ -2260,7 +2261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 393.6, y: -203.9}
+  m_AnchoredPosition: {x: 363.6, y: -213.19}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952096034
@@ -2306,8 +2307,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
-        m_MethodName: HeightLess
+      - m_Target: {fileID: 0}
+        m_MethodName: DimensionsLess
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2390,7 +2391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 393.6, y: -121.6}
+  m_AnchoredPosition: {x: 360.19998, y: -121.6}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007686159
@@ -2436,8 +2437,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1202951524}
-        m_MethodName: WidthLess
+      - m_Target: {fileID: 0}
+        m_MethodName: EnemiesLess
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

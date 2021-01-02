@@ -10,14 +10,20 @@ public class PlayersScript : MonoBehaviour
     /// Global State Manager
     public GlobalStateManager globalManager;
 
-    /// Lista de los enemigos
+    /// Lista de los jugadores
     private List<GameObject> ListPlayers;
+
+    /// Lista de los enemigos
+    private List<GameObject> ListEnemies;
 
     /// Vector3 para posicionar los bloques en la zona de trabajo
     private Vector3 screenPosition;
 
-    /// Objeto que almacena el jugador enemigo
+    /// Objeto que almacena el jugador
     public GameObject PlayerPrefab;
+
+    /// Objeto que almacena el enemigo
+    public GameObject EnemyPrefab;
 
 
     /// Numero de Filas del mapa
@@ -59,29 +65,24 @@ public class PlayersScript : MonoBehaviour
 
 
         ListPlayers = new List<GameObject>();
+        ListEnemies = new List<GameObject>();
 
-        for (int i = 0; i < nPlayers; i++)
+        for (int i = 1; i < nPlayers; i++)
         {
 
             switch (i)
             {
-                case 0:
-                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
-                    break;
                 case 1:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
+                    screenPosition = new Vector3(1f, 2f, 1f);
                     break;
                 case 2:
-                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
+                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
                     break;
                 case 3:
-                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
+                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
                     break;
                 case 4:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
-                    break;
-                case 5:
-                    screenPosition = new Vector3(1F, 2f, NCMap / 2);
+                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
                     break;
             }
 
@@ -95,37 +96,30 @@ public class PlayersScript : MonoBehaviour
         }
 
 
-        for (int i = 0; i < nPlayers; i++)
+        for (int i = 0; i < nEnemies; i++)
         {
-
             switch (i)
             {
-                case 0:
-                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
-                    break;
                 case 1:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
-                    break;
-                case 2:
                     screenPosition = new Vector3(MFMap / 2, 2f, 1f);
                     break;
-                case 3:
+                case 2:
                     screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
                     break;
-                case 4:
+                case 3:
                     screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
                     break;
-                case 5:
+                case 4:
                     screenPosition = new Vector3(1F, 2f, NCMap / 2);
                     break;
             }
 
-            GameObject a = Instantiate(PlayerPrefab) as GameObject;
+            GameObject a = Instantiate(EnemyPrefab) as GameObject;
             a.transform.position = screenPosition;
 
-            a.GetComponent<Players>().playerNumber = i;
+            a.GetComponent<Players>().playerNumber = 0;
 
-            ListPlayers.Add(a);
+            ListEnemies.Add(a);
 
         }
 
