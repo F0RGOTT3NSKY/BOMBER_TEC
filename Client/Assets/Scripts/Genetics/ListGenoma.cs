@@ -73,46 +73,6 @@ public class ListGenoma : MonoBehaviour
         genomaList = new List<nodeGenoma>();
     }
     /*!
-     * @brief Start() is called before the first frame update.
-     * @details Se usa para iniciar la creacion de los individuos por primera vez y asi empezar con el algoritmo genetico.
-     */
-    /*public void Start()
-    {
-        AddNodeGenoma(20);
-    }*/
-    /*!
-     * @brief Update() is called once per frame.
-     * @details Se usa para actualizar la poblacion de individuos cada n numero de frames 
-     * y asi aplicar el algoritmo genetico al combinar y mutar a los individuos.
-     */
-    /*public void Update()
-    {
-        frames++;
-        if(frames % 200 == 0)
-        {
-            for (int i= 1; i<=10;i++)
-            {
-                genomaList.Add(Combine(genomaList[RandomValue(0, genomaList.Count/2)], genomaList[RandomValue(0, genomaList.Count/2)]));
-                genomaList[genomaList.Count - 1] = AddGenomaValues(genomaList[genomaList.Count - 1]);
-                genomaList[genomaList.Count - 1].setPuntaje(PuntuationGenoma(genomaList[genomaList.Count - 1]));
-            }
-            Organizar();
-            int size = genomaList.Count / 2;
-            for (int i = 0; i < size; i++)
-            {
-                genomaList.RemoveAt(genomaList.Count - 1);
-            }
-            
-            // Asignar a los jugadores
-            Debug.Log("Every 200th frame");
-            for (int i = 0; i < genomaList.Count; i++)
-            {
-                Debug.Log(genomaList[i].Puntaje);
-
-            }
-        }
-    }*/
-    /*!
      * @brief AddNodeGenoma se usa para anadir nuevos individuos a la lista de  la poblacion.
      * @details Se anaden nuevos individuos, se organizan de mayor puntaje a menor, y luego se descarta la mitad de peor puntaje.
      * @param town Indica la cantidad de nuevos individuos a la poblacion.

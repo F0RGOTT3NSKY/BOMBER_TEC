@@ -7,6 +7,9 @@ TagManager:
   - Block
   - Explosion
   - Brick
+  - Canvas
+  - Map
+  - Players
   layers:
   - Default
   - TransparentFX

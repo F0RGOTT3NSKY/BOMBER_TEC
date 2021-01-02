@@ -77,6 +77,7 @@ public class seeMap : MonoBehaviour
                 {
                     screenPosition = new Vector3(i, 1f, j);
                     GameObject a = Instantiate(floorPrefab) as GameObject;
+                    a.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform, false);
                     a.transform.position = screenPosition;
                 } 
                 else if (_map[i, j] == 2f)
@@ -84,6 +85,7 @@ public class seeMap : MonoBehaviour
                     
                     screenPosition = new Vector3(i, 2f, j);
                     GameObject a = Instantiate(fixBlockPrefab) as GameObject;
+                    a.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform, false);
                     a.transform.position = screenPosition;
                 }
                 else if (_map[i,j] == 3f)
@@ -91,10 +93,12 @@ public class seeMap : MonoBehaviour
                    
                     screenPosition = new Vector3(i, 2f, j);
                     GameObject a = Instantiate(destructibleBlockPrefab) as GameObject;
+                    a.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform, false);
                     a.transform.position = screenPosition;
 
                     screenPosition = new Vector3(i, 1f, j);
                     GameObject b = Instantiate(floorPrefab) as GameObject;
+                    b.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform, false);
                     b.transform.position = screenPosition;
                 }
             }

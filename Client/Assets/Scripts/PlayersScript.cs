@@ -10,6 +10,9 @@ public class PlayersScript : MonoBehaviour
     /// Global State Manager
     public GlobalStateManager globalManager;
 
+    /// Canvas
+    public Canvas canvas;
+
     /// Lista de los jugadores
     private List<GameObject> ListPlayers;
 
@@ -22,7 +25,14 @@ public class PlayersScript : MonoBehaviour
     /// Objeto que almacena el enemigo
     public GameObject EnemyPrefab;
 
+    /// Objeto que almacena el display de atributos
+    public GameObject playerDisplay;
 
+    /// Objeto para instanciar a los jugadores.
+    private GameObject player;
+
+    /// Objeto para instanciar el display de atributos. 
+    private GameObject diplay;
 
     /// Numero de Filas del mapa
     public static int MFMap = 25;
@@ -63,57 +73,57 @@ public class PlayersScript : MonoBehaviour
             Debug.Log(e);
         }
         ListPlayers = new List<GameObject>();
-
+        
         for (int i = 1; i <= TotalPlayers; i++)
         {
-
-            switch (i)
-            {
-                case 1:
-                    screenPosition = new Vector3(1f, 2f, 1f);
-                    break;
-                case 2:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
-                    break;
-                case 3:
-                    screenPosition = new Vector3(1f, 2f, NCMap - 2f);
-                    break;
-                case 4:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, 1f);
-                    break;
-                case 5:
-                    screenPosition = new Vector3(MFMap / 2, 2f, 1f);
-                    break;
-                case 6:
-                    screenPosition = new Vector3(MFMap / 2, 2f, NCMap - 2f);
-                    break;
-                case 7:
-                    screenPosition = new Vector3(MFMap - 2f, 2f, NCMap / 2);
-                    break;
-                case 8:
-                    screenPosition = new Vector3(1F, 2f, NCMap / 2);
-                    break;
-            }
             if (i <= nPlayers)
             {
-                GameObject a = Instantiate(PlayerPrefab) as GameObject;
-                a.transform.position = screenPosition;
-
-                a.GetComponent<Players>().playerNumber = i;
-                a.GetComponent<Players>().totalplayers = TotalPlayers;
-                a.GetComponent<Players>().globalStateManager = globalManager;
-                ListPlayers.Add(a);
+                player = Instantiate(PlayerPrefab) as GameObject;
+                player.GetComponent<Players>().playerNumber = i;
             }
             else
             {
-                GameObject a = Instantiate(EnemyPrefab) as GameObject;
-                a.transform.position = screenPosition;
-
-                a.GetComponent<Players>().playerNumber = 0;
-                a.GetComponent<Players>().totalplayers = TotalPlayers;
-                a.GetComponent<Players>().globalStateManager = globalManager;
-                ListPlayers.Add(a);
+                player = Instantiate(EnemyPrefab) as GameObject;
+                player.GetComponent<Players>().playerNumber = 0;
             }
+            player.transform.SetParent(GameObject.FindGameObjectWithTag("Players").transform, false);
+            player.GetComponent<Players>().totalplayers = TotalPlayers;
+            player.GetComponent<Players>().globalStateManager = globalManager;
+            player.transform.position = screenPosition;
+            ListPlayers.Add(player);
+            GameObject display = Instantiate(playerDisplay) as GameObject;
+            display.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+            RectTransform rt = display.GetComponent<RectTransform>();
+            //b.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "Player 1";
+            switch (i)
+            {
+                case 1:
+                    player.transform.position = new Vector3(1f, 2f, 1f);
+                    rt.transform.localPosition = new Vector3((-Screen.width/3)-30, (Screen.height/2)-20, 0);
+                    break;
+                case 2:
+                    player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap - 2f);
+                    break;
+                case 3:
+                    player.transform.position = new Vector3(1f, 2f, NCMap - 2f);
+                    break;
+                case 4:
+                    player.transform.position = new Vector3(MFMap - 2f, 2f, 1f);
+                    break;
+                case 5:
+                    player.transform.position = new Vector3(MFMap / 2, 2f, 1f);
+                    break;
+                case 6:
+                    player.transform.position = new Vector3(MFMap / 2, 2f, NCMap - 2f);
+                    break;
+                case 7:
+                    player.transform.position = new Vector3(MFMap - 2f, 2f, NCMap / 2);
+                    break;
+                case 8:
+                    player.transform.position = new Vector3(1F, 2f, NCMap / 2);
+                    break;
+            }
+            
         }
     }
 }
