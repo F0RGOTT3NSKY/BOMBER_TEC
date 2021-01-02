@@ -180,59 +180,7 @@ public class Players : MonoBehaviour
         UpdateGenomas();
         frames++;
     }
-    private void EnemyMovement()
-    {
-        //Si es un ENEMY
-        if (playerNumber == 0)
-        {
-            if (frames % 240 == 0)
-            {
-                myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
-                    myTransform.transform.position.y, Mathf.RoundToInt(myTransform.position.z));
-            }
-
-            if (frames % 30 == 0)
-            {
-                if (safe == true)
-                {
-                    whereToGo(1);
-                }
-                else
-                {
-                    whereToGo(2);
-                }
-            }
-
-            if (frames % 15 == 0)
-            {
-                UpdateEnemyMovement(moveCommand);
-            }
-        }
-    }
-    private void EnemyDropBomb()
-    {
-        if (frames % 100 == 0)
-        {
-            lastPosition = myTransform.position;
-        }
-        if (playerNumber == 0)
-        {
-            if (frames % 350 == 0)
-            {
-                elegido = RandomValue(0, 11);
-                if (elegido <= 7 && myTransform.position==lastPosition)
-                {
-                    UpdateEnemyMovement(5);
-                    safe = false;
-                }
-                if (frames % 100 == 0)
-                {
-                    safe = true;
-                }
-            }
-        }
-        
-    }
+    
     private void ResetLimits()
     {
         //Update player movement speed 
@@ -507,6 +455,68 @@ public class Players : MonoBehaviour
     //==============================================================================
     //                        =>  PARA EL ENEMY  <=
     //==============================================================================
+    
+    /*!
+    * @brief Dependiendo de la posicion decide soltar plantar una bomba
+    * @return void
+    */
+    private void EnemyDropBomb()
+    {
+        if (frames % 100 == 0)
+        {
+            lastPosition = myTransform.position;
+        }
+        if (playerNumber == 0)
+        {
+            if (frames % 350 == 0)
+            {
+                elegido = RandomValue(0, 11);
+                if (elegido <= 7 && myTransform.position == lastPosition)
+                {
+                    UpdateEnemyMovement(5);
+                    safe = false;
+                }
+                if (frames % 100 == 0)
+                {
+                    safe = true;
+                }
+            }
+        }
+    }
+
+    /*!
+    * @details Dependiendo si hay peligro caza a un enemigo, o  busca refugio.
+    * @return void
+    */
+    private void EnemyMovement()
+    {
+        //Si es un ENEMY
+        if (playerNumber == 0)
+        {
+            if (frames % 240 == 0)
+            {
+                myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
+                    myTransform.transform.position.y, Mathf.RoundToInt(myTransform.position.z));
+            }
+
+            if (frames % 30 == 0)
+            {
+                if (safe == true)
+                {
+                    whereToGo(1);
+                }
+                else
+                {
+                    whereToGo(2);
+                }
+            }
+
+            if (frames % 15 == 0)
+            {
+                UpdateEnemyMovement(moveCommand);
+            }
+        }
+    }
 
     /*!
     * @details busca un camino hacia un enemigo en el campo o hacia un lugar seguro
@@ -541,7 +551,7 @@ public class Players : MonoBehaviour
 
                             // si la cantidad de nodos entre esta posicion y la del enemigo sea menor o igual a la anterior
                             // cambiar a la mejor solucion
-                            if (auxNumber <= bestSol)
+                            if (auxNumber < bestSol)
                             {
                                 Debug.Log("Menor camino");
                                 bestSol = auxNumber;
@@ -583,7 +593,7 @@ public class Players : MonoBehaviour
     }
 
     /*!
-    * @brief Compara la posicion del nodo cerdano con la posicion actual del personaje, para decidir en que direccion moverse
+    * @brief Compara la posicion del nodo cercano con la posicion actual del personaje, para decidir en que direccion moverse
     * @param _direcction, int[] par ordenado de coordenadas del nodo mas cercano al inicio con direccion a la meta
     * @return void
     */
