@@ -87,6 +87,22 @@ public class Players : MonoBehaviour
     /// Indica si el jugador puede enfermarse.
     public bool canGetSick = false;
 
+    //Moviemiento
+    public static List<GameObject> listaEnemigos;
+    private GameObject tmpEnemy;
+    public GameObject myObject;
+    private AStar path;
+    public bool safe;
+    private int moveCommand;
+    private int bestSol;
+    private int[] bestSolPos;
+    private int[] myPos;
+    private int[] enemyPos;
+    private int[] home;
+
+    /// MenuScriptOptions
+    public MenuManagerScript mms;
+
     //Contadores
 
     /// Indica el numero de frames.
@@ -103,6 +119,11 @@ public class Players : MonoBehaviour
 
     ListGenoma playerGenoma = new ListGenoma();
 
+    private void Awake()
+    {
+        listaEnemigos = new List<GameObject>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,17 +132,79 @@ public class Players : MonoBehaviour
         animator = myTransform.Find("PlayerModel").GetComponent<Animator>();
         //Inicia la poblacion de genomas
         playerGenoma.AddNodeGenoma(20);
+
+        //Si es un ENEMY
+        if(playerNumber == 0)
+        {
+            try
+            {
+                //Obtener los datos del menu 
+                mms = FindObjectOfType<MenuManagerScript>();
+                path = new AStar(10, mms.mapMatriz, mms.heightMap, mms.widthMap);
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log(e);
+            }
+
+            tmpEnemy = null;
+
+            safe = true;
+            moveCommand = 0;
+            bestSol = int.MaxValue;
+            bestSolPos = new int[2];
+            myPos = new int[2];
+            enemyPos = new int[2];
+
+            //Posicion Inicial "Home"
+            home = new int[2];
+            home[0] = Mathf.RoundToInt(myTransform.position.x); home[1] = Mathf.RoundToInt(myTransform.position.z);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateMovement();
+        if (playerNumber != 0)
+        {
+            UpdateMovement();
+        }
         UpdatePlayerGenoma();
         ResetLimits();
         //Verifica si el personaje puede dropear bombas segun el gen
         CheckBombDrop();
         UpdateGenomas();
+
+        //Si es un ENEMY
+        if (playerNumber == 0)
+        {
+            if (frames % 240 == 0)
+            {
+                myTransform.position = new Vector3(Mathf.RoundToInt(myTransform.position.x),
+                    myTransform.transform.position.y, Mathf.RoundToInt(myTransform.position.z));
+
+                frames = 1;
+            }
+
+            if (frames % 30 == 0)
+            {
+                if (safe == true)
+                {
+                    whereToGo(1);
+                }
+                else
+                {
+                    whereToGo(2);
+                }
+            }
+
+            if (frames % 15 == 0)
+            {
+                UpdateEnemyMovement(moveCommand);
+            }
+        }
+
+
         frames++;
     }
     private void ResetLimits()
@@ -393,5 +476,192 @@ public class Players : MonoBehaviour
     public int RandomValue(int min, int max)
     {
         return _random.Next(min, max);
+    }
+
+    //==============================================================================
+    //                        =>  PARA EL ENEMY  <=
+    //==============================================================================
+
+    /*!
+    * @details busca un camino hacia un enemigo en el campo o hacia un lugar seguro
+    * @param action, int 1 para buscar a enemigos, 2 para camino seguro
+    * @return void
+    */
+    public void whereToGo(int action)
+    {
+        myPos[0] = Mathf.RoundToInt(myTransform.position.x);
+        myPos[1] = Mathf.RoundToInt(myTransform.position.z);
+
+        //A buscar un enemigo cercano
+        if (action == 1)
+        {
+            for (int i = 0; i < totalplayers; i++)
+            {
+                //si el enemigo no se haya destruido
+                if (listaEnemigos[i].Equals(null) != true)
+                {
+                    tmpEnemy = listaEnemigos[i];
+
+                    //No sea igual a esta instancia (self, this)
+                    if (tmpEnemy != myObject)
+                    {
+                        enemyPos[0] = Mathf.RoundToInt(tmpEnemy.transform.position.x);
+                        enemyPos[1] = Mathf.RoundToInt(tmpEnemy.transform.position.z);
+
+                        //si hay un camino
+                        if (path.findPath(myPos, enemyPos) == true)
+                        {
+                            int auxNumber = path.solTamanno();
+
+                            // si la cantidad de nodos entre esta posicion y la del enemigo sea menor o igual a la anterior
+                            // cambiar a la mejor solucion
+                            if (auxNumber <= bestSol)
+                            {
+                                Debug.Log("Menor camino");
+                                bestSol = auxNumber;
+                                bestSolPos[0] = path.getNearNodo()[0];
+                                bestSolPos[1] = path.getNearNodo()[1];
+                            }
+
+                            else
+                            {
+                                System.Random random = new System.Random();
+                                int cambio = random.Next(1, 101);
+                                Debug.Log("Ahora es un 5% de perseguir a alguien mas " + cambio);
+
+                                if (cambio <= 5)
+                                {
+                                    Debug.Log("Cambie de opinion y persigo a alguien mas... Jejepz");
+                                    bestSolPos[0] = path.getNearNodo()[0];
+                                    bestSolPos[1] = path.getNearNodo()[1];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            bestSol = int.MaxValue;
+            movementAi(bestSolPos);
+        }
+        //Correr a home para salvarse
+        else if (action == 2)
+        {
+            if (path.findPath(myPos, home) == true)
+            {
+                bestSolPos[0] = path.getNearNodo()[0];
+                bestSolPos[1] = path.getNearNodo()[1];
+                movementAi(bestSolPos);
+            }
+        }
+    }
+
+    /*!
+    * @brief Compara la posicion del nodo cerdano con la posicion actual del personaje, para decidir en que direccion moverse
+    * @param _direcction, int[] par ordenado de coordenadas del nodo mas cercano al inicio con direccion a la meta
+    * @return void
+    */
+    private void movementAi(int[] _direccion)
+    {
+        if (myPos[0] > _direccion[0])
+        {
+            //Muevo ARRIBA
+            moveCommand = 1;
+        }
+        else if (myPos[0] < _direccion[0])
+        {
+            //Muevo ABAJO
+            moveCommand = 3;
+        }
+        else if (myPos[1] > _direccion[1])
+        {
+            //Muevo IZQUIERDA
+            moveCommand = 2;
+        }
+        else if (myPos[1] < _direccion[1])
+        {
+            //Muevo DERECHA
+            moveCommand = 4;
+        }
+        else
+        {
+            Debug.Log("ERROR NO CHANGE IN POSITION");
+            moveCommand = 0;
+        }
+    }
+
+    /*!
+    * @brief UpdateEnemyMovement() Se encarga de acutalizar los movimientos y acciones del enemigo
+    * @param mov Señala la dirección en la que se dirije el enemigo o la acción que va a ejecutar
+    */
+    public void UpdateEnemyMovement(int mov)
+    {
+        if (mov == 0)
+        { //Right movement
+            Debug.Log("NO me muevo");
+
+            moveCommand = 0;
+            animator.SetBool("Walking", false);
+
+        }
+
+        if (mov == 1)
+        { //Up movement
+            Debug.Log("Me muevo ARRIBA");
+
+            moveCommand = 1;
+            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 270, 0);
+            animator.SetBool("Walking", true);
+
+        }
+
+        if (mov == 2)
+        { //Left movement
+            Debug.Log("Me muevo IZQUIERDA");
+
+            moveCommand = 2;
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("Walking", true);
+
+        }
+
+        if (mov == 3)
+        { //Down movement
+            Debug.Log("Me muevo ABAJO");
+
+            moveCommand = 3;
+            rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Walking", true);
+
+
+        }
+
+        if (mov == 4)
+        { //Right movement
+            Debug.Log("Me muevo DERECHA");
+
+            moveCommand = 4;
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("Walking", true);
+
+        }
+
+        if (canDropBombs && mov == 5)
+        {
+            DropBomb();
+        }
+    }
+
+    /*
+     * @brief setter para la lista de enemigos creados para este nivel
+     * @return void
+     */
+    public void setListaEnemigos(List<GameObject> lista)
+    {
+        listaEnemigos = lista;
     }
 }
