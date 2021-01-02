@@ -171,7 +171,6 @@ public class Players : MonoBehaviour
     void Update()
     {
         UpdateMovement();
-        EnemyMovement();
         UpdatePlayerGenoma();
         ResetLimits();
         //Verifica si el personaje puede dropear bombas segun el gen
@@ -275,9 +274,23 @@ public class Players : MonoBehaviour
             return;
         }
         //Depending on the player number, use different input for moving
-        if (playerNumber == 1)
+        switch (playerNumber)
         {
-            UpdatePlayer1Movement();
+            case 1:
+                UpdatePlayer1Movement();
+                break;
+            case 2:
+                UpdatePlayer2Movement();
+                break;
+            case 3:
+                UpdatePlayer3Movement();
+                break;
+            case 4:
+                UpdatePlayer4Movement();
+                break;
+            default:
+                EnemyMovement();
+                break;
         }
     }
     private void UpdatePlayer1Movement()
@@ -319,6 +332,124 @@ public class Players : MonoBehaviour
             }      
         }
     }
+    private void UpdatePlayer2Movement()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        { //Up movement
+            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 270, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        { //Left movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        { //Down movement
+            rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        { //Right movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        { //Drop bomb
+            if (canDropBombs)
+            {
+                DropBomb();
+                droppedBombs++;
+            }
+        }
+    }
+    private void UpdatePlayer3Movement()
+    {
+        if (Input.GetKey(KeyCode.T))
+        { //Up movement
+            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 270, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.F))
+        { //Left movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.G))
+        { //Down movement
+            rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.H))
+        { //Right movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        { //Drop bomb
+            if (canDropBombs)
+            {
+                DropBomb();
+                droppedBombs++;
+            }
+        }
+    }
+    private void UpdatePlayer4Movement()
+    {
+        if (Input.GetKey(KeyCode.I))
+        { //Up movement
+            rigidBody.velocity = new Vector3(-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 270, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.J))
+        { //Left movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.K))
+        { //Down movement
+            rigidBody.velocity = new Vector3(moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            myTransform.rotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKey(KeyCode.L))
+        { //Right movement
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            myTransform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("Walking", true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        { //Drop bomb
+            if (canDropBombs)
+            {
+                DropBomb();
+                droppedBombs++;
+            }
+        }
+    }
+    
     private void DropBomb()
     {
         if (bombPrefab)
