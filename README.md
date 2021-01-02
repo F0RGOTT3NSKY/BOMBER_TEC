@@ -27,7 +27,7 @@ $ git clone https://github.com/F0RGOTT3NSKY/BomberTEC.git
 ## Collaboration
 ***
 Este proyecto fue realizado por:
-> Kevin Masis
+> Kevin Masis Leandro
 
 > Adrian Gomez
 
